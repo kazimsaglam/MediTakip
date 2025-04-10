@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Windows.Forms;
+﻿using System.Data;
 using Microsoft.Data.SqlClient;
+using System.ComponentModel;
 
 namespace MediTakipApp.Forms
 {
@@ -12,109 +9,130 @@ namespace MediTakipApp.Forms
         private string connStr = @"Server=ROGSTRIX;Database=MediTakipDB;Trusted_Connection=True;TrustServerCertificate=True;";
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public int DoctorId { get; set; }
+        public int PatientId { get; set; }
 
-        private List<PrescribedDrug> prescriptionList = new List<PrescribedDrug>();
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public string PatientName { get; set; }
+
+        private List<PrescribedDrug> selectedDrugs = new List<PrescribedDrug>();
 
         public PrescriptionForm()
         {
             InitializeComponent();
         }
 
-        private void PrescriptionForm_Load_1(object sender, EventArgs e)
+        private void PrescriptionForm_Load(object sender, EventArgs e)
         {
-            LoadPatients();
-            LoadDrugs();
+            lblPatient.Text = $"Hasta: {PatientName}";
+            dtpDate.Value = DateTime.Now;
+            dtpDate.Visible = false;
+            LoadDrugList();
         }
 
-        private void LoadPatients()
+        private void LoadDrugList()
         {
-            cmbPatients.Items.Clear();
-            using (var conn = new SqlConnection(connStr))
+            using var conn = new SqlConnection(connStr);
+            conn.Open();
+            var da = new SqlDataAdapter("SELECT Id, Barcode, Name, ActiveIngredient, UsageAge, Price FROM Drugs", conn);
+            var dt = new DataTable();
+            da.Fill(dt);
+
+            dgvDrugs.DataSource = dt;
+
+            if (!dgvDrugs.Columns.Contains("Ekle"))
             {
-                conn.Open();
-                var cmd = new SqlCommand("SELECT Id, FirstName + ' ' + LastName AS FullName FROM Patients WHERE DoctorId = @docId", conn);
-                cmd.Parameters.AddWithValue("@docId", DoctorId);
-                var reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    cmbPatients.Items.Add(new ComboBoxItem(reader["FullName"].ToString(), (int)reader["Id"]));
-                }
+                var btnCol = new DataGridViewButtonColumn();
+                btnCol.Name = "Ekle";
+                btnCol.HeaderText = "";
+                btnCol.Text = "Ekle";
+                btnCol.UseColumnTextForButtonValue = true;
+                btnCol.Width = 120;
+                dgvDrugs.Columns.Add(btnCol);
             }
         }
 
-        private void LoadDrugs()
+        private void dgvDrugs_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            cmbDrugs.Items.Clear();
-            using (var conn = new SqlConnection(connStr))
+            if (e.ColumnIndex == dgvDrugs.Columns["Ekle"].Index && e.RowIndex >= 0)
             {
-                conn.Open();
-                var cmd = new SqlCommand("SELECT Id, Name FROM Drugs", conn);
-                var reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    cmbDrugs.Items.Add(new ComboBoxItem(reader["Name"].ToString(), (int)reader["Id"]));
-                }
-            }
-        }
+                var row = dgvDrugs.Rows[e.RowIndex];
 
-        private void btnAddDrug_Click(object sender, EventArgs e)
-        {
-            if (cmbDrugs.SelectedItem == null) return;
-            var selectedDrug = (ComboBoxItem)cmbDrugs.SelectedItem;
-            if (int.TryParse(txtQuantity.Text.Trim(), out int quantity))
-            {
-                prescriptionList.Add(new PrescribedDrug
+                int drugId = Convert.ToInt32(row.Cells["Id"].Value);
+                string name = row.Cells["Name"].Value.ToString();
+                string dosage = row.Cells["ActiveIngredient"].Value.ToString();
+                decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
+
+                selectedDrugs.Add(new PrescribedDrug
                 {
-                    DrugId = selectedDrug.Value,
-                    DrugName = selectedDrug.Text,
-                    Quantity = quantity,
-                    Instructions = txtInstructions.Text.Trim()
+                    DrugId = drugId,
+                    DrugName = name,
+                    Instructions = "Günde 2 kez",
+                    Quantity = 1,
+                    Price = price
                 });
 
-                dgvPrescription.DataSource = null;
-                dgvPrescription.DataSource = prescriptionList;
-            }
-            else
-            {
-                MessageBox.Show("Lütfen geçerli bir adet girin.");
+                RefreshSelectedList();
             }
         }
+
+        private void RefreshSelectedList()
+        {
+            dgvSelected.DataSource = null;
+            dgvSelected.DataSource = null;
+            dgvSelected.Columns.Clear();
+
+            dgvSelected.DataSource = selectedDrugs;
+
+            if (!dgvSelected.Columns.Contains("Sil"))
+            {
+                DataGridViewButtonColumn btnCol = new DataGridViewButtonColumn();
+                btnCol.Name = "Sil";
+                btnCol.HeaderText = "";
+                btnCol.Text = "Sil";
+                btnCol.UseColumnTextForButtonValue = true;
+                btnCol.Width = 120;
+                dgvSelected.Columns.Add(btnCol);
+            }
+        }
+
+
+        private void dgvSelected_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == dgvSelected.Columns["Sil"].Index)
+            {
+                selectedDrugs.RemoveAt(e.RowIndex);
+                RefreshSelectedList();
+            }
+        }
+
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (cmbPatients.SelectedItem == null || prescriptionList.Count == 0)
+            using var conn = new SqlConnection(connStr);
+            conn.Open();
+
+            var cmd = new SqlCommand("INSERT INTO Prescriptions (DoctorId, PatientId, DateCreated) OUTPUT INSERTED.Id VALUES (@doc, @pat, @date)", conn);
+            cmd.Parameters.AddWithValue("@doc", 1); // Gerçek sistemde giriş yapan doktorun ID'si gelir
+            cmd.Parameters.AddWithValue("@pat", PatientId);
+            cmd.Parameters.AddWithValue("@date", dtpDate.Value);
+            int presId = (int)cmd.ExecuteScalar();
+
+            foreach (var drug in selectedDrugs)
             {
-                MessageBox.Show("Lütfen hasta seçin ve en az bir ilaç ekleyin.");
-                return;
+                var drugCmd = new SqlCommand("INSERT INTO PrescriptionDrugs (PrescriptionId, DrugId, Quantity, UsageInstructions) VALUES (@pid, @did, @qty, @ins)", conn);
+                drugCmd.Parameters.AddWithValue("@pid", presId);
+                drugCmd.Parameters.AddWithValue("@did", drug.DrugId);
+                drugCmd.Parameters.AddWithValue("@qty", drug.Quantity);
+                drugCmd.Parameters.AddWithValue("@ins", drug.Instructions);
+                drugCmd.ExecuteNonQuery();
             }
 
-            var selectedPatient = (ComboBoxItem)cmbPatients.SelectedItem;
-            int patientId = selectedPatient.Value;
+            MessageBox.Show("Reçete başarıyla kaydedildi!");
+            this.Close();
+        }
 
-            using (var conn = new SqlConnection(connStr))
-            {
-                conn.Open();
-
-                // Reçete oluştur
-                var cmd = new SqlCommand("INSERT INTO Prescriptions (DoctorId, PatientId) OUTPUT INSERTED.Id VALUES (@docId, @patId)", conn);
-                cmd.Parameters.AddWithValue("@docId", DoctorId);
-                cmd.Parameters.AddWithValue("@patId", patientId);
-                int prescriptionId = (int)cmd.ExecuteScalar();
-
-                // İlaçları kaydet
-                foreach (var drug in prescriptionList)
-                {
-                    var drugCmd = new SqlCommand("INSERT INTO PrescriptionDrugs (PrescriptionId, DrugId, Quantity, UsageInstructions) VALUES (@presId, @drugId, @qty, @instr)", conn);
-                    drugCmd.Parameters.AddWithValue("@presId", prescriptionId);
-                    drugCmd.Parameters.AddWithValue("@drugId", drug.DrugId);
-                    drugCmd.Parameters.AddWithValue("@qty", drug.Quantity);
-                    drugCmd.Parameters.AddWithValue("@instr", drug.Instructions);
-                    drugCmd.ExecuteNonQuery();
-                }
-            }
-
-            MessageBox.Show("Reçete başarıyla kaydedildi.");
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
     }
@@ -125,22 +143,6 @@ namespace MediTakipApp.Forms
         public string DrugName { get; set; }
         public int Quantity { get; set; }
         public string Instructions { get; set; }
-    }
-
-    public class ComboBoxItem
-    {
-        public string Text { get; set; }
-        public int Value { get; set; }
-
-        public ComboBoxItem(string text, int value)
-        {
-            Text = text;
-            Value = value;
-        }
-
-        public override string ToString()
-        {
-            return Text;
-        }
+        public decimal Price { get; set; }
     }
 }

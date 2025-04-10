@@ -102,11 +102,25 @@ namespace MediTakipApp.Forms
 
         private void btnPrescriptions_Click(object sender, EventArgs e)
         {
+            if (dgvPatients.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Lütfen önce bir hasta seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Seçilen satırdan hasta bilgilerini al
+            var row = dgvPatients.SelectedRows[0];
+            int patientId = Convert.ToInt32(row.Cells["Id"].Value);
+            string fullName = row.Cells["FirstName"].Value.ToString() + " " + row.Cells["LastName"].Value.ToString();
+
+            // PrescriptionForm'u başlat ve bilgileri geçir
             PrescriptionForm form = new PrescriptionForm();
-            form.DoctorId = doctorId; // giriş yapan doktorun ID'si
-            form.ShowDialog(); // modal olarak aç
-            LoadPatients(); // reçete sonrası hasta verisini yenilemek istersen
+            form.PatientId = patientId;
+            form.PatientName = fullName;
+
+            form.ShowDialog();
         }
+
 
     }
 }

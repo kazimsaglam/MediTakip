@@ -1,6 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using System.Windows.Forms;
+﻿using System.ComponentModel;
 using Microsoft.Data.SqlClient;
 
 namespace MediTakipApp.Forms
@@ -9,17 +7,39 @@ namespace MediTakipApp.Forms
     {
         string connStr = @"Server=ROGSTRIX;Database=MediTakipDB;Trusted_Connection=True;TrustServerCertificate=True;";
 
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] public bool IsUpdateMode { get; set; } = false;
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] public int PatientId { get; set; }
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] public int DoctorId { get; set; }
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] public string FirstName { get; set; }
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] public string LastName { get; set; }
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] public string TcNo { get; set; }
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] public DateTime BirthDate { get; set; }
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] public string Gender { get; set; }
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] public string Insurance { get; set; }
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] public string City { get; set; }
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] public string District { get; set; }
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public bool IsUpdateMode { get; set; } = false;
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public int PatientId { get; set; }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public int DoctorId { get; set; } // ekleme için lazım
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public string FirstName { get; set; }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public string LastName { get; set; }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public string TcNo { get; set; }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public DateTime BirthDate { get; set; }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public string Gender { get; set; }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] 
+        public string Insurance { get; set; }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] 
+        public string City { get; set; }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] 
+        public string District { get; set; }
+
 
         public PatientForm()
         {
@@ -29,7 +49,7 @@ namespace MediTakipApp.Forms
         private void PatientForm_Load(object sender, EventArgs e)
         {
             cmbGender.Items.AddRange(new string[] { "Erkek", "Kadın" });
-            this.cmbInsurance.Items.AddRange(new string[] { "SSK", "Bağ-Kur", "Özel", "Diğer" });
+            cmbInsurance.Items.AddRange(new string[] { "SSK", "Bağ-Kur", "Özel", "Diğer" });
 
             if (IsUpdateMode)
             {
@@ -38,7 +58,7 @@ namespace MediTakipApp.Forms
                 txtTcNo.Text = TcNo;
                 dtpBirthDate.Value = BirthDate;
                 cmbGender.SelectedItem = Gender;
-                this.cmbInsurance.SelectedItem = Insurance;
+                cmbInsurance.SelectedItem = Insurance;
                 txtCity.Text = City;
                 txtDistrict.Text = District;
                 btnSave.Text = "Güncelle";
@@ -56,7 +76,7 @@ namespace MediTakipApp.Forms
                 string.IsNullOrWhiteSpace(txtLastName.Text) ||
                 string.IsNullOrWhiteSpace(txtTcNo.Text) ||
                 cmbGender.SelectedItem == null ||
-                this.cmbInsurance.SelectedItem == null)
+                cmbInsurance.SelectedItem == null)
             {
                 MessageBox.Show("Lütfen tüm gerekli alanları doldurun.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -80,7 +100,7 @@ namespace MediTakipApp.Forms
                         cmd.Parameters.AddWithValue("@tc", txtTcNo.Text.Trim());
                         cmd.Parameters.AddWithValue("@bd", dtpBirthDate.Value);
                         cmd.Parameters.AddWithValue("@g", cmbGender.SelectedItem.ToString());
-                        cmd.Parameters.AddWithValue("@ins", this.cmbInsurance.SelectedItem.ToString());
+                        cmd.Parameters.AddWithValue("@ins", cmbInsurance.SelectedItem.ToString());
                         cmd.Parameters.AddWithValue("@city", txtCity.Text.Trim());
                         cmd.Parameters.AddWithValue("@district", txtDistrict.Text.Trim());
                         cmd.Parameters.AddWithValue("@id", PatientId);
@@ -100,7 +120,7 @@ namespace MediTakipApp.Forms
                         cmd.Parameters.AddWithValue("@tc", txtTcNo.Text.Trim());
                         cmd.Parameters.AddWithValue("@bd", dtpBirthDate.Value);
                         cmd.Parameters.AddWithValue("@g", cmbGender.SelectedItem.ToString());
-                        cmd.Parameters.AddWithValue("@ins", this.cmbInsurance.SelectedItem.ToString());
+                        cmd.Parameters.AddWithValue("@ins", cmbInsurance.SelectedItem.ToString());
                         cmd.Parameters.AddWithValue("@city", txtCity.Text.Trim());
                         cmd.Parameters.AddWithValue("@district", txtDistrict.Text.Trim());
                         cmd.Parameters.AddWithValue("@docId", DoctorId);
@@ -117,7 +137,6 @@ namespace MediTakipApp.Forms
                 MessageBox.Show("Bir hata oluştu:\n" + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         private void btnCancel_Click(object sender, EventArgs e)
         {

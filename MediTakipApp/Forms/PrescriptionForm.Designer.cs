@@ -28,103 +28,127 @@
         /// </summary>
         private void InitializeComponent()
         {
-            cmbPatients = new ComboBox();
-            cmbDrugs = new ComboBox();
-            txtQuantity = new TextBox();
-            txtInstructions = new TextBox();
-            btnAddDrug = new Button();
-            dgvPrescription = new DataGridView();
+            hastaAdi = new Label();
+            lblPatient = new Label();
+            dgvDrugs = new DataGridView();
+            dgvSelected = new DataGridView();
+            btnCancel = new Button();
             btnSave = new Button();
-            ((System.ComponentModel.ISupportInitialize)dgvPrescription).BeginInit();
+            dtpDate = new DateTimePicker();
+            label1 = new Label();
+            ((System.ComponentModel.ISupportInitialize)dgvDrugs).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSelected).BeginInit();
             SuspendLayout();
             // 
-            // cmbPatients
+            // hastaAdi
             // 
-            cmbPatients.FormattingEnabled = true;
-            cmbPatients.Location = new Point(67, 32);
-            cmbPatients.Name = "cmbPatients";
-            cmbPatients.Size = new Size(559, 28);
-            cmbPatients.TabIndex = 0;
+            hastaAdi.AutoSize = true;
+            hastaAdi.Font = new Font("Bahnschrift Condensed", 13.8F, FontStyle.Bold);
+            hastaAdi.Location = new Point(12, 9);
+            hastaAdi.Name = "hastaAdi";
+            hastaAdi.Size = new Size(63, 28);
+            hastaAdi.TabIndex = 0;
+            hastaAdi.Text = "Hasta :";
             // 
-            // cmbDrugs
+            // lblPatient
             // 
-            cmbDrugs.FormattingEnabled = true;
-            cmbDrugs.Location = new Point(64, 86);
-            cmbDrugs.Name = "cmbDrugs";
-            cmbDrugs.Size = new Size(565, 28);
-            cmbDrugs.TabIndex = 1;
+            lblPatient.AutoSize = true;
+            lblPatient.Font = new Font("Bahnschrift Condensed", 13.8F, FontStyle.Bold);
+            lblPatient.Location = new Point(95, 9);
+            lblPatient.Name = "lblPatient";
+            lblPatient.Size = new Size(100, 28);
+            lblPatient.TabIndex = 1;
+            lblPatient.Text = "Hasta Adı ...";
             // 
-            // txtQuantity
+            // dgvDrugs
             // 
-            txtQuantity.Location = new Point(66, 143);
-            txtQuantity.Name = "txtQuantity";
-            txtQuantity.Size = new Size(173, 27);
-            txtQuantity.TabIndex = 2;
+            dgvDrugs.BackgroundColor = SystemColors.ControlLight;
+            dgvDrugs.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDrugs.Location = new Point(12, 52);
+            dgvDrugs.Name = "dgvDrugs";
+            dgvDrugs.RowHeadersWidth = 51;
+            dgvDrugs.Size = new Size(955, 347);
+            dgvDrugs.TabIndex = 2;
+            dgvDrugs.CellContentClick += dgvDrugs_CellContentClick;
             // 
-            // txtInstructions
+            // dgvSelected
             // 
-            txtInstructions.Location = new Point(63, 193);
-            txtInstructions.Name = "txtInstructions";
-            txtInstructions.Size = new Size(176, 27);
-            txtInstructions.TabIndex = 3;
+            dgvSelected.BackgroundColor = SystemColors.ControlLight;
+            dgvSelected.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSelected.Location = new Point(12, 462);
+            dgvSelected.Name = "dgvSelected";
+            dgvSelected.RowHeadersWidth = 51;
+            dgvSelected.Size = new Size(955, 174);
+            dgvSelected.TabIndex = 3;
+            dgvSelected.CellContentClick += dgvSelected_CellContentClick;
             // 
-            // btnAddDrug
+            // btnCancel
             // 
-            btnAddDrug.Location = new Point(565, 260);
-            btnAddDrug.Name = "btnAddDrug";
-            btnAddDrug.Size = new Size(183, 62);
-            btnAddDrug.TabIndex = 4;
-            btnAddDrug.Text = "Reçeteye ilaç ekle";
-            btnAddDrug.UseVisualStyleBackColor = true;
-            btnAddDrug.Click += btnAddDrug_Click;
-            // 
-            // dgvPrescription
-            // 
-            dgvPrescription.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPrescription.Location = new Point(12, 260);
-            dgvPrescription.Name = "dgvPrescription";
-            dgvPrescription.RowHeadersWidth = 51;
-            dgvPrescription.Size = new Size(412, 179);
-            dgvPrescription.TabIndex = 5;
+            btnCancel.Location = new Point(12, 654);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(199, 48);
+            btnCancel.TabIndex = 4;
+            btnCancel.Text = "İptal Et";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(561, 350);
+            btnSave.Location = new Point(760, 654);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(193, 82);
-            btnSave.TabIndex = 6;
+            btnSave.Size = new Size(199, 48);
+            btnSave.TabIndex = 5;
             btnSave.Text = "Reçeteyi Yazdır";
             btnSave.UseVisualStyleBackColor = true;
-            btnSave.Click += btnSave_Click;
+            // 
+            // dtpDate
+            // 
+            dtpDate.Location = new Point(744, 11);
+            dtpDate.Name = "dtpDate";
+            dtpDate.Size = new Size(223, 27);
+            dtpDate.TabIndex = 6;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Bahnschrift Condensed", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(12, 420);
+            label1.Name = "label1";
+            label1.Size = new Size(201, 28);
+            label1.TabIndex = 7;
+            label1.Text = "Reçeteye Eklenen İlaçlar";
             // 
             // PrescriptionForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(971, 714);
+            Controls.Add(label1);
+            Controls.Add(dtpDate);
             Controls.Add(btnSave);
-            Controls.Add(dgvPrescription);
-            Controls.Add(btnAddDrug);
-            Controls.Add(txtInstructions);
-            Controls.Add(txtQuantity);
-            Controls.Add(cmbDrugs);
-            Controls.Add(cmbPatients);
+            Controls.Add(btnCancel);
+            Controls.Add(dgvSelected);
+            Controls.Add(dgvDrugs);
+            Controls.Add(lblPatient);
+            Controls.Add(hastaAdi);
             Name = "PrescriptionForm";
             Text = "PrescriptionForm";
-            Load += PrescriptionForm_Load_1;
-            ((System.ComponentModel.ISupportInitialize)dgvPrescription).EndInit();
+            Load += PrescriptionForm_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvDrugs).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSelected).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private ComboBox cmbPatients;
-        private ComboBox cmbDrugs;
-        private TextBox txtQuantity;
-        private TextBox txtInstructions;
-        private Button btnAddDrug;
-        private DataGridView dgvPrescription;
+        private Label hastaAdi;
+        private Label lblPatient;
+        private DataGridView dgvDrugs;
+        private DataGridView dgvSelected;
+        private Button btnCancel;
         private Button btnSave;
+        private DateTimePicker dtpDate;
+        private Label label1;
     }
 }
