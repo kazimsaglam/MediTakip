@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            hastaAdi = new Label();
             lblPatient = new Label();
             dgvDrugs = new DataGridView();
             dgvSelected = new DataGridView();
@@ -40,21 +39,11 @@
             ((System.ComponentModel.ISupportInitialize)dgvSelected).BeginInit();
             SuspendLayout();
             // 
-            // hastaAdi
-            // 
-            hastaAdi.AutoSize = true;
-            hastaAdi.Font = new Font("Bahnschrift Condensed", 13.8F, FontStyle.Bold);
-            hastaAdi.Location = new Point(12, 9);
-            hastaAdi.Name = "hastaAdi";
-            hastaAdi.Size = new Size(63, 28);
-            hastaAdi.TabIndex = 0;
-            hastaAdi.Text = "Hasta :";
-            // 
             // lblPatient
             // 
             lblPatient.AutoSize = true;
             lblPatient.Font = new Font("Bahnschrift Condensed", 13.8F, FontStyle.Bold);
-            lblPatient.Location = new Point(95, 9);
+            lblPatient.Location = new Point(12, 9);
             lblPatient.Name = "lblPatient";
             lblPatient.Size = new Size(100, 28);
             lblPatient.TabIndex = 1;
@@ -100,6 +89,7 @@
             btnSave.TabIndex = 5;
             btnSave.Text = "Reçeteyi Yazdır";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // dtpDate
             // 
@@ -130,7 +120,6 @@
             Controls.Add(dgvSelected);
             Controls.Add(dgvDrugs);
             Controls.Add(lblPatient);
-            Controls.Add(hastaAdi);
             Name = "PrescriptionForm";
             Text = "PrescriptionForm";
             Load += PrescriptionForm_Load;
@@ -141,8 +130,6 @@
         }
 
         #endregion
-
-        private Label hastaAdi;
         private Label lblPatient;
         private DataGridView dgvDrugs;
         private DataGridView dgvSelected;

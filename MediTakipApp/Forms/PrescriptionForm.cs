@@ -105,7 +105,6 @@ namespace MediTakipApp.Forms
             }
         }
 
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             using var conn = new SqlConnection(connStr);
