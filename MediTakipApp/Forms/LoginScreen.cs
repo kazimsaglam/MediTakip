@@ -45,6 +45,9 @@ namespace MediTakipApp.Forms
 
                     if (userType == "Doktor")
                     {
+                        LoggedUser.Id = Convert.ToInt32(dr["Id"]); // 🔥 Doktor ID'si kaydediliyor
+                        LoggedUser.Username = dr["Username"].ToString();
+
                         DoctorPanel dp = new DoctorPanel();
                         dp.Show();
                     }

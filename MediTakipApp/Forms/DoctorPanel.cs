@@ -1,126 +1,86 @@
 ﻿using System;
-using Microsoft.Data.SqlClient;
 using System.Windows.Forms;
-using System.Data;
+using MediTakipApp.Forms.DoctorPanelContent;
 
 namespace MediTakipApp.Forms
 {
     public partial class DoctorPanel : Form
     {
-        string connStr = @"Server=ROGSTRIX;Database=MediTakipDB;Trusted_Connection=True;TrustServerCertificate=True;";
-        int doctorId = 1; // ← Gerçek projede giriş yapan doktorun ID'si atanacak
-
-
         public DoctorPanel()
         {
             InitializeComponent();
         }
 
-        private void DoctorPanel_Load_1(object sender, EventArgs e)
+        private void DoctorPanel_Load(object sender, EventArgs e)
         {
-            LoadPatients();
-            dgvPatients.Columns["Id"].Visible = false;
+            // Başlangıçta Ana Panel göster
+            lblTitle.Text = "Ana Sayfa";
+            //LoadControl(new HomeControl());
         }
 
-        private void LoadPatients()
+        private void btnHome_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(connStr))
-            {
-                conn.Open();
-                string query = "SELECT Id, FirstName, LastName, TcNo, Insurance, BirthDate, Gender, City, District FROM Patients WHERE DoctorId = @docId";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@docId", doctorId);
-
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                dgvPatients.DataSource = dt;
-            }
+            lblTitle.Text = "Ana Sayfa";
+            //LoadControl(new HomeControl());
         }
 
-        private void btnAddPatient_Click(object sender, EventArgs e)
+        private void btnPatients_Click(object sender, EventArgs e)
         {
-            PatientForm form = new PatientForm();
-            form.DoctorId = doctorId;
-            form.IsUpdateMode = false;
-            form.FormClosed += (s, args) => LoadPatients();
-            form.ShowDialog();
-
+            lblTitle.Text = "Hastalar";
+            LoadControl(new PatientsControl());
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void btnDrugs_Click(object sender, EventArgs e)
         {
-            if (dgvPatients.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Lütfen silinecek bir hasta seç!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Seçilen satırdan hasta ID'sini al
-            int selectedPatientId = Convert.ToInt32(dgvPatients.SelectedRows[0].Cells["Id"].Value);
-
-            DialogResult result = MessageBox.Show("Bu hastayı silmek istediğine emin misin?", "Onay", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                using (SqlConnection conn = new SqlConnection(connStr))
-                {
-                    conn.Open();
-                    string query = "DELETE FROM Patients WHERE Id = @id";
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@id", selectedPatientId);
-                    cmd.ExecuteNonQuery();
-                }
-
-                MessageBox.Show("Hasta başarıyla silindi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadPatients(); // Listeyi yenile
-            }
-        }
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            if (dgvPatients.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Lütfen güncellenecek bir hasta seçin.");
-                return;
-            }
-
-            DataGridViewRow row = dgvPatients.SelectedRows[0];
-            PatientForm form = new PatientForm();
-            form.IsUpdateMode = true;
-            form.PatientId = Convert.ToInt32(row.Cells["Id"].Value);
-            form.FirstName = row.Cells["FirstName"].Value.ToString();
-            form.LastName = row.Cells["LastName"].Value.ToString();
-            form.TcNo = row.Cells["TcNo"].Value.ToString();
-            form.BirthDate = Convert.ToDateTime(row.Cells["BirthDate"].Value);
-            form.Gender = row.Cells["Gender"].Value.ToString();
-            form.Insurance = row.Cells["Insurance"].Value.ToString();
-            form.City = row.Cells["City"].Value.ToString();
-            form.District = row.Cells["District"].Value.ToString();
-            form.FormClosed += (s, args) => LoadPatients();
-            form.ShowDialog();
+            lblTitle.Text = "İlaçlar";
+            LoadControl(new DrugsControl());
         }
 
         private void btnPrescriptions_Click(object sender, EventArgs e)
         {
-            if (dgvPatients.SelectedRows.Count == 0)
+            lblTitle.Text = "Reçeteler";
+            LoadControl(new PrescriptionHistoryControl());
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            lblTitle.Text = "Ayarlar";
+            //LoadControl(new SettingsControl());
+        }
+
+        private void btnPower_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Uygulamayı kapatmak istiyor musunuz?",
+                "Çıkış",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
             {
-                MessageBox.Show("Lütfen önce bir hasta seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                Application.Exit();
             }
+        }
 
-            // Seçilen satırdan hasta bilgilerini al
-            var row = dgvPatients.SelectedRows[0];
-            int patientId = Convert.ToInt32(row.Cells["Id"].Value);
-            string fullName = row.Cells["FirstName"].Value.ToString() + " " + row.Cells["LastName"].Value.ToString();
+        private void btnPower_MouseEnter(object sender, EventArgs e)
+        {
+            btnPower.ForeColor = Color.Red;
+            btnPower.BackColor = Color.Red;
+        }
 
-            // PrescriptionForm'u başlat ve bilgileri geçir
-            PrescriptionForm form = new PrescriptionForm();
-            form.PatientId = patientId;
-            form.PatientName = fullName;
-
-            form.ShowDialog();
+        private void btnPower_MouseLeave(object sender, EventArgs e)
+        {
+            btnPower.ForeColor = Color.White;
+            btnPower.BackColor = Color.Transparent;
         }
 
 
+        private void LoadControl(UserControl control)
+        {
+            control.Dock = DockStyle.Fill;
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(control);
+        }
     }
 }

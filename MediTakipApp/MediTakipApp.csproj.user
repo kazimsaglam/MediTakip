@@ -4,16 +4,22 @@
     <Compile Update="Forms\DoctorPanel.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\DoctorPanelContent\DrugsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Forms\DoctorPanelContent\PrescriptionHistoryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Forms\LoginScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\PatientForm.cs">
+    <Compile Update="Forms\DoctorPanelContent\PatientForm.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\DoctorPanelContent\PatientsControl.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Forms\PharmacyPanel.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\PrescriptionForm.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

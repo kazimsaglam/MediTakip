@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
 
@@ -32,27 +27,41 @@ namespace MediTakipApp.Forms
                 conn.Open();
                 string query = @"
                     SELECT P.Id AS PrescriptionId,
-                           U.Username AS Doctor,
+                           ISNULL(U.Username, '-') AS Doctor,
                            (Pa.FirstName + ' ' + Pa.LastName) AS Patient,
                            P.DateCreated
                     FROM Prescriptions P
                     JOIN Patients Pa ON P.PatientId = Pa.Id
-                    JOIN Users U ON P.DoctorId = U.Id
+                    LEFT JOIN Users U ON P.DoctorId = U.Id
                     ORDER BY P.DateCreated DESC";
 
                 SqlDataAdapter da = new SqlDataAdapter(query, conn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
+
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("Henüz sisteme kaydedilmiş bir reçete bulunmamaktadır.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
                 dgvPrescriptions.DataSource = dt;
             }
         }
 
         private void dgvPrescriptions_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (e.RowIndex >= 0 && dgvPrescriptions.Columns["PrescriptionId"] != null)
             {
-                int prescriptionId = Convert.ToInt32(dgvPrescriptions.Rows[e.RowIndex].Cells["PrescriptionId"].Value);
-                LoadPrescriptionDetails(prescriptionId);
+                var cell = dgvPrescriptions.Rows[e.RowIndex].Cells["PrescriptionId"].Value;
+                if (cell != null)
+                {
+                    int prescriptionId = Convert.ToInt32(cell);
+                    LoadPrescriptionDetails(prescriptionId);
+                }
+                else
+                {
+                    MessageBox.Show("Geçersiz reçete seçildi.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 
@@ -76,6 +85,12 @@ namespace MediTakipApp.Forms
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
+
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("Bu reçeteye ait ilaç bilgisi bulunamadı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
                 dgvDrugsInPrescription.DataSource = dt;
             }
         }
