@@ -68,3 +68,4 @@ C:\Users\Kazim\OneDrive\Belgeler\MediTakipApp\bin\Debug\net9.0-windows\TopShelf.
 C:\Users\Kazim\OneDrive\Belgeler\MediTakipApp\bin\Debug\net9.0-windows\runtimes\win\lib\netstandard2.0\System.ServiceProcess.ServiceController.dll
 C:\Users\Kazim\OneDrive\Belgeler\MediTakipApp\obj\Debug\net9.0-windows\MediTakipApp.Forms.DoctorPanelContent.DrugsControl.resources
 C:\Users\Kazim\OneDrive\Belgeler\MediTakipApp\obj\Debug\net9.0-windows\MediTakipApp.Forms.DoctorPanelContent.PrescriptionHistoryControl.resources
+C:\Users\Kazim\OneDrive\Belgeler\MediTakipApp\obj\Debug\net9.0-windows\MediTakipApp.Forms.Login.resources

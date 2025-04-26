@@ -4,14 +4,13 @@ namespace MediTakipApp.Forms
 {
     public partial class LoginScreen : Form
     {
+        private bool isPasswordVisible = false;
         string connStr = @"Server=ROGSTRIX;Database=MediTakipDB;Trusted_Connection=True;TrustServerCertificate=True;";
 
         public LoginScreen()
         {
             InitializeComponent();
-            cmbUserType.Items.AddRange(new string[] { "Doktor", "Eczane" });
             cmbUserType.SelectedIndex = 0;
-
             txtUsername.Text = null;
             txtPassword.Text = null;
         }
@@ -20,66 +19,166 @@ namespace MediTakipApp.Forms
         {
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
-            string userType = cmbUserType.SelectedItem.ToString();
+            string userType = cmbUserType.SelectedItem?.ToString() ?? "";
 
-            if (username == "" || password == "")
+            // 🔥 Önce Alan Boşluk Kontrolleri
+            if (string.IsNullOrEmpty(userType))
             {
-                lblError.Text = "Kullanıcı adı ve şifre boş olamaz!";
-                lblError.Visible = true;
+                ShowUserTypeError();
                 return;
             }
 
-            using (SqlConnection conn = new SqlConnection(connStr))
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
-                conn.Open();
-                string query = "SELECT * FROM Users WHERE Username=@u AND Password=@p AND UserType=@t";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@u", username);
-                cmd.Parameters.AddWithValue("@p", password);
-                cmd.Parameters.AddWithValue("@t", userType);
+                ShowErrorState("Kullanıcı adı ve şifre boş bırakılamaz!");
+                return;
+            }
 
-                SqlDataReader dr = cmd.ExecuteReader();
-                if (dr.Read())
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connStr))
                 {
-                    lblError.Visible = false;
-
-                    if (userType == "Doktor")
+                    conn.Open();
+                    string query = "SELECT * FROM Users WHERE Username=@u AND Password=@p AND UserType=@t";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        LoggedUser.Id = Convert.ToInt32(dr["Id"]); // 🔥 Doktor ID'si kaydediliyor
-                        LoggedUser.Username = dr["Username"].ToString();
+                        cmd.Parameters.AddWithValue("@u", username);
+                        cmd.Parameters.AddWithValue("@p", password);
+                        cmd.Parameters.AddWithValue("@t", userType);
 
-                        DoctorPanel dp = new DoctorPanel();
-                        dp.Show();
-                    }
-                    else if (userType == "Eczane")
-                    {
-                        PharmacyPanel ep = new PharmacyPanel();
-                        ep.Show();
-                    }
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            if (dr.HasRows)
+                            {
+                                dr.Read();
 
-                    this.Hide();
+                                ResetFields();
+
+                                LoggedUser.Id = Convert.ToInt32(dr["Id"]);
+                                LoggedUser.Username = dr["Username"].ToString();
+
+                                if (userType == "Doktor")
+                                {
+                                    DoctorPanel dp = new DoctorPanel();
+                                    dp.Show();
+                                }
+                                else if (userType == "Eczane")
+                                {
+                                    PharmacyPanel ep = new PharmacyPanel();
+                                    ep.Show();
+                                }
+
+                                this.Hide();
+                            }
+                            else
+                            {
+                                ShowErrorState("Kullanıcı adı, şifre veya kullanıcı tipi hatalı!");
+                            }
+                        }
+                    }
                 }
-                else
-                {
-                    lblError.Text = "Kullanıcı adı, şifre veya kullanıcı tipi hatalı!";
-                    lblError.Visible = true;
-                }
-                dr.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sunucu hatası: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void btnForgot_Click(object sender, EventArgs e)
+        private void btnLogin_MouseEnter(object sender, EventArgs e)
+        {
+            btnLogin.BackColor = Color.RoyalBlue; // Hover rengi
+        }
+
+        private void btnLogin_MouseLeave(object sender, EventArgs e)
+        {
+            btnLogin.BackColor = Color.DodgerBlue; // Normal rengi
+        }
+
+        private void BtnTogglePassword_Click(object sender, EventArgs e)
+        {
+            isPasswordVisible = !isPasswordVisible;
+            txtPassword.UseSystemPasswordChar = !isPasswordVisible;
+
+            btnTogglePassword.Text = isPasswordVisible ? "🙈" : "👁️"; // 👁️ göster, 🙈 gizle ikonu
+        }
+
+        private void ShowErrorState(string message)
+        {
+            txtUsername.BackColor = Color.MistyRose;
+            txtPassword.BackColor = Color.MistyRose;
+            cmbUserType.BackColor = Color.White;
+            lblError.Text = message;
+            lblError.Visible = true;
+            ShakeForm();
+        }
+
+        private void ShowUserTypeError()
+        {
+            lblError.Text = "Lütfen kullanıcı tipi seçiniz!";
+            lblError.Visible = true;
+
+            cmbUserType.BackColor = Color.MistyRose;
+            ShakeForm();
+        }
+
+        private void ResetFields()
+        {
+            txtUsername.BackColor = Color.WhiteSmoke;
+            txtPassword.BackColor = Color.WhiteSmoke;
+            cmbUserType.BackColor = Color.White;
+            lblError.Visible = false;
+        }
+
+        private async void ShakeForm()
+        {
+            var original = this.Location;
+            int shakeAmplitude = 10;
+            for (int i = 0; i < 6; i++)
+            {
+                this.Location = new Point(original.X + (i % 2 == 0 ? shakeAmplitude : -shakeAmplitude), original.Y);
+                await Task.Delay(50);
+            }
+            this.Location = original;
+        }
+
+
+        private void lblForgotPassword_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Lütfen yöneticinizle iletişime geçiniz.\n(E-posta reset sistemi entegre edilebilir.)", "Şifremi Unuttum", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
+        private void LblForgotPassword_MouseEnter(object sender, EventArgs e)
+        {
+            lblForgotPassword.ForeColor = Color.DeepSkyBlue;
+            lblForgotPassword.Font = new Font(lblForgotPassword.Font, FontStyle.Underline);
+        }
+
+        private void LblForgotPassword_MouseLeave(object sender, EventArgs e)
+        {
+            lblForgotPassword.ForeColor = Color.Gray;
+            lblForgotPassword.Font = new Font(lblForgotPassword.Font, FontStyle.Regular);
+        }
+
+
+        private void lblExit_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Uygulamadan çıkmak istiyor musunuz?", "Çıkış", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 Application.Exit();
             }
-        }  
+        }
+
+        private void LblExit_MouseEnter(object sender, EventArgs e)
+        {
+            lblExit.ForeColor = Color.Red;
+            lblExit.Font = new Font(lblExit.Font, FontStyle.Underline);
+        }
+
+        private void LblExit_MouseLeave(object sender, EventArgs e)
+        {
+            lblExit.ForeColor = Color.Gray;
+            lblExit.Font = new Font(lblExit.Font, FontStyle.Regular);
+        }
     }
 }

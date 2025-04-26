@@ -2,15 +2,24 @@
 {
     partial class LoginScreen
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
+        private PictureBox pictureBoxLogo;
+        private Panel panelUsername;
+        private Panel panelPassword;
+        private TextBox txtUsername;
+        private TextBox txtPassword;
+        private Panel panelUsernameLine;
+        private Panel panelPasswordLine;
+        private Button btnTogglePassword;
+        private ComboBox cmbUserType;
+        private Button btnLogin;
+        private Label lblForgotPassword;
+        private Label lblExit;
+        private Label lblError;
+        private PictureBox pictureBoxUser;
+        private PictureBox pictureBoxLock;
+        private PictureBox pictureBoxUserType;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,226 +29,217 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            pictureBox1 = new PictureBox();
-            pictureBox2 = new PictureBox();
-            pictureBox3 = new PictureBox();
-            btnLogin = new Button();
+            pictureBoxLogo = new PictureBox();
             txtUsername = new TextBox();
-            panel1 = new Panel();
-            panel2 = new Panel();
+            panelUsernameLine = new Panel();
+            panelPasswordLine = new Panel();
             txtPassword = new TextBox();
             cmbUserType = new ComboBox();
-            btnForgot = new Label();
-            btnExit = new Label();
+            btnLogin = new Button();
+            lblForgotPassword = new Label();
+            lblExit = new Label();
             lblError = new Label();
-            pictureBox4 = new PictureBox();
-            pictureBox5 = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            pictureBoxUser = new PictureBox();
+            pictureBoxLock = new PictureBox();
+            pictureBoxUserType = new PictureBox();
+            btnTogglePassword = new Button();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxUser).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLock).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxUserType).BeginInit();
             SuspendLayout();
             // 
-            // pictureBox1
+            // pictureBoxLogo
             // 
-            pictureBox1.Image = Properties.Resources.Meditakip_Logo;
-            pictureBox1.Location = new Point(12, 12);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(400, 250);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = Properties.Resources.User_Logo1;
-            pictureBox2.Location = new Point(56, 278);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(60, 60);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 2;
-            pictureBox2.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.Image = Properties.Resources.Padlock_Logo1;
-            pictureBox3.Location = new Point(56, 358);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(60, 60);
-            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox3.TabIndex = 3;
-            pictureBox3.TabStop = false;
-            // 
-            // btnLogin
-            // 
-            btnLogin.BackColor = Color.DodgerBlue;
-            btnLogin.Font = new Font("Palatino Linotype", 24F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            btnLogin.Location = new Point(56, 514);
-            btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(305, 72);
-            btnLogin.TabIndex = 4;
-            btnLogin.Text = "Giriş Yap";
-            btnLogin.UseVisualStyleBackColor = false;
-            btnLogin.Click += btnLogin_Click;
+            pictureBoxLogo.BackColor = Color.Transparent;
+            pictureBoxLogo.BackgroundImageLayout = ImageLayout.None;
+            pictureBoxLogo.Image = Properties.Resources.Meditakip_Logo;
+            pictureBoxLogo.Location = new Point(1, -2);
+            pictureBoxLogo.Name = "pictureBoxLogo";
+            pictureBoxLogo.Size = new Size(430, 250);
+            pictureBoxLogo.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBoxLogo.TabIndex = 0;
+            pictureBoxLogo.TabStop = false;
             // 
             // txtUsername
             // 
             txtUsername.BackColor = Color.WhiteSmoke;
             txtUsername.BorderStyle = BorderStyle.None;
-            txtUsername.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
-            txtUsername.Location = new Point(130, 293);
+            txtUsername.Font = new Font("Bahnschrift Condensed", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            txtUsername.Location = new Point(100, 279);
             txtUsername.Name = "txtUsername";
             txtUsername.PlaceholderText = "Kullanıcı Adı";
-            txtUsername.Size = new Size(250, 32);
-            txtUsername.TabIndex = 5;
+            txtUsername.Size = new Size(250, 33);
+            txtUsername.TabIndex = 3;
             // 
-            // panel1
+            // panelUsernameLine
             // 
-            panel1.BackColor = Color.DeepSkyBlue;
-            panel1.Location = new Point(130, 336);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(250, 2);
-            panel1.TabIndex = 6;
+            panelUsernameLine.BackColor = Color.DeepSkyBlue;
+            panelUsernameLine.Location = new Point(100, 318);
+            panelUsernameLine.Name = "panelUsernameLine";
+            panelUsernameLine.Size = new Size(250, 2);
+            panelUsernameLine.TabIndex = 4;
             // 
-            // panel2
+            // panelPasswordLine
             // 
-            panel2.BackColor = Color.DeepSkyBlue;
-            panel2.Location = new Point(130, 415);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(250, 2);
-            panel2.TabIndex = 8;
+            panelPasswordLine.BackColor = Color.DeepSkyBlue;
+            panelPasswordLine.Location = new Point(100, 398);
+            panelPasswordLine.Name = "panelPasswordLine";
+            panelPasswordLine.Size = new Size(250, 2);
+            panelPasswordLine.TabIndex = 7;
             // 
             // txtPassword
             // 
             txtPassword.BackColor = Color.WhiteSmoke;
             txtPassword.BorderStyle = BorderStyle.None;
-            txtPassword.Font = new Font("Palatino Linotype", 13.8F, FontStyle.Bold);
-            txtPassword.Location = new Point(130, 373);
+            txtPassword.Font = new Font("Bahnschrift Condensed", 16.2F);
+            txtPassword.Location = new Point(100, 359);
             txtPassword.Name = "txtPassword";
-            txtPassword.PasswordChar = '*';
             txtPassword.PlaceholderText = "Şifre";
-            txtPassword.Size = new Size(250, 32);
-            txtPassword.TabIndex = 7;
+            txtPassword.Size = new Size(250, 33);
+            txtPassword.TabIndex = 6;
+            txtPassword.UseSystemPasswordChar = true;
             // 
             // cmbUserType
             // 
-            cmbUserType.Font = new Font("SimSun", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cmbUserType.FormattingEnabled = true;
-            cmbUserType.Location = new Point(130, 447);
+            cmbUserType.BackColor = SystemColors.Window;
+            cmbUserType.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbUserType.Font = new Font("Bahnschrift Condensed", 16.2F);
+            cmbUserType.Items.AddRange(new object[] { "Doktor", "Eczane" });
+            cmbUserType.Location = new Point(100, 432);
             cmbUserType.Name = "cmbUserType";
-            cmbUserType.Size = new Size(250, 28);
+            cmbUserType.Size = new Size(250, 41);
             cmbUserType.TabIndex = 9;
             // 
-            // btnForgot
+            // btnLogin
             // 
-            btnForgot.AutoSize = true;
-            btnForgot.Location = new Point(150, 618);
-            btnForgot.Name = "btnForgot";
-            btnForgot.Size = new Size(122, 20);
-            btnForgot.TabIndex = 10;
-            btnForgot.Text = "Şifremi unuttum?";
-            btnForgot.Click += btnForgot_Click;
+            btnLogin.BackColor = Color.DodgerBlue;
+            btnLogin.FlatStyle = FlatStyle.Flat;
+            btnLogin.Font = new Font("Bahnschrift", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnLogin.ForeColor = Color.White;
+            btnLogin.Location = new Point(100, 493);
+            btnLogin.Name = "btnLogin";
+            btnLogin.Size = new Size(250, 50);
+            btnLogin.TabIndex = 10;
+            btnLogin.Text = "Giriş Yap";
+            btnLogin.UseVisualStyleBackColor = false;
+            btnLogin.Click += btnLogin_Click;
+            btnLogin.MouseEnter += btnLogin_MouseEnter;
+            btnLogin.MouseLeave += btnLogin_MouseLeave;
             // 
-            // btnExit
+            // lblForgotPassword
             // 
-            btnExit.AutoSize = true;
-            btnExit.Location = new Point(189, 647);
-            btnExit.Name = "btnExit";
-            btnExit.Size = new Size(39, 20);
-            btnExit.TabIndex = 11;
-            btnExit.Text = "Çıkış";
-            btnExit.Click += btnExit_Click;
+            lblForgotPassword.AutoSize = true;
+            lblForgotPassword.Font = new Font("Bahnschrift Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            lblForgotPassword.ForeColor = Color.Gray;
+            lblForgotPassword.Location = new Point(111, 580);
+            lblForgotPassword.Name = "lblForgotPassword";
+            lblForgotPassword.Size = new Size(125, 24);
+            lblForgotPassword.TabIndex = 11;
+            lblForgotPassword.Text = "Şifremi unuttum?";
+            lblForgotPassword.Click += lblForgotPassword_Click;
+            lblForgotPassword.MouseEnter += LblForgotPassword_MouseEnter;
+            lblForgotPassword.MouseLeave += LblForgotPassword_MouseLeave;
+            // 
+            // lblExit
+            // 
+            lblExit.AutoSize = true;
+            lblExit.Font = new Font("Bahnschrift Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            lblExit.ForeColor = Color.Gray;
+            lblExit.Location = new Point(299, 580);
+            lblExit.Name = "lblExit";
+            lblExit.Size = new Size(41, 24);
+            lblExit.TabIndex = 12;
+            lblExit.Text = "Çıkış";
+            lblExit.Click += lblExit_Click;
+            lblExit.MouseEnter += LblExit_MouseEnter;
+            lblExit.MouseLeave += LblExit_MouseLeave;
             // 
             // lblError
             // 
             lblError.AutoSize = true;
             lblError.ForeColor = Color.Red;
-            lblError.Location = new Point(56, 589);
+            lblError.Location = new Point(100, 546);
             lblError.Name = "lblError";
-            lblError.Size = new Size(92, 20);
-            lblError.TabIndex = 12;
-            lblError.Text = "Hata Mesajı!";
-            lblError.TextAlign = ContentAlignment.MiddleCenter;
+            lblError.Size = new Size(231, 20);
+            lblError.TabIndex = 13;
+            lblError.Text = "Hatalı giriş! Lütfen tekrar deneyin.";
             lblError.Visible = false;
             // 
-            // pictureBox4
+            // pictureBoxUser
             // 
-            pictureBox4.BackColor = Color.Transparent;
-            pictureBox4.Image = Properties.Resources.UserType_Logo2;
-            pictureBox4.Location = new Point(16, 433);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(100, 60);
-            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox4.TabIndex = 13;
-            pictureBox4.TabStop = false;
+            pictureBoxUser.Image = Properties.Resources.User_Logo1;
+            pictureBoxUser.Location = new Point(40, 273);
+            pictureBoxUser.Name = "pictureBoxUser";
+            pictureBoxUser.Size = new Size(50, 50);
+            pictureBoxUser.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBoxUser.TabIndex = 2;
+            pictureBoxUser.TabStop = false;
             // 
-            // pictureBox5
+            // pictureBoxLock
             // 
-            pictureBox5.Image = Properties.Resources.Meditakip_Logo;
-            pictureBox5.Location = new Point(12, 12);
-            pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(400, 250);
-            pictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox5.TabIndex = 1;
-            pictureBox5.TabStop = false;
+            pictureBoxLock.Image = Properties.Resources.Padlock_Logo1;
+            pictureBoxLock.Location = new Point(40, 353);
+            pictureBoxLock.Name = "pictureBoxLock";
+            pictureBoxLock.Size = new Size(50, 50);
+            pictureBoxLock.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBoxLock.TabIndex = 5;
+            pictureBoxLock.TabStop = false;
+            // 
+            // pictureBoxUserType
+            // 
+            pictureBoxUserType.Image = Properties.Resources.UserType_Logo2;
+            pictureBoxUserType.Location = new Point(40, 423);
+            pictureBoxUserType.Name = "pictureBoxUserType";
+            pictureBoxUserType.Size = new Size(50, 50);
+            pictureBoxUserType.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBoxUserType.TabIndex = 8;
+            pictureBoxUserType.TabStop = false;
+            // 
+            // btnTogglePassword
+            // 
+            btnTogglePassword.BackColor = Color.WhiteSmoke;
+            btnTogglePassword.Cursor = Cursors.Hand;
+            btnTogglePassword.FlatAppearance.BorderSize = 0;
+            btnTogglePassword.FlatStyle = FlatStyle.Flat;
+            btnTogglePassword.Location = new Point(356, 363);
+            btnTogglePassword.Name = "btnTogglePassword";
+            btnTogglePassword.Size = new Size(40, 40);
+            btnTogglePassword.TabIndex = 7;
+            btnTogglePassword.Text = "👁️";
+            btnTogglePassword.UseVisualStyleBackColor = false;
+            btnTogglePassword.Click += BtnTogglePassword_Click;
             // 
             // LoginScreen
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(430, 676);
-            Controls.Add(lblError);
-            Controls.Add(btnExit);
-            Controls.Add(btnForgot);
-            Controls.Add(cmbUserType);
-            Controls.Add(panel2);
-            Controls.Add(txtPassword);
-            Controls.Add(panel1);
+            ClientSize = new Size(430, 620);
+            Controls.Add(pictureBoxLogo);
+            Controls.Add(pictureBoxUser);
             Controls.Add(txtUsername);
+            Controls.Add(panelUsernameLine);
+            Controls.Add(pictureBoxLock);
+            Controls.Add(txtPassword);
+            Controls.Add(btnTogglePassword);
+            Controls.Add(panelPasswordLine);
+            Controls.Add(pictureBoxUserType);
+            Controls.Add(cmbUserType);
             Controls.Add(btnLogin);
-            Controls.Add(pictureBox3);
-            Controls.Add(pictureBox2);
-            Controls.Add(pictureBox5);
-            Controls.Add(pictureBox1);
-            Controls.Add(pictureBox4);
+            Controls.Add(lblForgotPassword);
+            Controls.Add(lblExit);
+            Controls.Add(lblError);
             FormBorderStyle = FormBorderStyle.None;
             Name = "LoginScreen";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "LoginScreen";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            Text = "MediTakip Giriş";
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxUser).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLock).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxUserType).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
-
-        #endregion
-
-        private PictureBox pictureBox1;
-        private PictureBox pictureBox2;
-        private PictureBox pictureBox3;
-        private Button btnLogin;
-        private TextBox txtUsername;
-        private Panel panel1;
-        private Panel panel2;
-        private TextBox txtPassword;
-        private ComboBox cmbUserType;
-        private Label btnForgot;
-        private Label btnExit;
-        private Label lblError;
-        private PictureBox pictureBox4;
-        private PictureBox pictureBox5;
     }
 }
