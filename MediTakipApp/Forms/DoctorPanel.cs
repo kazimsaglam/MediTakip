@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using MediTakipApp.Forms.DoctorPanelContent;
+using Timer = System.Windows.Forms.Timer;
 
 namespace MediTakipApp.Forms
 {
@@ -13,39 +14,20 @@ namespace MediTakipApp.Forms
 
         private void DoctorPanel_Load(object sender, EventArgs e)
         {
-            // Başlangıçta Ana Panel göster
             lblTitle.Text = "Ana Sayfa";
-            //LoadControl(new HomeControl());
+            LoadControl(new HomeControl());
         }
 
         private void btnHome_Click(object sender, EventArgs e)
         {
             lblTitle.Text = "Ana Sayfa";
-            //LoadControl(new HomeControl());
-        }
-
-        private void btnPatients_Click(object sender, EventArgs e)
-        {
-            lblTitle.Text = "Hastalar";
-            LoadControl(new PatientsControl());
+            LoadControl(new HomeControl());
         }
 
         private void btnDrugs_Click(object sender, EventArgs e)
         {
-            lblTitle.Text = "İlaçlar";
+            lblTitle.Text = "İlaç Yaz";
             LoadControl(new DrugsControl());
-        }
-
-        private void btnPrescriptions_Click(object sender, EventArgs e)
-        {
-            lblTitle.Text = "Reçeteler";
-            LoadControl(new PrescriptionHistoryControl());
-        }
-
-        private void btnSettings_Click(object sender, EventArgs e)
-        {
-            lblTitle.Text = "Ayarlar";
-            //LoadControl(new SettingsControl());
         }
 
         private void btnPower_Click(object sender, EventArgs e)
@@ -62,19 +44,6 @@ namespace MediTakipApp.Forms
                 Application.Exit();
             }
         }
-
-        private void btnPower_MouseEnter(object sender, EventArgs e)
-        {
-            btnPower.ForeColor = Color.Red;
-            btnPower.BackColor = Color.Red;
-        }
-
-        private void btnPower_MouseLeave(object sender, EventArgs e)
-        {
-            btnPower.ForeColor = Color.White;
-            btnPower.BackColor = Color.Transparent;
-        }
-
 
         private void LoadControl(UserControl control)
         {

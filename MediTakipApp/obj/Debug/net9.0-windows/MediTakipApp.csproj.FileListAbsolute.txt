@@ -61,11 +61,10 @@ C:\Users\Kazim\OneDrive\Belgeler\MediTakipApp\obj\Debug\net9.0-windows\MediTaki.
 C:\Users\Kazim\OneDrive\Belgeler\MediTakipApp\obj\Debug\net9.0-windows\MediTakipApp.Forms.PatientForm.resources
 C:\Users\Kazim\OneDrive\Belgeler\MediTakipApp\obj\Debug\net9.0-windows\MediTakipApp.Forms.LoginScreen.resources
 C:\Users\Kazim\OneDrive\Belgeler\MediTakipApp\obj\Debug\net9.0-windows\MediTakipApp.Properties.Resources.resources
-C:\Users\Kazim\OneDrive\Belgeler\MediTakipApp\obj\Debug\net9.0-windows\MediTakipApp.Forms.PatientsControl.resources
 C:\Users\Kazim\OneDrive\Belgeler\MediTakipApp\bin\Debug\net9.0-windows\System.ServiceProcess.ServiceController.dll
 C:\Users\Kazim\OneDrive\Belgeler\MediTakipApp\bin\Debug\net9.0-windows\Topshelf.dll
 C:\Users\Kazim\OneDrive\Belgeler\MediTakipApp\bin\Debug\net9.0-windows\TopShelf.ServiceInstaller.dll
 C:\Users\Kazim\OneDrive\Belgeler\MediTakipApp\bin\Debug\net9.0-windows\runtimes\win\lib\netstandard2.0\System.ServiceProcess.ServiceController.dll
 C:\Users\Kazim\OneDrive\Belgeler\MediTakipApp\obj\Debug\net9.0-windows\MediTakipApp.Forms.DoctorPanelContent.DrugsControl.resources
-C:\Users\Kazim\OneDrive\Belgeler\MediTakipApp\obj\Debug\net9.0-windows\MediTakipApp.Forms.DoctorPanelContent.PrescriptionHistoryControl.resources
-C:\Users\Kazim\OneDrive\Belgeler\MediTakipApp\obj\Debug\net9.0-windows\MediTakipApp.Forms.Login.resources
+C:\Users\Kazim\OneDrive\Belgeler\MediTakipApp\obj\Debug\net9.0-windows\MediTakipApp.Forms.HomeControl.resources
+C:\Users\Kazim\OneDrive\Belgeler\MediTakipApp\obj\Debug\net9.0-windows\MediTakipApp.Forms.DoctorPanelContent.DrugDetailForm.resources
