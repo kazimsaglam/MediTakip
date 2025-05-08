@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Data;
-using System.Drawing;
 using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
+using MediTakipApp.Forms.PharmacyPanelContent;
+using MediTakipApp.Utils;
 
 namespace MediTakipApp.Forms
 {
     public partial class PharmacyPanel : Form
     {
-        private string connStr = @"Server=ROGSTRIX;Database=MediTakipDB;Trusted_Connection=True;TrustServerCertificate=True;";
-
         public PharmacyPanel()
         {
             InitializeComponent();
@@ -17,81 +14,61 @@ namespace MediTakipApp.Forms
 
         private void PharmacyPanel_Load(object sender, EventArgs e)
         {
-            LoadPrescriptions();
+            lblTitle.Text = "🏠 Ana Sayfa";
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(new PharmacyHomeControl());
+
+            lblPharmacistName.Text = LoggedUser.FullName;
         }
 
-        private void LoadPrescriptions()
+        private void btnHome_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(connStr))
-            {
-                conn.Open();
-                string query = @"
-                    SELECT P.Id AS PrescriptionId,
-                           ISNULL(U.Username, '-') AS Doctor,
-                           (Pa.FirstName + ' ' + Pa.LastName) AS Patient,
-                           P.DateCreated
-                    FROM Prescriptions P
-                    JOIN Patients Pa ON P.PatientId = Pa.Id
-                    LEFT JOIN Users U ON P.DoctorId = U.Id
-                    ORDER BY P.DateCreated DESC";
-
-                SqlDataAdapter da = new SqlDataAdapter(query, conn);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
-                if (dt.Rows.Count == 0)
-                {
-                    MessageBox.Show("Henüz sisteme kaydedilmiş bir reçete bulunmamaktadır.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-
-                dgvPrescriptions.DataSource = dt;
-            }
+            lblTitle.Text = "🏠 Ana Sayfa";
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(new PharmacyHomeControl());
         }
 
-        private void dgvPrescriptions_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btnPrescriptions_Click(object sender, EventArgs e)
         {
-            if (e.RowIndex >= 0 && dgvPrescriptions.Columns["PrescriptionId"] != null)
-            {
-                var cell = dgvPrescriptions.Rows[e.RowIndex].Cells["PrescriptionId"].Value;
-                if (cell != null)
-                {
-                    int prescriptionId = Convert.ToInt32(cell);
-                    LoadPrescriptionDetails(prescriptionId);
-                }
-                else
-                {
-                    MessageBox.Show("Geçersiz reçete seçildi.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
+            lblTitle.Text = "📜 Reçeteler";
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(new PharmacyPrescriptionsControl());
         }
 
-        private void LoadPrescriptionDetails(int prescriptionId)
+        private void btnSell_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(connStr))
+            lblTitle.Text = "💵 İlaç Satışı";
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(new PharmacySellControl());
+        }
+
+
+        private void btnStock_Click(object sender, EventArgs e)
+        {
+            lblTitle.Text = "💊 Stok Yönetimi";
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(new PharmacyStockControl());
+        }
+
+        private void btnSupply_Click(object sender, EventArgs e)
+        {
+            lblTitle.Text = "🚚 Depo / Tedarik";
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(new PharmacySupplyControl());
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Uygulamayı kapatmak istiyor musunuz?",
+                "Çıkış",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
             {
-                conn.Open();
-                string query = @"
-                    SELECT D.Name AS DrugName,
-                           D.ActiveIngredient,
-                           PD.Quantity,
-                           PD.UsageInstructions
-                    FROM PrescriptionDrugs PD
-                    JOIN Drugs D ON PD.DrugId = D.Id
-                    WHERE PD.PrescriptionId = @pid";
-
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@pid", prescriptionId);
-
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
-                if (dt.Rows.Count == 0)
-                {
-                    MessageBox.Show("Bu reçeteye ait ilaç bilgisi bulunamadı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-
-                dgvDrugsInPrescription.DataSource = dt;
+                Application.Exit();
             }
         }
     }

@@ -1,13 +1,14 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using MediTakipApp.Utils;
+using Microsoft.Data.SqlClient;
 
 namespace MediTakipApp.Forms
 {
-    public partial class LoginScreen : Form
+    public partial class _LoginScreen : Form
     {
         private bool isPasswordVisible = false;
         string connStr = @"Server=ROGSTRIX;Database=MediTakipDB;Trusted_Connection=True;TrustServerCertificate=True;";
 
-        public LoginScreen()
+        public _LoginScreen()
         {
             InitializeComponent();
             cmbUserType.SelectedIndex = 0;
@@ -56,6 +57,8 @@ namespace MediTakipApp.Forms
 
                                 LoggedUser.Id = Convert.ToInt32(dr["Id"]);
                                 LoggedUser.Username = dr["Username"].ToString();
+                                LoggedUser.FullName = dr["FullName"].ToString();
+                                LoggedUser.Role = dr["UserType"].ToString();
 
                                 if (userType == "Doktor")
                                 {

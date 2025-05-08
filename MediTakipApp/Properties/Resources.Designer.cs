@@ -63,17 +63,6 @@ namespace MediTakipApp.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap a_clean_vector_graphic_illustrating_a_mo_NqfG6d3KSveFHu43r3yq8A_KWFycN7SQ32lFE2aAxhyEw {
-            get {
-                object obj = ResourceManager.GetObject("a-clean-vector-graphic-illustrating-a-mo_NqfG6d3KSveFHu43r3yq8A_KWFycN7SQ32lFE2aA" +
-                        "xhyEw", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
-        /// </summary>
         internal static System.Drawing.Bitmap Meditakip_Logo {
             get {
                 object obj = ResourceManager.GetObject("Meditakip_Logo", resourceCulture);
@@ -94,16 +83,6 @@ namespace MediTakipApp.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap Padlock_Logo1 {
-            get {
-                object obj = ResourceManager.GetObject("Padlock_Logo1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
-        /// </summary>
         internal static System.Drawing.Bitmap User_Logo {
             get {
                 object obj = ResourceManager.GetObject("User_Logo", resourceCulture);
@@ -114,39 +93,9 @@ namespace MediTakipApp.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap User_Logo1 {
-            get {
-                object obj = ResourceManager.GetObject("User_Logo1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
-        /// </summary>
         internal static System.Drawing.Bitmap UserType_Logo {
             get {
                 object obj = ResourceManager.GetObject("UserType_Logo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
-        /// </summary>
-        internal static System.Drawing.Bitmap UserType_Logo1 {
-            get {
-                object obj = ResourceManager.GetObject("UserType_Logo1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
-        /// </summary>
-        internal static System.Drawing.Bitmap UserType_Logo2 {
-            get {
-                object obj = ResourceManager.GetObject("UserType_Logo2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

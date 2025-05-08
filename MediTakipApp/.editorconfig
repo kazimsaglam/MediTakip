@@ -1,0 +1,7 @@
+﻿[*.cs]
+
+# CS8601: Olası null başvuru ataması.
+dotnet_diagnostic.CS8601.severity = silent
+
+# CA1805: Gerekmediği durumlarda başlatmayın
+dotnet_diagnostic.CA1805.severity = none

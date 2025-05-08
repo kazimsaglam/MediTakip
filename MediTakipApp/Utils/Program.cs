@@ -1,6 +1,6 @@
 using MediTakipApp.Forms;
 
-namespace MediTakipApp
+namespace MediTakipApp.Utils
 {
     internal static class Program
     {
@@ -11,7 +11,7 @@ namespace MediTakipApp
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            Application.Run(new LoginScreen());
+            Application.Run(new _LoginScreen());
         }
     }
 }

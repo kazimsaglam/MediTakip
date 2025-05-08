@@ -1,6 +1,6 @@
 ﻿namespace MediTakipApp.Forms
 {
-    partial class LoginScreen
+    partial class _LoginScreen
     {
         private System.ComponentModel.IContainer components = null;
         private PictureBox pictureBoxLogo;
@@ -170,7 +170,7 @@
             // 
             // pictureBoxUser
             // 
-            pictureBoxUser.Image = Properties.Resources.User_Logo1;
+            pictureBoxUser.Image = Properties.Resources.User_Logo;
             pictureBoxUser.Location = new Point(40, 273);
             pictureBoxUser.Name = "pictureBoxUser";
             pictureBoxUser.Size = new Size(50, 50);
@@ -180,7 +180,7 @@
             // 
             // pictureBoxLock
             // 
-            pictureBoxLock.Image = Properties.Resources.Padlock_Logo1;
+            pictureBoxLock.Image = Properties.Resources.Padlock_Logo;
             pictureBoxLock.Location = new Point(40, 353);
             pictureBoxLock.Name = "pictureBoxLock";
             pictureBoxLock.Size = new Size(50, 50);
@@ -190,7 +190,7 @@
             // 
             // pictureBoxUserType
             // 
-            pictureBoxUserType.Image = Properties.Resources.UserType_Logo2;
+            pictureBoxUserType.Image = Properties.Resources.UserType_Logo;
             pictureBoxUserType.Location = new Point(40, 423);
             pictureBoxUserType.Name = "pictureBoxUserType";
             pictureBoxUserType.Size = new Size(50, 50);

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace MediTakipApp
+namespace MediTakipApp.Utils
 {
     public static class NativeMethods
     {
         [DllImport("gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        public static extern IntPtr CreateRoundRectRgn(
+        public static extern nint CreateRoundRectRgn(
             int nLeftRect,    // Sol kenar koordinatı
             int nTopRect,     // Üst kenar koordinatı
             int nRightRect,   // Sağ kenar koordinatı

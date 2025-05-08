@@ -2,110 +2,247 @@
 {
     partial class PharmacyPanel
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
+        private Panel panelMenu;
+        private Label lblFooter;
+        private Button btnLogout;
+        private Button btnSupply;
+        private Button btnStock;
+        private Button btnSell;
+        private Button btnPrescriptions;
+        private Button btnHome;
+        private Panel panelProfile;
+        private Label lblPharmacistName;
+        private Label lblPharmacistRole;
+        private Label lblTitle;
+        private Panel panelMain;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
-            {
                 components.Dispose();
-            }
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            dgvPrescriptions = new DataGridView();
-            label1 = new Label();
-            label2 = new Label();
-            dgvDrugsInPrescription = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dgvPrescriptions).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvDrugsInPrescription).BeginInit();
+            panelMenu = new Panel();
+            lblFooter = new Label();
+            btnLogout = new Button();
+            btnSupply = new Button();
+            btnStock = new Button();
+            btnSell = new Button();
+            btnPrescriptions = new Button();
+            btnHome = new Button();
+            panelProfile = new Panel();
+            lblPharmacistName = new Label();
+            lblPharmacistRole = new Label();
+            lblTitle = new Label();
+            panelMain = new Panel();
+            panelMenu.SuspendLayout();
+            panelProfile.SuspendLayout();
             SuspendLayout();
             // 
-            // dgvPrescriptions
+            // panelMenu
             // 
-            dgvPrescriptions.BackgroundColor = SystemColors.ControlLight;
-            dgvPrescriptions.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPrescriptions.Location = new Point(21, 46);
-            dgvPrescriptions.MultiSelect = false;
-            dgvPrescriptions.Name = "dgvPrescriptions";
-            dgvPrescriptions.ReadOnly = true;
-            dgvPrescriptions.RowHeadersWidth = 51;
-            dgvPrescriptions.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPrescriptions.Size = new Size(917, 214);
-            dgvPrescriptions.TabIndex = 0;
-            dgvPrescriptions.CellContentClick += dgvPrescriptions_CellContentClick;
+            panelMenu.BackColor = Color.FromArgb(45, 45, 45);
+            panelMenu.BorderStyle = BorderStyle.Fixed3D;
+            panelMenu.Controls.Add(lblFooter);
+            panelMenu.Controls.Add(btnLogout);
+            panelMenu.Controls.Add(btnSupply);
+            panelMenu.Controls.Add(btnStock);
+            panelMenu.Controls.Add(btnSell);
+            panelMenu.Controls.Add(btnPrescriptions);
+            panelMenu.Controls.Add(btnHome);
+            panelMenu.Controls.Add(panelProfile);
+            panelMenu.Dock = DockStyle.Left;
+            panelMenu.Location = new Point(0, 0);
+            panelMenu.Name = "panelMenu";
+            panelMenu.Size = new Size(250, 700);
+            panelMenu.TabIndex = 0;
             // 
-            // label1
+            // lblFooter
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Bahnschrift Condensed", 13.8F, FontStyle.Bold);
-            label1.Location = new Point(27, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(127, 28);
-            label1.TabIndex = 1;
-            label1.Text = "Reçete Listesi :";
+            lblFooter.Dock = DockStyle.Bottom;
+            lblFooter.Font = new Font("Bahnschrift SemiCondensed", 10F);
+            lblFooter.ForeColor = Color.LightGray;
+            lblFooter.Location = new Point(0, 666);
+            lblFooter.Name = "lblFooter";
+            lblFooter.Size = new Size(246, 30);
+            lblFooter.TabIndex = 0;
+            lblFooter.Text = "v1.0.0 © 2025 MediTakip";
+            lblFooter.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // btnLogout
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Bahnschrift Condensed", 13.8F, FontStyle.Bold);
-            label2.Location = new Point(27, 278);
-            label2.Name = "label2";
-            label2.Size = new Size(147, 28);
-            label2.TabIndex = 3;
-            label2.Text = "Reçete Detayları :";
+            btnLogout.Dock = DockStyle.Top;
+            btnLogout.FlatAppearance.BorderSize = 0;
+            btnLogout.FlatStyle = FlatStyle.Flat;
+            btnLogout.Font = new Font("Bahnschrift SemiCondensed", 16.2F, FontStyle.Bold);
+            btnLogout.ForeColor = Color.White;
+            btnLogout.Location = new Point(0, 430);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Padding = new Padding(20, 0, 0, 0);
+            btnLogout.Size = new Size(246, 70);
+            btnLogout.TabIndex = 1;
+            btnLogout.Text = "\u23fb Çıkış Yap";
+            btnLogout.TextAlign = ContentAlignment.MiddleLeft;
+            btnLogout.Click += btnLogout_Click;
             // 
-            // dgvDrugsInPrescription
+            // btnSupply
             // 
-            dgvDrugsInPrescription.BackgroundColor = SystemColors.ControlLight;
-            dgvDrugsInPrescription.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDrugsInPrescription.Location = new Point(21, 315);
-            dgvDrugsInPrescription.MultiSelect = false;
-            dgvDrugsInPrescription.Name = "dgvDrugsInPrescription";
-            dgvDrugsInPrescription.ReadOnly = true;
-            dgvDrugsInPrescription.RowHeadersWidth = 51;
-            dgvDrugsInPrescription.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvDrugsInPrescription.Size = new Size(917, 214);
-            dgvDrugsInPrescription.TabIndex = 2;
+            btnSupply.Dock = DockStyle.Top;
+            btnSupply.FlatAppearance.BorderSize = 0;
+            btnSupply.FlatStyle = FlatStyle.Flat;
+            btnSupply.Font = new Font("Bahnschrift SemiCondensed", 16.2F, FontStyle.Bold);
+            btnSupply.ForeColor = Color.White;
+            btnSupply.Location = new Point(0, 360);
+            btnSupply.Name = "btnSupply";
+            btnSupply.Padding = new Padding(20, 0, 0, 0);
+            btnSupply.Size = new Size(246, 70);
+            btnSupply.TabIndex = 2;
+            btnSupply.Text = "🚚 Depo / Tedarik";
+            btnSupply.TextAlign = ContentAlignment.MiddleLeft;
+            btnSupply.Click += btnSupply_Click;
+            // 
+            // btnStock
+            // 
+            btnStock.Dock = DockStyle.Top;
+            btnStock.FlatAppearance.BorderSize = 0;
+            btnStock.FlatStyle = FlatStyle.Flat;
+            btnStock.Font = new Font("Bahnschrift SemiCondensed", 16.2F, FontStyle.Bold);
+            btnStock.ForeColor = Color.White;
+            btnStock.Location = new Point(0, 290);
+            btnStock.Name = "btnStock";
+            btnStock.Padding = new Padding(20, 0, 0, 0);
+            btnStock.Size = new Size(246, 70);
+            btnStock.TabIndex = 3;
+            btnStock.Text = "💊 Stok Yönetimi";
+            btnStock.TextAlign = ContentAlignment.MiddleLeft;
+            btnStock.Click += btnStock_Click;
+            // 
+            // btnSell
+            // 
+            btnSell.Dock = DockStyle.Top;
+            btnSell.FlatAppearance.BorderSize = 0;
+            btnSell.FlatStyle = FlatStyle.Flat;
+            btnSell.Font = new Font("Bahnschrift SemiCondensed", 16.2F, FontStyle.Bold);
+            btnSell.ForeColor = Color.White;
+            btnSell.Location = new Point(0, 220);
+            btnSell.Name = "btnSell";
+            btnSell.Padding = new Padding(20, 0, 0, 0);
+            btnSell.Size = new Size(246, 70);
+            btnSell.TabIndex = 2;
+            btnSell.Text = "💵 İlaç Sat";
+            btnSell.TextAlign = ContentAlignment.MiddleLeft;
+            btnSell.Click += btnSell_Click;
+            // 
+            // btnPrescriptions
+            // 
+            btnPrescriptions.Dock = DockStyle.Top;
+            btnPrescriptions.FlatAppearance.BorderSize = 0;
+            btnPrescriptions.FlatStyle = FlatStyle.Flat;
+            btnPrescriptions.Font = new Font("Bahnschrift SemiCondensed", 16.2F, FontStyle.Bold);
+            btnPrescriptions.ForeColor = Color.White;
+            btnPrescriptions.Location = new Point(0, 150);
+            btnPrescriptions.Name = "btnPrescriptions";
+            btnPrescriptions.Padding = new Padding(20, 0, 0, 0);
+            btnPrescriptions.Size = new Size(246, 70);
+            btnPrescriptions.TabIndex = 4;
+            btnPrescriptions.Text = "📜 Reçeteler";
+            btnPrescriptions.TextAlign = ContentAlignment.MiddleLeft;
+            btnPrescriptions.Click += btnPrescriptions_Click;
+            // 
+            // btnHome
+            // 
+            btnHome.Dock = DockStyle.Top;
+            btnHome.FlatAppearance.BorderSize = 0;
+            btnHome.FlatStyle = FlatStyle.Flat;
+            btnHome.Font = new Font("Bahnschrift SemiCondensed", 16.2F, FontStyle.Bold);
+            btnHome.ForeColor = Color.White;
+            btnHome.Location = new Point(0, 80);
+            btnHome.Name = "btnHome";
+            btnHome.Padding = new Padding(20, 0, 0, 0);
+            btnHome.Size = new Size(246, 70);
+            btnHome.TabIndex = 5;
+            btnHome.Text = "🏠 Ana Sayfa";
+            btnHome.TextAlign = ContentAlignment.MiddleLeft;
+            btnHome.Click += btnHome_Click;
+            // 
+            // panelProfile
+            // 
+            panelProfile.BackColor = Color.FromArgb(55, 55, 55);
+            panelProfile.Controls.Add(lblPharmacistName);
+            panelProfile.Controls.Add(lblPharmacistRole);
+            panelProfile.Dock = DockStyle.Top;
+            panelProfile.Location = new Point(0, 0);
+            panelProfile.Name = "panelProfile";
+            panelProfile.Padding = new Padding(10);
+            panelProfile.Size = new Size(246, 80);
+            panelProfile.TabIndex = 6;
+            // 
+            // lblPharmacistName
+            // 
+            lblPharmacistName.Dock = DockStyle.Top;
+            lblPharmacistName.Font = new Font("Bahnschrift SemiCondensed", 13.8F, FontStyle.Bold);
+            lblPharmacistName.ForeColor = Color.White;
+            lblPharmacistName.Location = new Point(10, 33);
+            lblPharmacistName.Name = "lblPharmacistName";
+            lblPharmacistName.Size = new Size(226, 37);
+            lblPharmacistName.TabIndex = 0;
+            lblPharmacistName.Text = "Ecz. Ahmet";
+            lblPharmacistName.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lblPharmacistRole
+            // 
+            lblPharmacistRole.Dock = DockStyle.Top;
+            lblPharmacistRole.Font = new Font("Bahnschrift Condensed", 12F, FontStyle.Bold);
+            lblPharmacistRole.ForeColor = Color.LightGray;
+            lblPharmacistRole.Location = new Point(10, 10);
+            lblPharmacistRole.Name = "lblPharmacistRole";
+            lblPharmacistRole.Size = new Size(226, 23);
+            lblPharmacistRole.TabIndex = 1;
+            lblPharmacistRole.Text = "💊 Eczacı";
+            lblPharmacistRole.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lblTitle
+            // 
+            lblTitle.BorderStyle = BorderStyle.Fixed3D;
+            lblTitle.Dock = DockStyle.Top;
+            lblTitle.Font = new Font("Bahnschrift SemiCondensed", 18.2F, FontStyle.Bold);
+            lblTitle.ForeColor = Color.Black;
+            lblTitle.Location = new Point(250, 0);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(1000, 60);
+            lblTitle.TabIndex = 1;
+            lblTitle.Text = "Ana Sayfa";
+            lblTitle.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // panelMain
+            // 
+            panelMain.Dock = DockStyle.Fill;
+            panelMain.Location = new Point(250, 60);
+            panelMain.Name = "panelMain";
+            panelMain.Size = new Size(1000, 640);
+            panelMain.TabIndex = 0;
             // 
             // PharmacyPanel
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(950, 581);
-            Controls.Add(label2);
-            Controls.Add(dgvDrugsInPrescription);
-            Controls.Add(label1);
-            Controls.Add(dgvPrescriptions);
+            ClientSize = new Size(1250, 700);
+            Controls.Add(panelMain);
+            Controls.Add(lblTitle);
+            Controls.Add(panelMenu);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "PharmacyPanel";
-            Text = "PharmacyPanel";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Ana Sayfa";
+            WindowState = FormWindowState.Maximized;
             Load += PharmacyPanel_Load;
-            ((System.ComponentModel.ISupportInitialize)dgvPrescriptions).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvDrugsInPrescription).EndInit();
+            panelMenu.ResumeLayout(false);
+            panelProfile.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
-
-        #endregion
-
-        private DataGridView dgvPrescriptions;
-        private Label label1;
-        private Label label2;
-        private DataGridView dgvDrugsInPrescription;
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace MediTakipApp
+﻿namespace MediTakipApp.Utils
 {
     public static class SelectedPatient
     {

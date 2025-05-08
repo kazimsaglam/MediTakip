@@ -5,6 +5,18 @@
     {
       "AbsoluteMoniker": "D:0:0:{552E0FD6-1286-406D-923D-8D5DF3C9B37A}|MediTakipApp.csproj|c:\\users\\kazim\\onedrive\\belgeler\\meditakipapp\\forms\\doctorpanelcontent\\homecontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{552E0FD6-1286-406D-923D-8D5DF3C9B37A}|MediTakipApp.csproj|solutionrelative:forms\\doctorpanelcontent\\homecontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{552E0FD6-1286-406D-923D-8D5DF3C9B37A}|MediTakipApp.csproj|c:\\users\\kazim\\onedrive\\belgeler\\meditakipapp\\forms\\doctorpanelcontent\\drugscontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{552E0FD6-1286-406D-923D-8D5DF3C9B37A}|MediTakipApp.csproj|solutionrelative:forms\\doctorpanelcontent\\drugscontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{552E0FD6-1286-406D-923D-8D5DF3C9B37A}|MediTakipApp.csproj|c:\\users\\kazim\\onedrive\\belgeler\\meditakipapp\\forms\\doctorpanelcontent\\drugscontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{552E0FD6-1286-406D-923D-8D5DF3C9B37A}|MediTakipApp.csproj|solutionrelative:forms\\doctorpanelcontent\\drugscontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{552E0FD6-1286-406D-923D-8D5DF3C9B37A}|MediTakipApp.csproj|c:\\users\\kazim\\onedrive\\belgeler\\meditakipapp\\forms\\doctorpanelcontent\\drugscontrol.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{552E0FD6-1286-406D-923D-8D5DF3C9B37A}|MediTakipApp.csproj|solutionrelative:forms\\doctorpanelcontent\\drugscontrol.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -24,10 +36,48 @@
               "RelativeDocumentMoniker": "Forms\\DoctorPanelContent\\HomeControl.cs",
               "ToolTip": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\Forms\\DoctorPanelContent\\HomeControl.cs",
               "RelativeToolTip": "Forms\\DoctorPanelContent\\HomeControl.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBAAAAAyAAAAAAAAAA==",
+              "ViewState": "AgIAAJQAAAAAAAAAAAAgwPEAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-27T14:47:47.545Z",
+              "WhenOpened": "2025-05-08T17:46:17.812Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DrugsControl.cs",
+              "DocumentMoniker": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\Forms\\DoctorPanelContent\\DrugsControl.cs",
+              "RelativeDocumentMoniker": "Forms\\DoctorPanelContent\\DrugsControl.cs",
+              "ToolTip": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\Forms\\DoctorPanelContent\\DrugsControl.cs",
+              "RelativeToolTip": "Forms\\DoctorPanelContent\\DrugsControl.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAgwIIAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T14:36:45.686Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DrugsControl.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\Forms\\DoctorPanelContent\\DrugsControl.Designer.cs",
+              "RelativeDocumentMoniker": "Forms\\DoctorPanelContent\\DrugsControl.Designer.cs",
+              "ToolTip": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\Forms\\DoctorPanelContent\\DrugsControl.Designer.cs",
+              "RelativeToolTip": "Forms\\DoctorPanelContent\\DrugsControl.Designer.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAYwHoAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T14:36:43.622Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DrugsControl.cs [Tasar\u0131m]",
+              "DocumentMoniker": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\Forms\\DoctorPanelContent\\DrugsControl.cs",
+              "RelativeDocumentMoniker": "Forms\\DoctorPanelContent\\DrugsControl.cs",
+              "ToolTip": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\Forms\\DoctorPanelContent\\DrugsControl.cs [Tasar\u0131m]",
+              "RelativeToolTip": "Forms\\DoctorPanelContent\\DrugsControl.cs [Tasar\u0131m]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T14:36:42.15Z",
+              "EditorCaption": " [Tasar\u0131m]"
             }
           ]
         }

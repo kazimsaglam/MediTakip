@@ -13,7 +13,22 @@
     <Compile Update="Forms\DoctorPanelContent\HomeControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Forms\LoginScreen.cs">
+    <Compile Update="Forms\PharmacyPanelContent\PharmacyHomeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Forms\PharmacyPanelContent\PharmacyPrescriptionsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Forms\PharmacyPanelContent\PharmacySellControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Forms\PharmacyPanelContent\PharmacyStockControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Forms\PharmacyPanelContent\PharmacySupplyControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Forms\_LoginScreen.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\DoctorPanelContent\PatientForm.cs">
@@ -22,8 +37,13 @@
     <Compile Update="Forms\PharmacyPanel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="TransparentLabel.cs">
+    <Compile Update="Utils\TransparentLabel.cs">
       <SubType>Component</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

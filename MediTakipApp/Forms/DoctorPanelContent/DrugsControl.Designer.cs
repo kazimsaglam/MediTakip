@@ -12,14 +12,14 @@
         private TextBox txtSearch;
 
         private FlowLayoutPanel flpDrugs;
-
         private Panel bottomPanel;
         private FlowLayoutPanel flpSelectedDrugs;
         private Button btnSavePrescription;
 
         private Panel panelHistory;
-        private Label lblHistoryTitle;
         private FlowLayoutPanel flpHistory;
+        private Label lblHistoryTitle;
+
 
         protected override void Dispose(bool disposing)
         {
@@ -51,6 +51,7 @@
             // topPanel
             // 
             topPanel.BackColor = Color.WhiteSmoke;
+            topPanel.BorderStyle = BorderStyle.Fixed3D;
             topPanel.Controls.Add(lblPatientInfo);
             topPanel.Controls.Add(lblDiagnosis);
             topPanel.Controls.Add(txtDiagnosis);
@@ -60,7 +61,7 @@
             topPanel.Location = new Point(0, 0);
             topPanel.Name = "topPanel";
             topPanel.Padding = new Padding(10);
-            topPanel.Size = new Size(1000, 100);
+            topPanel.Size = new Size(1000, 120);
             topPanel.TabIndex = 2;
             // 
             // lblPatientInfo
@@ -71,12 +72,12 @@
             lblPatientInfo.Name = "lblPatientInfo";
             lblPatientInfo.Size = new Size(400, 25);
             lblPatientInfo.TabIndex = 0;
-            lblPatientInfo.Text = "\U0001f9d1‍⚕️ Seçilen Hasta: -";
+            lblPatientInfo.Text = "👤 Seçilen Hasta: -";
             // 
             // lblDiagnosis
             // 
             lblDiagnosis.Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold);
-            lblDiagnosis.Location = new Point(10, 50);
+            lblDiagnosis.Location = new Point(10, 45);
             lblDiagnosis.Name = "lblDiagnosis";
             lblDiagnosis.Size = new Size(93, 25);
             lblDiagnosis.TabIndex = 1;
@@ -84,17 +85,17 @@
             // 
             // txtDiagnosis
             // 
-            txtDiagnosis.Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold);
-            txtDiagnosis.Location = new Point(109, 47);
+            txtDiagnosis.Font = new Font("Bahnschrift SemiCondensed", 12F);
+            txtDiagnosis.Location = new Point(109, 42);
             txtDiagnosis.Name = "txtDiagnosis";
-            txtDiagnosis.PlaceholderText = "Hastanın teşhisini giriniz....";
-            txtDiagnosis.Size = new Size(250, 32);
+            txtDiagnosis.PlaceholderText = "Teşhis açıklaması...";
+            txtDiagnosis.Size = new Size(470, 32);
             txtDiagnosis.TabIndex = 2;
             // 
             // lblSearch
             // 
             lblSearch.Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold);
-            lblSearch.Location = new Point(360, 50);
+            lblSearch.Location = new Point(10, 80);
             lblSearch.Name = "lblSearch";
             lblSearch.Size = new Size(104, 25);
             lblSearch.TabIndex = 3;
@@ -102,11 +103,11 @@
             // 
             // txtSearch
             // 
-            txtSearch.Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold);
-            txtSearch.Location = new Point(470, 47);
+            txtSearch.Font = new Font("Bahnschrift SemiCondensed", 12F);
+            txtSearch.Location = new Point(109, 77);
             txtSearch.Name = "txtSearch";
             txtSearch.PlaceholderText = "İlaç adı girin...";
-            txtSearch.Size = new Size(200, 32);
+            txtSearch.Size = new Size(250, 32);
             txtSearch.TabIndex = 4;
             txtSearch.TextChanged += txtSearch_TextChanged;
             // 
@@ -114,17 +115,19 @@
             // 
             flpDrugs.AutoScroll = true;
             flpDrugs.BackColor = Color.WhiteSmoke;
+            flpDrugs.BorderStyle = BorderStyle.Fixed3D;
             flpDrugs.Dock = DockStyle.Fill;
-            flpDrugs.Location = new Point(0, 100);
+            flpDrugs.Location = new Point(0, 120);
             flpDrugs.Margin = new Padding(0, 100, 0, 0);
             flpDrugs.Name = "flpDrugs";
             flpDrugs.Padding = new Padding(15);
-            flpDrugs.Size = new Size(1000, 326);
+            flpDrugs.Size = new Size(1000, 306);
             flpDrugs.TabIndex = 0;
             // 
             // bottomPanel
             // 
             bottomPanel.BackColor = Color.Gainsboro;
+            bottomPanel.BorderStyle = BorderStyle.Fixed3D;
             bottomPanel.Controls.Add(flpSelectedDrugs);
             bottomPanel.Controls.Add(btnSavePrescription);
             bottomPanel.Dock = DockStyle.Bottom;
@@ -141,7 +144,7 @@
             flpSelectedDrugs.FlowDirection = FlowDirection.TopDown;
             flpSelectedDrugs.Location = new Point(15, 15);
             flpSelectedDrugs.Name = "flpSelectedDrugs";
-            flpSelectedDrugs.Size = new Size(970, 200);
+            flpSelectedDrugs.Size = new Size(966, 196);
             flpSelectedDrugs.TabIndex = 0;
             flpSelectedDrugs.WrapContents = false;
             // 
@@ -154,17 +157,18 @@
             btnSavePrescription.FlatStyle = FlatStyle.Flat;
             btnSavePrescription.Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold);
             btnSavePrescription.ForeColor = Color.White;
-            btnSavePrescription.Location = new Point(15, 215);
+            btnSavePrescription.Location = new Point(15, 211);
             btnSavePrescription.Name = "btnSavePrescription";
-            btnSavePrescription.Size = new Size(970, 44);
+            btnSavePrescription.Size = new Size(966, 44);
             btnSavePrescription.TabIndex = 1;
-            btnSavePrescription.Text = "💾 Reçeteyi Kaydet";
+            btnSavePrescription.Text = "💾 Reçeteyi Kaydet ve Gönder";
             btnSavePrescription.UseVisualStyleBackColor = false;
             btnSavePrescription.Click += BtnSavePrescription_Click;
             // 
             // panelHistory
             // 
             panelHistory.BackColor = Color.WhiteSmoke;
+            panelHistory.BorderStyle = BorderStyle.Fixed3D;
             panelHistory.Controls.Add(flpHistory);
             panelHistory.Controls.Add(lblHistoryTitle);
             panelHistory.Dock = DockStyle.Right;
@@ -181,7 +185,7 @@
             flpHistory.FlowDirection = FlowDirection.TopDown;
             flpHistory.Location = new Point(10, 110);
             flpHistory.Name = "flpHistory";
-            flpHistory.Size = new Size(280, 580);
+            flpHistory.Size = new Size(276, 506);
             flpHistory.TabIndex = 0;
             flpHistory.WrapContents = false;
             // 
@@ -192,7 +196,7 @@
             lblHistoryTitle.ForeColor = Color.DarkSlateBlue;
             lblHistoryTitle.Location = new Point(10, 10);
             lblHistoryTitle.Name = "lblHistoryTitle";
-            lblHistoryTitle.Size = new Size(280, 100);
+            lblHistoryTitle.Size = new Size(276, 100);
             lblHistoryTitle.TabIndex = 1;
             lblHistoryTitle.Text = "📜 Geçmiş Reçeteler";
             lblHistoryTitle.TextAlign = ContentAlignment.MiddleCenter;

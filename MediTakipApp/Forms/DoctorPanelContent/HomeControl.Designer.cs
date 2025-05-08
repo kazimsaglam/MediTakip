@@ -18,6 +18,12 @@ namespace MediTakipApp.Forms
         private Panel panelDashboard;
         private FlowLayoutPanel flpDashboardCards;
 
+        // Sayfalama
+        private Panel panelPagination;
+        private Button btnPaginationPrev;
+        private Button btnPaginationNext;
+        private Label lblPaginationInfo;
+
         // Dashboard Kartları
         private Panel cardPatient;
         private Panel cardPrescription;
@@ -60,6 +66,10 @@ namespace MediTakipApp.Forms
             cardPatient = new Panel();
             cardPrescription = new Panel();
             cardDrug = new Panel();
+            panelPagination = new Panel();
+            btnPaginationPrev = new Button();
+            lblPaginationInfo = new Label();
+            btnPaginationNext = new Button();
             lblPatientCount = new TransparentLabel();
             lblPrescriptionCount = new TransparentLabel();
             lblDrugCount = new TransparentLabel();
@@ -69,6 +79,7 @@ namespace MediTakipApp.Forms
             topPanel.SuspendLayout();
             panelDashboard.SuspendLayout();
             flpDashboardCards.SuspendLayout();
+            panelPagination.SuspendLayout();
             SuspendLayout();
             // 
             // topPanel
@@ -90,7 +101,7 @@ namespace MediTakipApp.Forms
             txtSearch.Location = new Point(20, 25);
             txtSearch.Name = "txtSearch";
             txtSearch.PlaceholderText = "Hasta Ara...";
-            txtSearch.Size = new Size(250, 50);
+            txtSearch.Size = new Size(250, 32);
             txtSearch.TabIndex = 0;
             txtSearch.TextChanged += TxtSearch_TextChanged;
             // 
@@ -148,6 +159,7 @@ namespace MediTakipApp.Forms
             // 
             panelDashboard.BackColor = Color.White;
             panelDashboard.Controls.Add(flpDashboardCards);
+            panelDashboard.Controls.Add(panelPagination);
             panelDashboard.Dock = DockStyle.Right;
             panelDashboard.Location = new Point(1020, 80);
             panelDashboard.Name = "panelDashboard";
@@ -165,7 +177,7 @@ namespace MediTakipApp.Forms
             flpDashboardCards.FlowDirection = FlowDirection.TopDown;
             flpDashboardCards.Location = new Point(10, 10);
             flpDashboardCards.Name = "flpDashboardCards";
-            flpDashboardCards.Size = new Size(260, 700);
+            flpDashboardCards.Size = new Size(260, 635);
             flpDashboardCards.TabIndex = 0;
             flpDashboardCards.WrapContents = false;
             // 
@@ -189,6 +201,49 @@ namespace MediTakipApp.Forms
             cardDrug.Name = "cardDrug";
             cardDrug.Size = new Size(200, 100);
             cardDrug.TabIndex = 2;
+            // 
+            // panelPagination
+            // 
+            panelPagination.BackColor = Color.WhiteSmoke;
+            panelPagination.Controls.Add(btnPaginationPrev);
+            panelPagination.Controls.Add(lblPaginationInfo);
+            panelPagination.Controls.Add(btnPaginationNext);
+            panelPagination.Dock = DockStyle.Bottom;
+            panelPagination.Location = new Point(10, 645);
+            panelPagination.Name = "panelPagination";
+            panelPagination.Padding = new Padding(10);
+            panelPagination.Size = new Size(260, 65);
+            panelPagination.TabIndex = 1;
+            // 
+            // btnPaginationPrev
+            // 
+            btnPaginationPrev.Font = new Font("Bahnschrift SemiCondensed", 10F, FontStyle.Bold);
+            btnPaginationPrev.Location = new Point(10, 10);
+            btnPaginationPrev.Name = "btnPaginationPrev";
+            btnPaginationPrev.Size = new Size(70, 40);
+            btnPaginationPrev.TabIndex = 0;
+            btnPaginationPrev.Text = "◀ Geri";
+            btnPaginationPrev.Click += BtnPaginationPrev_Click;
+            // 
+            // lblPaginationInfo
+            // 
+            lblPaginationInfo.AutoSize = true;
+            lblPaginationInfo.Font = new Font("Bahnschrift SemiCondensed", 10F, FontStyle.Bold);
+            lblPaginationInfo.Location = new Point(90, 20);
+            lblPaginationInfo.Name = "lblPaginationInfo";
+            lblPaginationInfo.Size = new Size(85, 20);
+            lblPaginationInfo.TabIndex = 1;
+            lblPaginationInfo.Text = "Sayfa 1 / 1";
+            // 
+            // btnPaginationNext
+            // 
+            btnPaginationNext.Font = new Font("Bahnschrift SemiCondensed", 10F, FontStyle.Bold);
+            btnPaginationNext.Location = new Point(180, 10);
+            btnPaginationNext.Name = "btnPaginationNext";
+            btnPaginationNext.Size = new Size(70, 40);
+            btnPaginationNext.TabIndex = 2;
+            btnPaginationNext.Text = "İleri ▶";
+            btnPaginationNext.Click += BtnPaginationNext_Click;
             // 
             // lblPatientCount
             // 
@@ -231,18 +286,6 @@ namespace MediTakipApp.Forms
             lblDrugTitle.Name = "lblDrugTitle";
             lblDrugTitle.Size = new Size(100, 23);
             lblDrugTitle.TabIndex = 0;
-
-            // cardPatient
-            CreateDashboardCard(this.cardPatient, this.lblPatientTitle, this.lblPatientCount, "Toplam Hastalar", Color.MediumSeaGreen);
-            // cardPrescription
-            CreateDashboardCard(this.cardPrescription, this.lblPrescriptionTitle, this.lblPrescriptionCount, "Toplam Reçeteler", Color.SteelBlue);
-            // cardDrug
-            CreateDashboardCard(this.cardDrug, this.lblDrugTitle, this.lblDrugCount, "Toplam İlaçlar", Color.DarkOrange);
-
-            this.flpDashboardCards.Controls.Add(this.cardPatient);
-            this.flpDashboardCards.Controls.Add(this.cardPrescription);
-            this.flpDashboardCards.Controls.Add(this.cardDrug);
-
             // 
             // HomeControl
             // 
@@ -256,7 +299,15 @@ namespace MediTakipApp.Forms
             topPanel.PerformLayout();
             panelDashboard.ResumeLayout(false);
             flpDashboardCards.ResumeLayout(false);
+            panelPagination.ResumeLayout(false);
+            panelPagination.PerformLayout();
             ResumeLayout(false);
+
+            // Dashboard kartlarını oluştur
+            CreateDashboardCard(cardPatient, lblPatientTitle, lblPatientCount, "Toplam Hastalar", Color.MediumSeaGreen);
+            CreateDashboardCard(cardPrescription, lblPrescriptionTitle, lblPrescriptionCount, "Toplam Reçeteler", Color.SteelBlue);
+            CreateDashboardCard(cardDrug, lblDrugTitle, lblDrugCount, "Toplam İlaçlar", Color.DarkOrange);
+
         }
 
         private void CreateDashboardCard(Panel card, TransparentLabel title, TransparentLabel count, string titleText, Color color)
@@ -280,5 +331,6 @@ namespace MediTakipApp.Forms
             card.Controls.Add(title);
             card.Controls.Add(count);
         }
+
     }
 }

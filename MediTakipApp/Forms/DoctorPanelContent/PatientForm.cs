@@ -12,7 +12,6 @@ namespace MediTakipApp.Forms
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] public bool IsUpdateMode { get; set; } = false;
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] public int PatientId { get; set; }
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] public int DoctorId { get; set; }
-
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] public string FirstName { get; set; }
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] public string LastName { get; set; }
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] public string TcNo { get; set; }
@@ -30,9 +29,6 @@ namespace MediTakipApp.Forms
 
         private void PatientForm_Load(object sender, EventArgs e)
         {
-            cmbGender.Items.AddRange(new[] { "Erkek", "Kadın" });
-            cmbInsurance.Items.AddRange(new[] { "SSK", "Bağ-Kur", "Özel", "Diğer" });
-
             if (IsUpdateMode)
             {
                 txtFirstName.Text = FirstName;
@@ -85,6 +81,7 @@ namespace MediTakipApp.Forms
                 cmd.ExecuteNonQuery();
 
                 MessageBox.Show(IsUpdateMode ? "Hasta güncellendi!" : "Hasta eklendi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK;
                 this.Close();
             }
         }
