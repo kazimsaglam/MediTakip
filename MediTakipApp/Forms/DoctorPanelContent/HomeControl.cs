@@ -57,6 +57,10 @@ namespace MediTakipApp.Forms
 
         private void HomeControl_Load(object sender, EventArgs e)
         {
+            CreateDashboardCard(cardPatient, lblPatientTitle, lblPatientCount, "Toplam Hastalar", Color.MediumSeaGreen);
+            CreateDashboardCard(cardPrescription, lblPrescriptionTitle, lblPrescriptionCount, "Toplam Reçeteler", Color.SteelBlue);
+            CreateDashboardCard(cardDrug, lblDrugTitle, lblDrugCount, "Toplam İlaçlar", Color.DarkOrange);
+
             LoadPatients();
             UpdateDashboardCounts();
 
@@ -232,8 +236,8 @@ namespace MediTakipApp.Forms
         {
             Panel card = new Panel()
             {
-                Width = 300,
-                Height = 200,
+                Width = 320,
+                Height = 190,
                 BackColor = Color.White,
                 Margin = new Padding(10, 10, 10, 10),
                 BorderStyle = BorderStyle.FixedSingle,
@@ -318,80 +322,6 @@ namespace MediTakipApp.Forms
             return card;
         }
 
-
-
-        private void AddCardControls(Panel card, DataRow row)
-        {
-            TransparentLabel lblName = new TransparentLabel()
-            {
-                Text = row["FirstName"] + " " + row["LastName"],
-                Font = new Font("Bahnschrift SemiCondensed", 16F, FontStyle.Bold),
-                ForeColor = Color.FromArgb(64, 64, 64),
-                Location = new Point(20, 20),
-                AutoSize = true
-            };
-
-            TransparentLabel lblTc = new TransparentLabel()
-            {
-                Text = "TC: " + row["TcNo"],
-                Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold),
-                ForeColor = Color.Gray,
-                Location = new Point(20, 55),
-                AutoSize = true
-            };
-
-            TransparentLabel lblPhone = new TransparentLabel()
-            {
-                Text = "📞 " + row["Phone"],
-                Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold),
-                ForeColor = Color.Gray,
-                Location = new Point(20, 80),
-                AutoSize = true
-            };
-
-            TransparentLabel lblInsurance = new TransparentLabel()
-            {
-                Text = "🏥 " + row["Insurance"],
-                Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold),
-                ForeColor = Color.Gray,
-                Location = new Point(20, 105),
-                AutoSize = true
-            };
-
-            card.Controls.Add(lblName);
-            card.Controls.Add(lblTc);
-            card.Controls.Add(lblPhone);
-            card.Controls.Add(lblInsurance);
-        }
-
-        private void OnCardMouseEnter(Panel card)
-        {
-            currentlyHoveredCard = card;
-
-            // Seçili kart değilse hover rengini uygula
-            if (card != selectedPatientCard)
-            {
-                card.BackColor = Color.FromArgb(245, 245, 245);
-            }
-
-            ShowPatientDetails(card);
-        }
-
-        private void OnCardMouseLeave(Panel card)
-        {
-            // Sadece seçili olmayan kartların rengini değiştir
-            if (card != selectedPatientCard)
-            {
-                card.BackColor = Color.White;
-            }
-
-            if (currentlyHoveredCard == card)
-            {
-                currentlyHoveredCard = null;
-            }
-            HidePatientDetails(card);
-        }
-
         private void ShowPatientDetails(Panel card)
         {
             if (cardDetailMap.TryGetValue(card, out Panel detailPanel) && card.Tag is DataRow row)
@@ -413,7 +343,6 @@ namespace MediTakipApp.Forms
                     Margin = new Padding(0)
                 };
 
-                // Ana panel
                 Panel contentPanel = new Panel()
                 {
                     Dock = DockStyle.Fill,
@@ -441,15 +370,21 @@ namespace MediTakipApp.Forms
                 Point cardLocation = card.PointToScreen(Point.Empty);
                 Point relativeLocation = this.PointToClient(cardLocation);
 
+                // Panel ekran dışına taşmasın
+                int maxBottom = this.ClientSize.Height - detailPanel.Height - 10;
+                int y = Math.Min(relativeLocation.Y, Math.Max(0, maxBottom));
+
+                // Sağ ya da sol tarafa yerleştir
                 int x = relativeLocation.X + card.Width + 5;
                 if (x + detailPanel.Width > this.Width)
                     x = relativeLocation.X - detailPanel.Width - 5;
 
-                detailPanel.Location = new Point(x, Math.Max(relativeLocation.Y, 0));
+                detailPanel.Location = new Point(x, y);
                 detailPanel.Visible = true;
                 detailPanel.BringToFront();
             }
         }
+
 
         private void AddDetailLabel(Panel parent, string labelText, string valueText, ref int yPos, int labelWidth, int valueWidth, int rowHeight)
         {

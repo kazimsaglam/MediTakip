@@ -2,11 +2,21 @@
 using System.Windows.Forms;
 using MediTakipApp.Forms.PharmacyPanelContent;
 using MediTakipApp.Utils;
+using Timer = System.Windows.Forms.Timer;
 
 namespace MediTakipApp.Forms
 {
     public partial class PharmacyPanel : Form
     {
+        // Renkler
+        private readonly Color menuBlue = Color.FromArgb(25, 42, 86);
+        private readonly Color hoverBlue = Color.FromArgb(52, 152, 219);
+        private readonly Color activeBlue = Color.FromArgb(0, 122, 204);
+
+        private Panel indicatorPanel;
+        private Button activeButton;
+
+
         public PharmacyPanel()
         {
             InitializeComponent();
@@ -15,46 +25,66 @@ namespace MediTakipApp.Forms
         private void PharmacyPanel_Load(object sender, EventArgs e)
         {
             lblTitle.Text = "🏠 Ana Sayfa";
-            panelMain.Controls.Clear();
-            panelMain.Controls.Add(new PharmacyHomeControl());
-
+            LoadControl(new PharmacyHomeControl());
             lblPharmacistName.Text = LoggedUser.FullName;
+
+            // Sol menü aktif buton çizgisi
+            indicatorPanel = new Panel
+            {
+                Size = new Size(10, 70),
+                BackColor = Color.LimeGreen,
+                Location = new Point(0, btnHome.Top),
+                Visible = true
+            };
+            panelMenu.Controls.Add(indicatorPanel);
+            indicatorPanel.BringToFront();
+
+            // Butonlar için hover ve aktif efekt
+            SetHoverEffects(btnHome);
+            SetHoverEffects(btnPrescriptions);
+            SetHoverEffects(btnSell);
+            SetHoverEffects(btnStock);
+            SetHoverEffects(btnSupply);
+
+            SetActiveButton(btnHome);
         }
+
 
         private void btnHome_Click(object sender, EventArgs e)
         {
             lblTitle.Text = "🏠 Ana Sayfa";
-            panelMain.Controls.Clear();
-            panelMain.Controls.Add(new PharmacyHomeControl());
+            LoadControl(new PharmacyHomeControl());
+            SetActiveButton(btnHome);
         }
 
         private void btnPrescriptions_Click(object sender, EventArgs e)
         {
             lblTitle.Text = "📜 Reçeteler";
-            panelMain.Controls.Clear();
-            panelMain.Controls.Add(new PharmacyPrescriptionsControl());
+            LoadControl(new PharmacyPrescriptionsControl());
+            SetActiveButton(btnPrescriptions);
         }
+
 
         private void btnSell_Click(object sender, EventArgs e)
         {
             lblTitle.Text = "💵 İlaç Satışı";
-            panelMain.Controls.Clear();
-            panelMain.Controls.Add(new PharmacySellControl());
+            LoadControl(new PharmacySellControl());
+            SetActiveButton(btnSell);
         }
 
 
         private void btnStock_Click(object sender, EventArgs e)
         {
             lblTitle.Text = "💊 Stok Yönetimi";
-            panelMain.Controls.Clear();
-            panelMain.Controls.Add(new PharmacyStockControl());
+            LoadControl(new PharmacyStockControl());
+            SetActiveButton(btnStock);
         }
 
         private void btnSupply_Click(object sender, EventArgs e)
         {
             lblTitle.Text = "🚚 Depo / Tedarik";
-            panelMain.Controls.Clear();
-            panelMain.Controls.Add(new PharmacySupplyControl());
+            LoadControl(new PharmacySupplyControl());
+            SetActiveButton(btnSupply);
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -71,5 +101,75 @@ namespace MediTakipApp.Forms
                 Application.Exit();
             }
         }
+
+        private void LoadControl(UserControl control)
+        {
+            control.Size = new Size((int)(panelMain.Width * 0.8), (int)(panelMain.Height * 0.8));
+            control.Location = new Point(
+                panelMain.Width / 2 - control.Width / 2,
+                panelMain.Height / 2 - control.Height / 2
+            );
+
+            control.Visible = false;
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(control);
+
+            float scale = 0.8f;
+            Timer timer = new Timer { Interval = 10 };
+            timer.Tick += (s, args) =>
+            {
+                scale += 0.02f;
+                int newWidth = (int)(panelMain.Width * scale);
+                int newHeight = (int)(panelMain.Height * scale);
+
+                control.Size = new Size(newWidth, newHeight);
+                control.Location = new Point(
+                    panelMain.Width / 2 - control.Width / 2,
+                    panelMain.Height / 2 - control.Height / 2
+                );
+
+                if (scale >= 1f)
+                {
+                    control.Size = panelMain.Size;
+                    control.Location = new Point(0, 0);
+                    control.Visible = true;
+                    timer.Stop();
+                }
+            };
+            timer.Start();
+        }
+
+        private void SetActiveButton(Button button)
+        {
+            if (activeButton != null)
+            {
+                activeButton.BackColor = menuBlue;
+                activeButton.ForeColor = Color.White;
+            }
+
+            activeButton = button;
+            activeButton.BackColor = activeBlue;
+            activeButton.ForeColor = Color.White;
+
+            indicatorPanel.Top = button.Top;
+            indicatorPanel.BringToFront();
+        }
+
+
+        private void SetHoverEffects(Button button)
+        {
+            button.MouseEnter += (s, e) =>
+            {
+                if (button != activeButton)
+                    button.BackColor = hoverBlue;
+            };
+
+            button.MouseLeave += (s, e) =>
+            {
+                if (button != activeButton)
+                    button.BackColor = menuBlue;
+            };
+        }
+
     }
 }

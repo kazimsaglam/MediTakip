@@ -68,9 +68,9 @@
             // 
             lblPatientInfo.Font = new Font("Bahnschrift SemiCondensed", 14F, FontStyle.Bold);
             lblPatientInfo.ForeColor = Color.DarkBlue;
-            lblPatientInfo.Location = new Point(10, 10);
+            lblPatientInfo.Location = new Point(10, 5);
             lblPatientInfo.Name = "lblPatientInfo";
-            lblPatientInfo.Size = new Size(400, 25);
+            lblPatientInfo.Size = new Size(600, 30);
             lblPatientInfo.TabIndex = 0;
             lblPatientInfo.Text = "👤 Seçilen Hasta: -";
             // 
@@ -185,7 +185,7 @@
             flpHistory.FlowDirection = FlowDirection.TopDown;
             flpHistory.Location = new Point(10, 110);
             flpHistory.Name = "flpHistory";
-            flpHistory.Size = new Size(276, 506);
+            flpHistory.Size = new Size(276, 576);
             flpHistory.TabIndex = 0;
             flpHistory.WrapContents = false;
             // 

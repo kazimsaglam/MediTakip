@@ -105,7 +105,7 @@ namespace MediTakipApp.Forms.DoctorPanelContent
 
 
             // Kart içeriği
-            card.Controls.Add(new TransparentLabel { Text = $"💊 {row["Name"]}", Font = new Font("Bahnschrift SemiCondensed", 12, FontStyle.Bold), Location = new Point(10, 10), AutoSize = true });
+            card.Controls.Add(new TransparentLabel { Text = $"💊 {row["Name"]}", Font = new Font("Bahnschrift SemiCondensed", 14, FontStyle.Bold), Location = new Point(10, 10), AutoSize = true });
             card.Controls.Add(new TransparentLabel { Text = $"🔬 Etken Madde: {row["ActiveIngredient"]}", Location = new Point(10, 40), AutoSize = true });
             card.Controls.Add(new TransparentLabel { Text = $"👶 Kullanım Yaşı: {row["UsageAge"]}+", Location = new Point(10, 60), AutoSize = true });
             card.Controls.Add(new TransparentLabel { Text = $"🏷️ Barkod: {row["Barcode"]}", Location = new Point(10, 80), AutoSize = true });

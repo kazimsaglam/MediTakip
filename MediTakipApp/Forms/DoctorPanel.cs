@@ -8,7 +8,14 @@ namespace MediTakipApp.Forms
 {
     public partial class DoctorPanel : Form
     {
+        // Renkler
+        private readonly Color menuBlue = Color.FromArgb(25, 42, 86);
+        private readonly Color hoverBlue = Color.FromArgb(52, 152, 219);
+        private readonly Color activeBlue = Color.FromArgb(0, 122, 204);
+
+        private Panel indicatorPanel;
         private Button activeButton;
+
 
         public DoctorPanel()
         {
@@ -20,6 +27,21 @@ namespace MediTakipApp.Forms
             lblTitle.Text = "Ana Sayfa";
             LoadControl(new HomeControl());
             lblDoctorName.Text = LoggedUser.FullName;
+
+            indicatorPanel = new Panel
+            {
+                Size = new Size(10, 70),
+                BackColor = Color.LimeGreen,
+                Location = new Point(0, btnHome.Top),
+                Visible = true
+            };
+            panelMenu.Controls.Add(indicatorPanel);
+            indicatorPanel.BringToFront();
+
+            SetHoverEffects(btnHome);
+            SetHoverEffects(btnDrugs);
+            SetHoverEffects(btnPower);
+
             SetActiveButton(btnHome);
         }
 
@@ -54,22 +76,36 @@ namespace MediTakipApp.Forms
 
         private void LoadControl(UserControl control)
         {
-            control.Dock = DockStyle.Fill;
+            control.Size = new Size((int)(panelMain.Width * 0.8), (int)(panelMain.Height * 0.8));
+            control.Location = new Point(
+                panelMain.Width / 2 - control.Width / 2,
+                panelMain.Height / 2 - control.Height / 2
+            );
+
             control.Visible = false;
             panelMain.Controls.Clear();
             panelMain.Controls.Add(control);
 
-            // Fade-in animasyonu  
+            float scale = 0.8f;
             Timer timer = new Timer { Interval = 10 };
-            float opacity = 0;
             timer.Tick += (s, args) =>
             {
-                opacity += 0.05f;
-                control.BackColor = Color.FromArgb((int)(opacity * 255), control.BackColor);
-                if (opacity >= 1)
+                scale += 0.02f;
+                int newWidth = (int)(panelMain.Width * scale);
+                int newHeight = (int)(panelMain.Height * scale);
+
+                control.Size = new Size(newWidth, newHeight);
+                control.Location = new Point(
+                    panelMain.Width / 2 - control.Width / 2,
+                    panelMain.Height / 2 - control.Height / 2
+                );
+
+                if (scale >= 1f)
                 {
-                    timer.Stop();
+                    control.Size = panelMain.Size;
+                    control.Location = new Point(0, 0);
                     control.Visible = true;
+                    timer.Stop();
                 }
             };
             timer.Start();
@@ -79,27 +115,32 @@ namespace MediTakipApp.Forms
         {
             if (activeButton != null)
             {
-                activeButton.BackColor = Color.FromArgb(45, 45, 45);
+                activeButton.BackColor = menuBlue;
                 activeButton.ForeColor = Color.White;
             }
+
             activeButton = button;
-            activeButton.BackColor = Color.FromArgb(76, 175, 80); // Yeşil vurgu  
+            activeButton.BackColor = activeBlue;
             activeButton.ForeColor = Color.White;
+
+            indicatorPanel.Top = button.Top;
+            indicatorPanel.BringToFront();
         }
 
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+
+        private void SetHoverEffects(Button button)
         {
-            if (keyData == (Keys.Control | Keys.H))
+            button.MouseEnter += (s, e) =>
             {
-                btnHome_Click(null, null);
-                return true;
-            }
-            if (keyData == (Keys.Control | Keys.R))
+                if (button != activeButton)
+                    button.BackColor = hoverBlue;
+            };
+
+            button.MouseLeave += (s, e) =>
             {
-                btnDrugs_Click(null, null);
-                return true;
-            }
-            return base.ProcessCmdKey(ref msg, keyData);
+                if (button != activeButton)
+                    button.BackColor = menuBlue;
+            };
         }
     }
 }

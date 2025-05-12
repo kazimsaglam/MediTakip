@@ -107,9 +107,10 @@ namespace MediTakipApp.Forms
                 return false;
             }
 
-            if (txtPhone.Text.Length < 10 || !long.TryParse(txtPhone.Text, out _))
+            if (txtPhone.Text.Length < 11 || !long.TryParse(txtPhone.Text, out _) ||
+                !System.Text.RegularExpressions.Regex.IsMatch(txtPhone.Text, @"^05\d{9}$"))
             {
-                MessageBox.Show("Geçerli bir telefon numarası giriniz.", "Hatalı Giriş", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Telefon numarası 05 ile başlamalı ve 11 haneli olmalıdır.", "Hatalı Giriş", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
@@ -117,6 +118,23 @@ namespace MediTakipApp.Forms
             {
                 MessageBox.Show("Doğum tarihi bugünden ileri olamaz.", "Hatalı Tarih", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
+            }
+
+            if (!IsUpdateMode)
+            {
+                using (SqlConnection conn = new SqlConnection(connStr))
+                {
+                    conn.Open();
+                    SqlCommand checkCmd = new SqlCommand("SELECT COUNT(*) FROM Patients WHERE TcNo = @tc", conn);
+                    checkCmd.Parameters.AddWithValue("@tc", txtTcNo.Text.Trim());
+
+                    int count = (int)checkCmd.ExecuteScalar();
+                    if (count > 0)
+                    {
+                        MessageBox.Show("Bu TC numarası ile kayıtlı hasta zaten var.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return false;
+                    }
+                }
             }
 
             return true;

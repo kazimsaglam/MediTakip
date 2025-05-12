@@ -39,7 +39,7 @@
             // 
             // panelMenu
             // 
-            panelMenu.BackColor = Color.FromArgb(33, 33, 33);
+            panelMenu.BackColor = Color.FromArgb(25, 42, 86);
             panelMenu.BorderStyle = BorderStyle.Fixed3D;
             panelMenu.Controls.Add(lblFooter);
             panelMenu.Controls.Add(btnPower);
@@ -56,7 +56,7 @@
             // 
             lblFooter.Dock = DockStyle.Bottom;
             lblFooter.Font = new Font("Bahnschrift SemiCondensed", 10F);
-            lblFooter.ForeColor = Color.LightGray;
+            lblFooter.ForeColor = Color.LightSteelBlue;
             lblFooter.Location = new Point(0, 666);
             lblFooter.Name = "lblFooter";
             lblFooter.Size = new Size(246, 30);
@@ -66,6 +66,7 @@
             // 
             // btnPower
             // 
+            btnPower.BackColor = Color.FromArgb(25, 42, 86);
             btnPower.Dock = DockStyle.Top;
             btnPower.FlatAppearance.BorderSize = 0;
             btnPower.FlatStyle = FlatStyle.Flat;
@@ -78,10 +79,12 @@
             btnPower.TabIndex = 1;
             btnPower.Text = "\u23fb Çıkış Yap";
             btnPower.TextAlign = ContentAlignment.MiddleLeft;
+            btnPower.UseVisualStyleBackColor = false;
             btnPower.Click += btnPower_Click;
             // 
             // btnDrugs
             // 
+            btnDrugs.BackColor = Color.FromArgb(25, 42, 86);
             btnDrugs.Dock = DockStyle.Top;
             btnDrugs.FlatAppearance.BorderSize = 0;
             btnDrugs.FlatStyle = FlatStyle.Flat;
@@ -94,11 +97,12 @@
             btnDrugs.TabIndex = 4;
             btnDrugs.Text = "💊 İlaç Yaz";
             btnDrugs.TextAlign = ContentAlignment.MiddleLeft;
+            btnDrugs.UseVisualStyleBackColor = false;
             btnDrugs.Click += btnDrugs_Click;
             // 
             // btnHome
             // 
-            btnHome.BackgroundImageLayout = ImageLayout.None;
+            btnHome.BackColor = Color.FromArgb(25, 42, 86);
             btnHome.Dock = DockStyle.Top;
             btnHome.FlatAppearance.BorderSize = 0;
             btnHome.FlatStyle = FlatStyle.Flat;
@@ -111,11 +115,12 @@
             btnHome.TabIndex = 6;
             btnHome.Text = "🏠 Ana Sayfa";
             btnHome.TextAlign = ContentAlignment.MiddleLeft;
+            btnHome.UseVisualStyleBackColor = false;
             btnHome.Click += btnHome_Click;
             // 
             // panelProfile
             // 
-            panelProfile.BackColor = Color.FromArgb(40, 40, 40);
+            panelProfile.BackColor = Color.FromArgb(30, 55, 100);
             panelProfile.Controls.Add(lblDoctorName);
             panelProfile.Controls.Add(lblDoctorRole);
             panelProfile.Dock = DockStyle.Top;
@@ -128,7 +133,7 @@
             // lblDoctorName
             // 
             lblDoctorName.Dock = DockStyle.Top;
-            lblDoctorName.Font = new Font("Bahnschrift SemiCondensed", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            lblDoctorName.Font = new Font("Bahnschrift SemiCondensed", 13.8F, FontStyle.Bold);
             lblDoctorName.ForeColor = Color.White;
             lblDoctorName.Location = new Point(10, 33);
             lblDoctorName.Name = "lblDoctorName";
@@ -140,7 +145,7 @@
             // lblDoctorRole
             // 
             lblDoctorRole.Dock = DockStyle.Top;
-            lblDoctorRole.Font = new Font("Bahnschrift Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            lblDoctorRole.Font = new Font("Bahnschrift Condensed", 12F, FontStyle.Bold);
             lblDoctorRole.ForeColor = Color.LightGray;
             lblDoctorRole.Location = new Point(10, 10);
             lblDoctorRole.Name = "lblDoctorRole";
@@ -151,7 +156,7 @@
             // 
             // lblTitle
             // 
-            lblTitle.BorderStyle = BorderStyle.Fixed3D;
+            lblTitle.BorderStyle = BorderStyle.FixedSingle;
             lblTitle.Dock = DockStyle.Top;
             lblTitle.Font = new Font("Bahnschrift SemiCondensed", 18.2F, FontStyle.Bold);
             lblTitle.ForeColor = Color.Black;

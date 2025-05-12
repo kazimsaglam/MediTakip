@@ -33,8 +33,6 @@
 
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-
             // Ana başlık
             Label lblHeader = new Label()
             {
@@ -86,8 +84,16 @@
             txtPhone = new TextBox();
 
             // Sigorta ve Cinsiyet combo örnekleri
-            cmbInsurance.Items.AddRange(new string[] { "SGK", "Bağ-Kur","Özel Sigorta", "Diğer", "Yok" });
+            cmbInsurance.Items.AddRange(new string[] { "SGK", "Bağ-Kur", "Özel Sigorta", "Diğer", "Yok" });
             cmbGender.Items.AddRange(new string[] { "Erkek", "Kadın", "Diğer" });
+
+            cmbInsurance.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbGender.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            dtpBirthDate.Format = DateTimePickerFormat.Custom;
+            dtpBirthDate.CustomFormat = "dd.MM.yyyy";
+
+            cmbGender.SelectedIndex = 0;
 
             int yPos = 10;
             AddField(mainPanel, "Ad:", txtFirstName, ref yPos);
@@ -105,7 +111,7 @@
             {
                 Text = "💾 Kaydet",
                 Size = new Size(130, 40),
-                Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold),
+                Font = new Font("Bahnschrift SemiCondensed", 14F, FontStyle.Bold),
                 BackColor = Color.MediumSeaGreen,
                 ForeColor = Color.White,
                 FlatStyle = FlatStyle.Flat,
@@ -118,7 +124,7 @@
             {
                 Text = "❌ İptal",
                 Size = new Size(130, 40),
-                Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold),
+                Font = new Font("Bahnschrift SemiCondensed", 14F, FontStyle.Bold),
                 BackColor = Color.IndianRed,
                 ForeColor = Color.White,
                 FlatStyle = FlatStyle.Flat,

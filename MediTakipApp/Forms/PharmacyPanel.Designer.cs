@@ -45,7 +45,7 @@
             // 
             // panelMenu
             // 
-            panelMenu.BackColor = Color.FromArgb(45, 45, 45);
+            panelMenu.BackColor = Color.FromArgb(25, 42, 86);
             panelMenu.BorderStyle = BorderStyle.Fixed3D;
             panelMenu.Controls.Add(lblFooter);
             panelMenu.Controls.Add(btnLogout);
@@ -65,7 +65,7 @@
             // 
             lblFooter.Dock = DockStyle.Bottom;
             lblFooter.Font = new Font("Bahnschrift SemiCondensed", 10F);
-            lblFooter.ForeColor = Color.LightGray;
+            lblFooter.ForeColor = Color.LightSteelBlue;
             lblFooter.Location = new Point(0, 666);
             lblFooter.Name = "lblFooter";
             lblFooter.Size = new Size(246, 30);
@@ -75,6 +75,7 @@
             // 
             // btnLogout
             // 
+            btnLogout.BackColor = Color.FromArgb(25, 42, 86);
             btnLogout.Dock = DockStyle.Top;
             btnLogout.FlatAppearance.BorderSize = 0;
             btnLogout.FlatStyle = FlatStyle.Flat;
@@ -87,10 +88,12 @@
             btnLogout.TabIndex = 1;
             btnLogout.Text = "\u23fb Çıkış Yap";
             btnLogout.TextAlign = ContentAlignment.MiddleLeft;
+            btnLogout.UseVisualStyleBackColor = false;
             btnLogout.Click += btnLogout_Click;
             // 
             // btnSupply
             // 
+            btnSupply.BackColor = Color.FromArgb(25, 42, 86);
             btnSupply.Dock = DockStyle.Top;
             btnSupply.FlatAppearance.BorderSize = 0;
             btnSupply.FlatStyle = FlatStyle.Flat;
@@ -103,10 +106,12 @@
             btnSupply.TabIndex = 2;
             btnSupply.Text = "🚚 Depo / Tedarik";
             btnSupply.TextAlign = ContentAlignment.MiddleLeft;
+            btnSupply.UseVisualStyleBackColor = false;
             btnSupply.Click += btnSupply_Click;
             // 
             // btnStock
             // 
+            btnStock.BackColor = Color.FromArgb(25, 42, 86);
             btnStock.Dock = DockStyle.Top;
             btnStock.FlatAppearance.BorderSize = 0;
             btnStock.FlatStyle = FlatStyle.Flat;
@@ -119,10 +124,12 @@
             btnStock.TabIndex = 3;
             btnStock.Text = "💊 Stok Yönetimi";
             btnStock.TextAlign = ContentAlignment.MiddleLeft;
+            btnStock.UseVisualStyleBackColor = false;
             btnStock.Click += btnStock_Click;
             // 
             // btnSell
             // 
+            btnSell.BackColor = Color.FromArgb(25, 42, 86);
             btnSell.Dock = DockStyle.Top;
             btnSell.FlatAppearance.BorderSize = 0;
             btnSell.FlatStyle = FlatStyle.Flat;
@@ -135,10 +142,12 @@
             btnSell.TabIndex = 2;
             btnSell.Text = "💵 İlaç Sat";
             btnSell.TextAlign = ContentAlignment.MiddleLeft;
+            btnSell.UseVisualStyleBackColor = false;
             btnSell.Click += btnSell_Click;
             // 
             // btnPrescriptions
             // 
+            btnPrescriptions.BackColor = Color.FromArgb(25, 42, 86);
             btnPrescriptions.Dock = DockStyle.Top;
             btnPrescriptions.FlatAppearance.BorderSize = 0;
             btnPrescriptions.FlatStyle = FlatStyle.Flat;
@@ -151,10 +160,12 @@
             btnPrescriptions.TabIndex = 4;
             btnPrescriptions.Text = "📜 Reçeteler";
             btnPrescriptions.TextAlign = ContentAlignment.MiddleLeft;
+            btnPrescriptions.UseVisualStyleBackColor = false;
             btnPrescriptions.Click += btnPrescriptions_Click;
             // 
             // btnHome
             // 
+            btnHome.BackColor = Color.FromArgb(25, 42, 86);
             btnHome.Dock = DockStyle.Top;
             btnHome.FlatAppearance.BorderSize = 0;
             btnHome.FlatStyle = FlatStyle.Flat;
@@ -167,11 +178,12 @@
             btnHome.TabIndex = 5;
             btnHome.Text = "🏠 Ana Sayfa";
             btnHome.TextAlign = ContentAlignment.MiddleLeft;
+            btnHome.UseVisualStyleBackColor = false;
             btnHome.Click += btnHome_Click;
             // 
             // panelProfile
             // 
-            panelProfile.BackColor = Color.FromArgb(55, 55, 55);
+            panelProfile.BackColor = Color.FromArgb(30, 55, 100);
             panelProfile.Controls.Add(lblPharmacistName);
             panelProfile.Controls.Add(lblPharmacistRole);
             panelProfile.Dock = DockStyle.Top;
@@ -207,7 +219,7 @@
             // 
             // lblTitle
             // 
-            lblTitle.BorderStyle = BorderStyle.Fixed3D;
+            lblTitle.BorderStyle = BorderStyle.FixedSingle;
             lblTitle.Dock = DockStyle.Top;
             lblTitle.Font = new Font("Bahnschrift SemiCondensed", 18.2F, FontStyle.Bold);
             lblTitle.ForeColor = Color.Black;
