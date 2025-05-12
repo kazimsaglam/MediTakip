@@ -71,8 +71,6 @@ namespace MediTakipApp.Forms.DoctorPanelContent
             }
         }
 
-
-
         private Panel CreateDrugCard(DataRow row)
         {
             Panel card = new Panel
@@ -648,6 +646,143 @@ ORDER BY p.PrescriptionDate DESC", conn);
             countToday++; // yeni kayıt için 1 artır
             return $"REC-{today}-{countToday:D3}"; // REC-20240427-001 gibi
         }
+
+        private async void BtnRecommend_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtDiagnosis.Text))
+            {
+                MessageBox.Show("Lütfen önce bir teşhis giriniz!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int age = GetAge(SelectedPatient.BirthDate);
+
+            // İlaç listesini sade JSON formatında hazırla
+            var drugsList = allDrugs.AsEnumerable()
+                .Select(row => new
+                {
+                    Name = row["Name"].ToString(),
+                    UsageAge = Convert.ToInt32(row["UsageAge"]),
+                    ActiveIngredient = row["ActiveIngredient"].ToString()
+                }).ToList();
+
+            var requestBody = new
+            {
+                diagnosis = txtDiagnosis.Text,
+                age = age,
+                drugs = drugsList
+            };
+
+            string json = System.Text.Json.JsonSerializer.Serialize(requestBody);
+
+            using (var client = new HttpClient())
+            {
+                btnRecommend.Enabled = false;
+                btnRecommend.Text = "⏳ Öneriler alınıyor...";
+
+                try
+                {
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+                    var response = await client.PostAsync("http://localhost:5001/recommend", content);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var resultJson = await response.Content.ReadAsStringAsync();
+                        var result = System.Text.Json.JsonDocument.Parse(resultJson);
+
+                        string raw = result.RootElement.GetProperty("raw_response").ToString();
+
+                        var match = System.Text.RegularExpressions.Regex.Match(raw, @"\[\s*""[^]]+?\]");
+                        if (!match.Success)
+                        {
+                            MessageBox.Show("⚠️ Model geçerli bir JSON cevabı döndürmedi.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        string jsonArray = match.Value;
+                        var suggestions = System.Text.Json.JsonSerializer.Deserialize<List<string>>(jsonArray);
+
+                        // 🔄 Önce eski öneri etiketlerini ve arka planları sıfırla
+                        foreach (Control control in flpDrugs.Controls)
+                        {
+                            if (control is Panel panel)
+                            {
+                                panel.BackColor = Color.White;
+
+                                // Mevcut "⭐️ Önerilen" etiketlerini kaldır
+                                foreach (var lbl in panel.Controls.OfType<Label>().Where(l => l.Text.Contains("⭐️ Önerilen")).ToList())
+                                {
+                                    panel.Controls.Remove(lbl);
+                                }
+                            }
+                        }
+
+                        // 🔁 Kartları en baştan sırala: önce önerilenler → sonra kalanlar
+                        var allPanels = flpDrugs.Controls.OfType<Panel>().ToList();
+                        flpDrugs.Controls.Clear();
+
+                        var sortedPanels = allPanels
+                            .OrderByDescending(panel =>
+                            {
+                                if (panel.Tag is DataRow row)
+                                {
+                                    string drugName = row["Name"].ToString();
+                                    return suggestions.Contains(drugName) ? 1 : 0;
+                                }
+                                return 0;
+                            })
+                            .ToList();
+
+                        foreach (var panel in sortedPanels)
+                        {
+                            if (panel.Tag is DataRow row)
+                            {
+                                string drugName = row["Name"].ToString();
+
+                                if (suggestions.Contains(drugName))
+                                {
+                                    if (!allDrugs.AsEnumerable().Any(r => r["Name"].ToString() == drugName))
+                                        continue; // Veritabanında yoksa bu kartı gösterme
+
+                                    panel.BackColor = Color.LightGoldenrodYellow;
+
+                                    // ⭐️ etiketi ekle
+                                    Label lblStar = new Label
+                                    {
+                                        Text = "⭐️ Önerilen",
+                                        Font = new Font("Bahnschrift SemiCondensed", 16F, FontStyle.Bold),
+                                        ForeColor = Color.DarkOrange,
+                                        BackColor = Color.Transparent,
+                                        AutoSize = true,
+                                        Location = new Point(160, 160)
+                                    };
+                                    panel.Controls.Add(lblStar);
+                                }
+                            }
+
+                            flpDrugs.Controls.Add(panel);
+                        }
+
+                        MessageBox.Show("✅ Öneriler alındı ve vurgulandı!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("❌ Öneri alınamadı: " + response.StatusCode, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("⚠️ Bağlantı hatası: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    btnRecommend.Enabled = true;
+                    btnRecommend.Text = "🔮 İlaç Öner";
+                }
+
+                btnRecommend.Enabled = true;
+                btnRecommend.Text = "🔮 İlaç Öner";
+            }
+        }
+
+
     }
 
     public class PrescribedDrug

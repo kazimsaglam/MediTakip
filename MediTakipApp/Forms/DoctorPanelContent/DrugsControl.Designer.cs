@@ -20,6 +20,9 @@
         private FlowLayoutPanel flpHistory;
         private Label lblHistoryTitle;
 
+        //AI İlaç Öneri Sistemi
+        private Button btnRecommend;
+
 
         protected override void Dispose(bool disposing)
         {
@@ -43,6 +46,7 @@
             panelHistory = new Panel();
             flpHistory = new FlowLayoutPanel();
             lblHistoryTitle = new Label();
+            btnRecommend = new Button();
             topPanel.SuspendLayout();
             bottomPanel.SuspendLayout();
             panelHistory.SuspendLayout();
@@ -164,7 +168,23 @@
             btnSavePrescription.Text = "💾 Reçeteyi Kaydet ve Gönder";
             btnSavePrescription.UseVisualStyleBackColor = false;
             btnSavePrescription.Click += BtnSavePrescription_Click;
-            // 
+
+            // AI İlaç Öneri Sistemi
+            btnRecommend.BackColor = Color.DarkOrange;
+            btnRecommend.Cursor = Cursors.Hand;
+            btnRecommend.Dock = DockStyle.Bottom;
+            btnRecommend.FlatAppearance.BorderSize = 0;
+            btnRecommend.FlatStyle = FlatStyle.Flat;
+            btnRecommend.Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold);
+            btnRecommend.ForeColor = Color.White;
+            btnRecommend.Text = "🔮 İlaç Öner";
+            btnRecommend.Height = 44;
+            btnRecommend.Click += BtnRecommend_Click;
+
+            // PanelHistory içine ekle
+            panelHistory.Controls.Add(btnRecommend);
+            panelHistory.Controls.SetChildIndex(btnRecommend, 0); // En alta otursun
+
             // panelHistory
             // 
             panelHistory.BackColor = Color.WhiteSmoke;
