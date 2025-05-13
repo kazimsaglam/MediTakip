@@ -6,8 +6,7 @@
         private Panel panelMenu;
         private Label lblFooter;
         private Button btnLogout;
-        private Button btnSupply;
-        private Button btnStock;
+        private Button btnStockAndSupply;
         private Button btnSell;
         private Button btnPrescriptions;
         private Button btnHome;
@@ -29,8 +28,7 @@
             panelMenu = new Panel();
             lblFooter = new Label();
             btnLogout = new Button();
-            btnSupply = new Button();
-            btnStock = new Button();
+            btnStockAndSupply = new Button();
             btnSell = new Button();
             btnPrescriptions = new Button();
             btnHome = new Button();
@@ -49,8 +47,7 @@
             panelMenu.BorderStyle = BorderStyle.Fixed3D;
             panelMenu.Controls.Add(lblFooter);
             panelMenu.Controls.Add(btnLogout);
-            panelMenu.Controls.Add(btnSupply);
-            panelMenu.Controls.Add(btnStock);
+            panelMenu.Controls.Add(btnStockAndSupply);
             panelMenu.Controls.Add(btnSell);
             panelMenu.Controls.Add(btnPrescriptions);
             panelMenu.Controls.Add(btnHome);
@@ -91,41 +88,23 @@
             btnLogout.UseVisualStyleBackColor = false;
             btnLogout.Click += btnLogout_Click;
             // 
-            // btnSupply
+            // btnStockAndSupply
             // 
-            btnSupply.BackColor = Color.FromArgb(25, 42, 86);
-            btnSupply.Dock = DockStyle.Top;
-            btnSupply.FlatAppearance.BorderSize = 0;
-            btnSupply.FlatStyle = FlatStyle.Flat;
-            btnSupply.Font = new Font("Bahnschrift SemiCondensed", 16.2F, FontStyle.Bold);
-            btnSupply.ForeColor = Color.White;
-            btnSupply.Location = new Point(0, 360);
-            btnSupply.Name = "btnSupply";
-            btnSupply.Padding = new Padding(20, 0, 0, 0);
-            btnSupply.Size = new Size(246, 70);
-            btnSupply.TabIndex = 2;
-            btnSupply.Text = "🚚 Depo / Tedarik";
-            btnSupply.TextAlign = ContentAlignment.MiddleLeft;
-            btnSupply.UseVisualStyleBackColor = false;
-            btnSupply.Click += btnSupply_Click;
-            // 
-            // btnStock
-            // 
-            btnStock.BackColor = Color.FromArgb(25, 42, 86);
-            btnStock.Dock = DockStyle.Top;
-            btnStock.FlatAppearance.BorderSize = 0;
-            btnStock.FlatStyle = FlatStyle.Flat;
-            btnStock.Font = new Font("Bahnschrift SemiCondensed", 16.2F, FontStyle.Bold);
-            btnStock.ForeColor = Color.White;
-            btnStock.Location = new Point(0, 290);
-            btnStock.Name = "btnStock";
-            btnStock.Padding = new Padding(20, 0, 0, 0);
-            btnStock.Size = new Size(246, 70);
-            btnStock.TabIndex = 3;
-            btnStock.Text = "💊 Stok Yönetimi";
-            btnStock.TextAlign = ContentAlignment.MiddleLeft;
-            btnStock.UseVisualStyleBackColor = false;
-            btnStock.Click += btnStock_Click;
+            btnStockAndSupply.BackColor = Color.FromArgb(25, 42, 86);
+            btnStockAndSupply.Dock = DockStyle.Top;
+            btnStockAndSupply.FlatAppearance.BorderSize = 0;
+            btnStockAndSupply.FlatStyle = FlatStyle.Flat;
+            btnStockAndSupply.Font = new Font("Bahnschrift SemiCondensed", 16.2F, FontStyle.Bold);
+            btnStockAndSupply.ForeColor = Color.White;
+            btnStockAndSupply.Location = new Point(0, 290);
+            btnStockAndSupply.Name = "btnStock";
+            btnStockAndSupply.Padding = new Padding(20, 0, 0, 0);
+            btnStockAndSupply.Size = new Size(246, 70);
+            btnStockAndSupply.TabIndex = 3;
+            btnStockAndSupply.Text = "📦 Stok / Tedarik";
+            btnStockAndSupply.TextAlign = ContentAlignment.MiddleLeft;
+            btnStockAndSupply.UseVisualStyleBackColor = false;
+            btnStockAndSupply.Click += PharmacyInventoryControl_Click;
             // 
             // btnSell
             // 

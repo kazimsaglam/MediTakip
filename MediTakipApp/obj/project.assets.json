@@ -3184,11 +3184,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\MediTakipApp.csproj",
+      "projectUniqueName": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\GitHub\\MediTakip\\MediTakipApp\\MediTakipApp.csproj",
       "projectName": "MediTakipApp",
-      "projectPath": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\MediTakipApp.csproj",
+      "projectPath": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\GitHub\\MediTakip\\MediTakipApp\\MediTakipApp.csproj",
       "packagesPath": "C:\\Users\\Kazim\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\obj\\",
+      "outputPath": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\GitHub\\MediTakip\\MediTakipApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

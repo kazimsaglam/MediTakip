@@ -7,7 +7,7 @@ namespace MediTakipApp.Forms.DoctorPanelContent
 {
     public partial class DrugsControl : UserControl
     {
-        private string connStr = @"Server=ROGSTRIX;Database=MediTakipDB;Trusted_Connection=True;TrustServerCertificate=True;";
+        string connStr = "Server=202.61.227.225,1433;Database=metidata;User Id=metidata_user;Password=1q2w3e4r.;Encrypt=False;TrustServerCertificate=True;";
         private Dictionary<Panel, Panel> drugsDetailMap = new Dictionary<Panel, Panel>();
         private Dictionary<Panel, Panel> prescriptionDetailMap = new Dictionary<Panel, Panel>();
         private List<PrescribedDrug> selectedDrugs = new List<PrescribedDrug>();

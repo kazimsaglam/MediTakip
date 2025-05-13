@@ -9,13 +9,12 @@ namespace MediTakipApp.Forms
 {
     public partial class HomeControl : UserControl
     {
-        private string connStr = @"Server=ROGSTRIX;Database=MediTakipDB;Trusted_Connection=True;TrustServerCertificate=True;";
+        string connStr = "Server=202.61.227.225,1433;Database=metidata;User Id=metidata_user;Password=1q2w3e4r.;Encrypt=False;TrustServerCertificate=True;";
         private DataTable allPatients = new();
         private Dictionary<Panel, Panel> cardDetailMap = new();
         private Panel? selectedPatientCard = null;
         private Label? currentToast = null;
         private Timer detailHideTimer = new();
-        private Panel? currentlyHoveredCard = null;
 
         // Sayfalama
         private int currentPage = 1;

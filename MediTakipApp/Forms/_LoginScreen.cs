@@ -6,7 +6,8 @@ namespace MediTakipApp.Forms
     public partial class _LoginScreen : Form
     {
         private bool isPasswordVisible = false;
-        string connStr = @"Server=ROGSTRIX;Database=MediTakipDB;Trusted_Connection=True;TrustServerCertificate=True;";
+        string connStr = "Server=202.61.227.225,1433;Database=metidata;User Id=metidata_user;Password=1q2w3e4r.;Encrypt=False;TrustServerCertificate=True;";
+
 
         public _LoginScreen()
         {

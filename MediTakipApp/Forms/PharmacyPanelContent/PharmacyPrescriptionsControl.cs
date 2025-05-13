@@ -12,6 +12,8 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
 {
     public partial class PharmacyPrescriptionsControl : UserControl
     {
+        string connStr = "Server=202.61.227.225,1433;Database=metidata;User Id=metidata_user;Password=1q2w3e4r.;Encrypt=False;TrustServerCertificate=True;";
+
         public PharmacyPrescriptionsControl()
         {
             InitializeComponent();

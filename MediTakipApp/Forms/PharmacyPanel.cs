@@ -43,8 +43,8 @@ namespace MediTakipApp.Forms
             SetHoverEffects(btnHome);
             SetHoverEffects(btnPrescriptions);
             SetHoverEffects(btnSell);
-            SetHoverEffects(btnStock);
-            SetHoverEffects(btnSupply);
+            SetHoverEffects(btnStockAndSupply);
+            SetHoverEffects(btnStockAndSupply);
 
             SetActiveButton(btnHome);
         }
@@ -73,18 +73,11 @@ namespace MediTakipApp.Forms
         }
 
 
-        private void btnStock_Click(object sender, EventArgs e)
+        private void PharmacyInventoryControl_Click(object sender, EventArgs e)
         {
             lblTitle.Text = "💊 Stok Yönetimi";
-            LoadControl(new PharmacyStockControl());
-            SetActiveButton(btnStock);
-        }
-
-        private void btnSupply_Click(object sender, EventArgs e)
-        {
-            lblTitle.Text = "🚚 Depo / Tedarik";
-            LoadControl(new PharmacySupplyControl());
-            SetActiveButton(btnSupply);
+            LoadControl(new PharmacyInventoryControl());
+            SetActiveButton(btnStockAndSupply);
         }
 
         private void btnLogout_Click(object sender, EventArgs e)

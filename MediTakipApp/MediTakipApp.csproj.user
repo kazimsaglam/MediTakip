@@ -16,16 +16,13 @@
     <Compile Update="Forms\PharmacyPanelContent\PharmacyHomeControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="Forms\PharmacyPanelContent\PharmacyInventoryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Forms\PharmacyPanelContent\PharmacyPrescriptionsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Forms\PharmacyPanelContent\PharmacySellControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Forms\PharmacyPanelContent\PharmacyStockControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Forms\PharmacyPanelContent\PharmacySupplyControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Forms\_LoginScreen.cs">
