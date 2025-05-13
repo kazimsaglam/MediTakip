@@ -1,0 +1,1722 @@
+2024-09-20T10:21:11.192Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-20T10:21:11.385Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-20T10:21:39.201Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-20T10:21:39.394Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-20T10:22:02.287Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-20T10:22:02.480Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-20T10:22:40.168Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-20T10:22:40.366Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-20T10:23:01.615Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-20T10:23:01.807Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-24T00:06:08.592Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-24T00:06:08.868Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-24T01:18:25.381Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-24T01:18:25.658Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-24T01:20:58.880Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-24T01:20:59.144Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-24T01:21:09.545Z [[31merror[39m]: (0 , userModel_1.getNumber) is not a function
+2024-09-24T01:21:40.877Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-24T01:21:41.147Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-24T01:23:45.779Z [[31merror[39m]: Cannot read properties of undefined (reading '0')
+2024-09-24T01:24:39.017Z [[31merror[39m]: Cannot read properties of undefined (reading '0')
+2024-09-24T01:26:37.055Z [[31merror[39m]: Cannot read properties of undefined (reading '0')
+2024-09-24T01:26:40.573Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-24T01:26:40.839Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-24T01:26:47.546Z [[31merror[39m]: Cannot read properties of undefined (reading 'length')
+2024-09-24T01:27:01.617Z [[31merror[39m]: Cannot read properties of undefined (reading 'length')
+2024-09-24T01:27:09.522Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-24T01:27:09.793Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-24T01:27:26.434Z [[31merror[39m]: Cannot read properties of undefined (reading 'length')
+2024-09-24T01:27:42.617Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-24T01:27:42.884Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-24T01:27:50.337Z [[31merror[39m]: Cannot read properties of undefined (reading 'length')
+2024-09-24T01:28:58.536Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-24T01:28:58.810Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-24T01:29:06.725Z [[31merror[39m]: Cannot read properties of undefined (reading 'length')
+2024-09-24T01:29:53.918Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-24T01:29:54.191Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-24T01:29:59.441Z [[31merror[39m]: Cannot read properties of undefined (reading 'length')
+2024-09-24T01:32:05.193Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-24T01:32:05.462Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-24T01:32:12.463Z [[31merror[39m]: undefined is not iterable (cannot read property Symbol(Symbol.iterator))
+2024-09-24T01:33:57.351Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-24T01:33:57.612Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-24T01:34:02.293Z [[31merror[39m]: undefined is not iterable (cannot read property Symbol(Symbol.iterator))
+TypeError: undefined is not iterable (cannot read property Symbol(Symbol.iterator))
+    at Function.from (<anonymous>)
+    at /Users/mustafacicen/Documents/WpConnectApiTs/src/models/userModel.ts:21:18
+    at Generator.next (<anonymous>)
+    at fulfilled (/Users/mustafacicen/Documents/WpConnectApiTs/src/models/userModel.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2024-09-24T01:34:27.592Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-24T01:34:27.863Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-24T01:34:29.741Z [[31merror[39m]: Cannot read properties of undefined (reading '0')
+TypeError: Cannot read properties of undefined (reading '0')
+    at /Users/mustafacicen/Documents/WpConnectApiTs/src/models/userModel.ts:21:28
+    at Generator.next (<anonymous>)
+    at fulfilled (/Users/mustafacicen/Documents/WpConnectApiTs/src/models/userModel.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2024-09-24T01:34:48.522Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-24T01:34:48.787Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-24T01:35:19.562Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-24T01:35:19.828Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-24T01:35:47.587Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-24T01:35:47.856Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-24T01:37:55.005Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-24T01:37:55.286Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-24T01:38:05.399Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-24T01:38:05.669Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-24T01:39:35.831Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-24T01:39:36.103Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-24T01:45:47.026Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-24T01:45:47.304Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-24T01:48:50.620Z [[31merror[39m]: Connection closed
+Error: Connection closed
+    at EventEmitter.<anonymous> (/Users/mustafacicen/Documents/WpConnectApiTs/src/services/whatsappService.ts:47:16)
+    at EventEmitter.emit (node:events:531:35)
+    at EventEmitter.emit (node:domain:488:12)
+    at EventEmitter.<anonymous> (/Users/mustafacicen/Documents/WpConnectApiTs/node_modules/@whiskeysockets/baileys/lib/Utils/event-buffer.js:40:16)
+    at EventEmitter.emit (node:events:519:28)
+    at EventEmitter.emit (node:domain:488:12)
+    at Object.emit (/Users/mustafacicen/Documents/WpConnectApiTs/node_modules/@whiskeysockets/baileys/lib/Utils/event-buffer.js:94:23)
+    at end (/Users/mustafacicen/Documents/WpConnectApiTs/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:267:12)
+    at WebSocketClient.<anonymous> (/Users/mustafacicen/Documents/WpConnectApiTs/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:524:9)
+    at WebSocketClient.emit (node:events:519:28)
+2024-09-24T01:49:01.929Z [[31merror[39m]: Connection closed
+Error: Connection closed
+    at EventEmitter.<anonymous> (/Users/mustafacicen/Documents/WpConnectApiTs/src/services/whatsappService.ts:47:16)
+    at EventEmitter.emit (node:events:531:35)
+    at EventEmitter.emit (node:domain:488:12)
+    at EventEmitter.<anonymous> (/Users/mustafacicen/Documents/WpConnectApiTs/node_modules/@whiskeysockets/baileys/lib/Utils/event-buffer.js:40:16)
+    at EventEmitter.emit (node:events:519:28)
+    at EventEmitter.emit (node:domain:488:12)
+    at Object.emit (/Users/mustafacicen/Documents/WpConnectApiTs/node_modules/@whiskeysockets/baileys/lib/Utils/event-buffer.js:94:23)
+    at end (/Users/mustafacicen/Documents/WpConnectApiTs/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:267:12)
+    at WebSocketClient.<anonymous> (/Users/mustafacicen/Documents/WpConnectApiTs/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:529:9)
+    at WebSocketClient.emit (node:events:519:28)
+2024-09-24T01:49:21.736Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-24T01:49:22.003Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-24T01:49:29.683Z [[31merror[39m]: Connection closed
+Error: Connection closed
+    at EventEmitter.<anonymous> (/Users/mustafacicen/Documents/WpConnectApiTs/src/services/whatsappService.ts:47:16)
+    at EventEmitter.emit (node:events:531:35)
+    at EventEmitter.emit (node:domain:488:12)
+    at EventEmitter.<anonymous> (/Users/mustafacicen/Documents/WpConnectApiTs/node_modules/@whiskeysockets/baileys/lib/Utils/event-buffer.js:40:16)
+    at EventEmitter.emit (node:events:519:28)
+    at EventEmitter.emit (node:domain:488:12)
+    at Object.emit (/Users/mustafacicen/Documents/WpConnectApiTs/node_modules/@whiskeysockets/baileys/lib/Utils/event-buffer.js:94:23)
+    at end (/Users/mustafacicen/Documents/WpConnectApiTs/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:267:12)
+    at WebSocketClient.<anonymous> (/Users/mustafacicen/Documents/WpConnectApiTs/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:529:9)
+    at WebSocketClient.emit (node:events:519:28)
+2024-09-24T01:50:07.874Z [[31merror[39m]: Connection closed
+Error: Connection closed
+    at EventEmitter.<anonymous> (/Users/mustafacicen/Documents/WpConnectApiTs/src/services/whatsappService.ts:47:16)
+    at EventEmitter.emit (node:events:531:35)
+    at EventEmitter.emit (node:domain:488:12)
+    at EventEmitter.<anonymous> (/Users/mustafacicen/Documents/WpConnectApiTs/node_modules/@whiskeysockets/baileys/lib/Utils/event-buffer.js:40:16)
+    at EventEmitter.emit (node:events:519:28)
+    at EventEmitter.emit (node:domain:488:12)
+    at Object.emit (/Users/mustafacicen/Documents/WpConnectApiTs/node_modules/@whiskeysockets/baileys/lib/Utils/event-buffer.js:94:23)
+    at end (/Users/mustafacicen/Documents/WpConnectApiTs/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:267:12)
+    at WebSocketClient.<anonymous> (/Users/mustafacicen/Documents/WpConnectApiTs/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:529:9)
+    at WebSocketClient.emit (node:events:519:28)
+2024-09-24T01:50:51.703Z [[31merror[39m]: Connection closed
+Error: Connection closed
+    at EventEmitter.<anonymous> (/Users/mustafacicen/Documents/WpConnectApiTs/src/services/whatsappService.ts:47:16)
+    at EventEmitter.emit (node:events:531:35)
+    at EventEmitter.emit (node:domain:488:12)
+    at EventEmitter.<anonymous> (/Users/mustafacicen/Documents/WpConnectApiTs/node_modules/@whiskeysockets/baileys/lib/Utils/event-buffer.js:40:16)
+    at EventEmitter.emit (node:events:519:28)
+    at EventEmitter.emit (node:domain:488:12)
+    at Object.emit (/Users/mustafacicen/Documents/WpConnectApiTs/node_modules/@whiskeysockets/baileys/lib/Utils/event-buffer.js:94:23)
+    at end (/Users/mustafacicen/Documents/WpConnectApiTs/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:267:12)
+    at WebSocketClient.<anonymous> (/Users/mustafacicen/Documents/WpConnectApiTs/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:529:9)
+    at WebSocketClient.emit (node:events:519:28)
+2024-09-24T01:59:38.918Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-24T01:59:39.189Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-24T02:00:10.038Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-24T02:00:10.307Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-24T02:01:00.508Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-24T02:01:00.779Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-24T02:04:51.063Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-24T02:04:51.333Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-24T02:05:55.842Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-24T02:05:56.115Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-26T21:52:08.862Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-26T21:52:09.186Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-26T22:29:21.867Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-26T22:29:22.326Z [[31merror[39m]: Connected to MSSQL database Login failed for user 'zMustafa'.  Reason: The password of the account must be changed.
+ConnectionError: Login failed for user 'zMustafa'.  Reason: The password of the account must be changed.
+    at connectListener (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/tedious/connection-pool.js:85:17)
+    at Connection.onConnect (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1784:9)
+    at Object.onceWrapper (node:events:634:26)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:3434:18
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2024-09-26T22:30:26.375Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-26T22:30:26.893Z [[31merror[39m]: Connected to MSSQL database Login failed for user 'zMustafa'.  Reason: The password of the account must be changed.
+ConnectionError: Login failed for user 'zMustafa'.  Reason: The password of the account must be changed.
+    at connectListener (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/tedious/connection-pool.js:85:17)
+    at Connection.onConnect (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1784:9)
+    at Object.onceWrapper (node:events:634:26)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:3434:18
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2024-09-26T22:31:48.047Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-26T22:31:48.513Z [[31merror[39m]: Connected to MSSQL database Login failed for user 'zMustafa'.
+ConnectionError: Login failed for user 'zMustafa'.
+    at connectListener (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/tedious/connection-pool.js:85:17)
+    at Connection.onConnect (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1784:9)
+    at Object.onceWrapper (node:events:634:26)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:3434:18
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2024-09-26T22:32:05.343Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-26T22:32:05.802Z [[31merror[39m]: Connected to MSSQL database Login failed for user 'zMustafa'.
+ConnectionError: Login failed for user 'zMustafa'.
+    at connectListener (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/tedious/connection-pool.js:85:17)
+    at Connection.onConnect (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1784:9)
+    at Object.onceWrapper (node:events:634:26)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:3434:18
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2024-09-26T22:32:21.759Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-26T22:32:22.228Z [[31merror[39m]: Connected to MSSQL database Login failed for user 'zMustafa'.
+ConnectionError: Login failed for user 'zMustafa'.
+    at connectListener (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/tedious/connection-pool.js:85:17)
+    at Connection.onConnect (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1784:9)
+    at Object.onceWrapper (node:events:634:26)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:3434:18
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2024-09-26T22:32:47.567Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-26T22:32:48.107Z [[31merror[39m]: Connected to MSSQL database Login failed for user 'zMustafa'.
+ConnectionError: Login failed for user 'zMustafa'.
+    at connectListener (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/tedious/connection-pool.js:85:17)
+    at Connection.onConnect (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1784:9)
+    at Object.onceWrapper (node:events:634:26)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:3434:18
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2024-09-26T22:33:58.624Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-26T22:33:59.133Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-26T22:34:12.978Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-26T22:34:13.473Z [[31merror[39m]: Connected to MSSQL database Login failed for user 'zMustafa'.
+ConnectionError: Login failed for user 'zMustafa'.
+    at connectListener (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/tedious/connection-pool.js:85:17)
+    at Connection.onConnect (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1784:9)
+    at Object.onceWrapper (node:events:634:26)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:3434:18
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2024-09-26T22:34:59.083Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-26T22:34:59.601Z [[31merror[39m]: Connected to MSSQL database Login failed for user 'zMustafa'.
+ConnectionError: Login failed for user 'zMustafa'.
+    at connectListener (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/tedious/connection-pool.js:85:17)
+    at Connection.onConnect (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1784:9)
+    at Object.onceWrapper (node:events:634:26)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:3434:18
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2024-09-26T22:35:46.686Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-26T22:35:47.224Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-26T22:37:00.350Z [[31merror[39m]: Giriş yapılırken hata oluştu. Invalid object name 'VIN_WEBSITE'.
+RequestError: Invalid object name 'VIN_WEBSITE'.
+    at handleError (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/tedious/request.js:384:15)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at RequestTokenHandler.onErrorMessage (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/handler.ts:386:21)
+    at Readable.<anonymous> (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/token-stream-parser.ts:23:55)
+    at Readable.emit (node:events:519:28)
+    at Readable.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushObjectMode (node:internal/streams/readable:538:3)
+2024-09-26T22:37:34.468Z [[31merror[39m]: Error creating user Invalid object name 'VIN_WEBSITE'.
+RequestError: Invalid object name 'VIN_WEBSITE'.
+    at handleError (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/tedious/request.js:384:15)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at RequestTokenHandler.onErrorMessage (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/handler.ts:386:21)
+    at Readable.<anonymous> (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/token-stream-parser.ts:23:55)
+    at Readable.emit (node:events:519:28)
+    at Readable.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushObjectMode (node:internal/streams/readable:538:3)
+2024-09-26T22:37:52.425Z [[31merror[39m]: Error creating user Invalid object name 'VIN_WEBSITE'.
+RequestError: Invalid object name 'VIN_WEBSITE'.
+    at handleError (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/tedious/request.js:384:15)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at RequestTokenHandler.onErrorMessage (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/handler.ts:386:21)
+    at Readable.<anonymous> (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/token-stream-parser.ts:23:55)
+    at Readable.emit (node:events:519:28)
+    at Readable.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushObjectMode (node:internal/streams/readable:538:3)
+2024-09-26T22:37:55.017Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-26T22:37:55.569Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-26T22:37:57.933Z [[31merror[39m]: Error creating user The SELECT permission was denied on the object 'USERS', database 'dbFlight', schema 'dbo'.
+RequestError: The SELECT permission was denied on the object 'USERS', database 'dbFlight', schema 'dbo'.
+    at handleError (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/tedious/request.js:384:15)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at RequestTokenHandler.onErrorMessage (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/handler.ts:386:21)
+    at Readable.<anonymous> (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/token-stream-parser.ts:23:55)
+    at Readable.emit (node:events:519:28)
+    at Readable.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushObjectMode (node:internal/streams/readable:538:3)
+2024-09-26T22:38:19.434Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-26T22:38:20.022Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-26T22:38:23.696Z [[31merror[39m]: Error creating user Invalid object name 'dbo.USERS'.
+RequestError: Invalid object name 'dbo.USERS'.
+    at handleError (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/tedious/request.js:384:15)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at RequestTokenHandler.onErrorMessage (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/handler.ts:386:21)
+    at Readable.<anonymous> (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/token-stream-parser.ts:23:55)
+    at Readable.emit (node:events:519:28)
+    at Readable.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushObjectMode (node:internal/streams/readable:538:3)
+2024-09-26T22:38:36.884Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-26T22:38:37.429Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-26T22:38:38.918Z [[31merror[39m]: Error creating user The SELECT permission was denied on the object 'USERS', database 'dbFlight', schema 'dbo'.
+RequestError: The SELECT permission was denied on the object 'USERS', database 'dbFlight', schema 'dbo'.
+    at handleError (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/tedious/request.js:384:15)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at RequestTokenHandler.onErrorMessage (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/handler.ts:386:21)
+    at Readable.<anonymous> (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/token-stream-parser.ts:23:55)
+    at Readable.emit (node:events:519:28)
+    at Readable.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushObjectMode (node:internal/streams/readable:538:3)
+2024-09-26T22:40:15.120Z [[31merror[39m]: Error creating user The SELECT permission was denied on the object 'USERS', database 'dbFlight', schema 'dbo'.
+RequestError: The SELECT permission was denied on the object 'USERS', database 'dbFlight', schema 'dbo'.
+    at handleError (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/tedious/request.js:384:15)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at RequestTokenHandler.onErrorMessage (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/handler.ts:386:21)
+    at Readable.<anonymous> (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/token-stream-parser.ts:23:55)
+    at Readable.emit (node:events:519:28)
+    at Readable.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushObjectMode (node:internal/streams/readable:538:3)
+2024-09-26T22:40:17.339Z [[31merror[39m]: Error creating user The SELECT permission was denied on the object 'USERS', database 'dbFlight', schema 'dbo'.
+RequestError: The SELECT permission was denied on the object 'USERS', database 'dbFlight', schema 'dbo'.
+    at handleError (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/tedious/request.js:384:15)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at RequestTokenHandler.onErrorMessage (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/handler.ts:386:21)
+    at Readable.<anonymous> (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/token-stream-parser.ts:23:55)
+    at Readable.emit (node:events:519:28)
+    at Readable.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushObjectMode (node:internal/streams/readable:538:3)
+2024-09-26T22:41:23.521Z [[31merror[39m]: Error creating user Cannot read properties of undefined (reading '0')
+TypeError: Cannot read properties of undefined (reading '0')
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/src/models/userModel.ts:19:26
+    at Generator.next (<anonymous>)
+    at fulfilled (/Users/mustafacicen/Documents/byaras/Flight Project/api/src/models/userModel.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2024-09-26T22:43:14.748Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-26T22:43:15.389Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-26T22:43:26.047Z [[31merror[39m]: Giriş yapılırken hata oluştu. data and hash arguments required
+Error: data and hash arguments required
+    at Object.compare (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/bcrypt/bcrypt.js:208:17)
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/bcrypt/promises.js:29:12
+    at new Promise (<anonymous>)
+    at Object.module.exports.promise (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/bcrypt/promises.js:20:12)
+    at Object.compare (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/bcrypt/bcrypt.js:204:25)
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/src/controllers/authController.ts:34:34
+    at Generator.next (<anonymous>)
+    at fulfilled (/Users/mustafacicen/Documents/byaras/Flight Project/api/src/controllers/authController.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2024-09-26T22:44:04.844Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-26T22:44:05.355Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-26T22:44:07.108Z [[31merror[39m]: Giriş yapılırken hata oluştu. data and hash arguments required
+Error: data and hash arguments required
+    at Object.compare (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/bcrypt/bcrypt.js:208:17)
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/bcrypt/promises.js:29:12
+    at new Promise (<anonymous>)
+    at Object.module.exports.promise (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/bcrypt/promises.js:20:12)
+    at Object.compare (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/bcrypt/bcrypt.js:204:25)
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/src/controllers/authController.ts:35:34
+    at Generator.next (<anonymous>)
+    at fulfilled (/Users/mustafacicen/Documents/byaras/Flight Project/api/src/controllers/authController.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2024-09-26T22:45:49.777Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-26T22:45:50.329Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-26T22:47:19.561Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-26T22:47:20.139Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-26T22:47:37.363Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-26T22:47:37.951Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-26T22:48:47.562Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-26T22:48:48.135Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-26T22:51:11.682Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-26T22:51:12.289Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-29T16:40:11.102Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T16:40:11.666Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-29T18:44:00.114Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T18:44:00.679Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-29T18:53:42.675Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T18:53:43.239Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-29T19:00:05.338Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T19:00:07.965Z [[31merror[39m]: Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/src/models/flightModel.ts:22:32
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/src/models/flightModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/Flight Project/api/src/models/flightModel.ts:4:12)
+2024-09-29T19:00:30.199Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T19:00:42.638Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-29T19:00:48.856Z [[31merror[39m]: The SELECT permission was denied on the object 'Flights', database 'dbFlight', schema 'dbo'.
+RequestError: The SELECT permission was denied on the object 'Flights', database 'dbFlight', schema 'dbo'.
+    at handleError (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/tedious/request.js:384:15)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at RequestTokenHandler.onErrorMessage (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/handler.ts:386:21)
+    at Readable.<anonymous> (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/token-stream-parser.ts:23:55)
+    at Readable.emit (node:events:519:28)
+    at Readable.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushObjectMode (node:internal/streams/readable:538:3)
+2024-09-29T19:05:21.123Z [[31merror[39m]: The SELECT permission was denied on the object 'Flights', database 'dbFlight', schema 'dbo'.
+RequestError: The SELECT permission was denied on the object 'Flights', database 'dbFlight', schema 'dbo'.
+    at handleError (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/tedious/request.js:384:15)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at RequestTokenHandler.onErrorMessage (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/handler.ts:386:21)
+    at Readable.<anonymous> (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/token-stream-parser.ts:23:55)
+    at Readable.emit (node:events:519:28)
+    at Readable.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushObjectMode (node:internal/streams/readable:538:3)
+2024-09-29T19:05:42.535Z [[31merror[39m]: The SELECT permission was denied on the object 'Flights', database 'dbFlight', schema 'dbo'.
+RequestError: The SELECT permission was denied on the object 'Flights', database 'dbFlight', schema 'dbo'.
+    at handleError (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/tedious/request.js:384:15)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at RequestTokenHandler.onErrorMessage (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/handler.ts:386:21)
+    at Readable.<anonymous> (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/token-stream-parser.ts:23:55)
+    at Readable.emit (node:events:519:28)
+    at Readable.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushObjectMode (node:internal/streams/readable:538:3)
+2024-09-29T19:05:43.263Z [[31merror[39m]: The SELECT permission was denied on the object 'Flights', database 'dbFlight', schema 'dbo'.
+RequestError: The SELECT permission was denied on the object 'Flights', database 'dbFlight', schema 'dbo'.
+    at handleError (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/tedious/request.js:384:15)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at RequestTokenHandler.onErrorMessage (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/handler.ts:386:21)
+    at Readable.<anonymous> (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/token-stream-parser.ts:23:55)
+    at Readable.emit (node:events:519:28)
+    at Readable.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushObjectMode (node:internal/streams/readable:538:3)
+2024-09-29T19:06:36.026Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T19:06:36.534Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-29T19:06:40.965Z [[31merror[39m]: The SELECT permission was denied on the object 'Flights', database 'dbFlight', schema 'dbo'.
+RequestError: The SELECT permission was denied on the object 'Flights', database 'dbFlight', schema 'dbo'.
+    at handleError (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/tedious/request.js:384:15)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at RequestTokenHandler.onErrorMessage (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/handler.ts:386:21)
+    at Readable.<anonymous> (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/token-stream-parser.ts:23:55)
+    at Readable.emit (node:events:519:28)
+    at Readable.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushObjectMode (node:internal/streams/readable:538:3)
+2024-09-29T19:08:45.137Z [[31merror[39m]: The SELECT permission was denied on the object 'Flights', database 'dbFlight', schema 'dbo'.
+RequestError: The SELECT permission was denied on the object 'Flights', database 'dbFlight', schema 'dbo'.
+    at handleError (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/tedious/request.js:384:15)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at RequestTokenHandler.onErrorMessage (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/handler.ts:386:21)
+    at Readable.<anonymous> (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/token-stream-parser.ts:23:55)
+    at Readable.emit (node:events:519:28)
+    at Readable.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushObjectMode (node:internal/streams/readable:538:3)
+2024-09-29T19:09:05.671Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T19:09:06.215Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-29T19:12:28.774Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T19:12:29.312Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-29T19:28:17.886Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T19:28:18.409Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-29T19:37:58.405Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T19:37:59.032Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-29T19:50:21.124Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T19:50:21.760Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-29T19:50:45.431Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T19:50:46.042Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-29T19:51:29.153Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T19:51:29.821Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-29T19:51:51.463Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T19:51:52.027Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-29T19:52:56.998Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T19:52:57.565Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-29T19:53:50.084Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T19:53:50.858Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-29T19:55:41.013Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T19:55:41.668Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-29T19:56:22.268Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T19:56:22.921Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-29T19:56:37.474Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T19:56:37.725Z [[31merror[39m]: Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/src/models/flightModel.ts:31:32
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/src/models/flightModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/Flight Project/api/src/models/flightModel.ts:4:12)
+2024-09-29T19:56:38.238Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-29T19:57:57.361Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T19:57:58.020Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-29T19:58:23.265Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T19:58:23.649Z [[31merror[39m]: Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/src/models/flightModel.ts:31:32
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/src/models/flightModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/Flight Project/api/src/models/flightModel.ts:4:12)
+2024-09-29T19:58:23.869Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-29T19:58:38.295Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T19:58:38.924Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-29T19:58:59.233Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T19:58:59.896Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-29T20:00:48.857Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T20:00:49.472Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-29T20:02:39.230Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T20:02:39.907Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-29T20:03:57.939Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T20:03:58.534Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-29T20:04:05.443Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T20:04:06.077Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-29T21:03:11.309Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T21:03:11.870Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-29T21:03:23.961Z [[31merror[39m]: Must declare the scalar variable "@landing".
+RequestError: Must declare the scalar variable "@landing".
+    at handleError (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/tedious/request.js:384:15)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at RequestTokenHandler.onErrorMessage (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/handler.ts:386:21)
+    at Readable.<anonymous> (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/token-stream-parser.ts:23:55)
+    at Readable.emit (node:events:519:28)
+    at Readable.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushObjectMode (node:internal/streams/readable:538:3)
+2024-09-29T21:03:50.564Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T21:03:51.179Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-29T21:03:56.880Z [[31merror[39m]: Invalid column name 'INSERTED'.
+RequestError: Invalid column name 'INSERTED'.
+    at handleError (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/tedious/request.js:384:15)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at RequestTokenHandler.onErrorMessage (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/handler.ts:386:21)
+    at Readable.<anonymous> (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/tedious/src/token/token-stream-parser.ts:23:55)
+    at Readable.emit (node:events:519:28)
+    at Readable.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushObjectMode (node:internal/streams/readable:538:3)
+2024-09-29T21:04:34.902Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T21:04:35.484Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-29T21:08:04.851Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T21:08:05.451Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-29T23:59:28.528Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-29T23:59:29.039Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T00:00:30.914Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T00:00:31.521Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T00:00:54.091Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T00:00:54.674Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T00:01:17.444Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T00:01:17.987Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T00:01:40.296Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T00:01:40.809Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T00:01:58.176Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T00:01:58.712Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T00:02:12.024Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T00:02:12.618Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T00:02:25.188Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T00:02:25.725Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T00:03:31.136Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T00:03:31.697Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T00:03:46.691Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T00:03:47.226Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T00:04:23.489Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T00:04:24.027Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T00:12:54.719Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T00:12:55.308Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T00:14:40.593Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T00:14:41.176Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T00:16:11.452Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T00:16:12.070Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T00:16:35.427Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T00:16:36.092Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T00:18:32.250Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T00:18:32.858Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T00:19:54.809Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T00:19:55.403Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T00:41:56.411Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T00:41:56.930Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T00:46:15.625Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T00:46:16.130Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T01:15:59.797Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T01:16:00.309Z [[31merror[39m]: Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/Flight Project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/src/models/flightModel.ts:62:6
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/src/models/flightModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/Flight Project/api/src/models/flightModel.ts:4:12)
+2024-09-30T01:16:00.384Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T01:16:16.107Z [[31merror[39m]: Cannot read properties of undefined (reading 'push')
+TypeError: Cannot read properties of undefined (reading 'push')
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/src/services/flightService.ts:103:37
+    at Array.reduce (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/src/services/flightService.ts:81:73
+    at Generator.next (<anonymous>)
+    at fulfilled (/Users/mustafacicen/Documents/byaras/Flight Project/api/src/services/flightService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2024-09-30T01:17:04.559Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T01:17:05.092Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T01:17:37.660Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T01:17:38.249Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T01:18:28.557Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T01:18:29.104Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T01:18:40.033Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T01:18:40.716Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T01:19:56.284Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T01:19:56.835Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T01:22:13.599Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T01:22:14.255Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T01:22:47.855Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T01:22:48.418Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T01:22:54.922Z [[31merror[39m]: Cannot read properties of undefined (reading 'push')
+TypeError: Cannot read properties of undefined (reading 'push')
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/src/services/flightService.ts:103:37
+    at Array.reduce (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/src/services/flightService.ts:81:73
+    at Generator.next (<anonymous>)
+    at fulfilled (/Users/mustafacicen/Documents/byaras/Flight Project/api/src/services/flightService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2024-09-30T01:23:03.382Z [[31merror[39m]: Cannot read properties of undefined (reading 'push')
+TypeError: Cannot read properties of undefined (reading 'push')
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/src/services/flightService.ts:103:37
+    at Array.reduce (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/src/services/flightService.ts:81:73
+    at Generator.next (<anonymous>)
+    at fulfilled (/Users/mustafacicen/Documents/byaras/Flight Project/api/src/services/flightService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2024-09-30T01:23:05.405Z [[31merror[39m]: Cannot read properties of undefined (reading 'push')
+TypeError: Cannot read properties of undefined (reading 'push')
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/src/services/flightService.ts:103:37
+    at Array.reduce (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/src/services/flightService.ts:81:73
+    at Generator.next (<anonymous>)
+    at fulfilled (/Users/mustafacicen/Documents/byaras/Flight Project/api/src/services/flightService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2024-09-30T01:23:40.866Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T01:23:41.396Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T01:23:43.323Z [[31merror[39m]: Cannot read properties of undefined (reading 'push')
+TypeError: Cannot read properties of undefined (reading 'push')
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/src/services/flightService.ts:103:37
+    at Array.reduce (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/Flight Project/api/src/services/flightService.ts:81:73
+    at Generator.next (<anonymous>)
+    at fulfilled (/Users/mustafacicen/Documents/byaras/Flight Project/api/src/services/flightService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2024-09-30T01:24:56.128Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T01:24:56.712Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T01:25:36.222Z [[31merror[39m]: Cannot read properties of undefined (reading 'push')
+TypeError: Cannot read properties of undefined (reading 'push')
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/services/flightService.ts:103:37
+    at Array.reduce (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/services/flightService.ts:81:73
+    at Generator.next (<anonymous>)
+    at fulfilled (/Users/mustafacicen/Documents/byaras/flight_project/api/src/services/flightService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2024-09-30T01:26:14.369Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T01:26:14.921Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T01:37:39.188Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T01:37:39.761Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T17:02:03.835Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T17:02:04.288Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T17:05:15.307Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T17:05:15.751Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T17:06:11.706Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T17:06:12.117Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T17:08:51.151Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T17:08:51.615Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T17:09:21.737Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T17:09:22.191Z [[32minfo[39m]: Connected to MSSQL database
+2024-09-30T17:10:12.599Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-09-30T17:10:13.041Z [[32minfo[39m]: Connected to MSSQL database
+2024-10-08T09:16:38.972Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-10-08T09:16:39.662Z [[32minfo[39m]: Connected to MSSQL database
+2024-10-27T11:36:43.876Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-10-27T11:36:44.337Z [[32minfo[39m]: Connected to MSSQL database
+2024-10-29T14:27:23.582Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-10-29T14:27:24.249Z [[32minfo[39m]: Connected to MSSQL database
+2024-11-26T20:35:15.319Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-11-26T20:36:30.350Z [[31merror[39m]: Connected to MSSQL database Failed to connect to 89.58.27.201:21458 - Could not connect (sequence)
+ConnectionError: Failed to connect to 89.58.27.201:21458 - Could not connect (sequence)
+    at connectListener (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/connection-pool.js:85:17)
+    at Connection.onConnect (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tedious/src/connection.ts:1784:9)
+    at Object.onceWrapper (node:events:634:26)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at Connection.socketError (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tedious/src/connection.ts:2334:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tedious/src/connection.ts:2123:37
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+2024-11-26T20:37:01.891Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-11-26T20:37:04.103Z [[31merror[39m]: Giriş yapılırken hata oluştu. Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:7:6
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:4:12)
+2024-11-26T20:38:16.937Z [[31merror[39m]: Connected to MSSQL database Failed to connect to 89.58.27.201:21458 - Could not connect (sequence)
+ConnectionError: Failed to connect to 89.58.27.201:21458 - Could not connect (sequence)
+    at connectListener (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/connection-pool.js:85:17)
+    at Connection.onConnect (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tedious/src/connection.ts:1784:9)
+    at Object.onceWrapper (node:events:634:26)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at Connection.socketError (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tedious/src/connection.ts:2334:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tedious/src/connection.ts:2123:37
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+2024-11-27T22:32:51.759Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-11-27T22:32:56.459Z [[31merror[39m]: Giriş yapılırken hata oluştu. Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:7:6
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:4:12)
+2024-11-27T22:32:57.062Z [[31merror[39m]: Giriş yapılırken hata oluştu. Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:7:6
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:4:12)
+2024-11-27T22:33:00.674Z [[31merror[39m]: Giriş yapılırken hata oluştu. Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:7:6
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:4:12)
+2024-11-27T22:34:06.788Z [[31merror[39m]: Connected to MSSQL database Failed to connect to 89.58.27.201:21458 - Could not connect (sequence)
+ConnectionError: Failed to connect to 89.58.27.201:21458 - Could not connect (sequence)
+    at connectListener (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/connection-pool.js:85:17)
+    at Connection.onConnect (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tedious/src/connection.ts:1784:9)
+    at Object.onceWrapper (node:events:634:26)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at Connection.socketError (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tedious/src/connection.ts:2334:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tedious/src/connection.ts:2123:37
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+2024-11-27T22:50:57.775Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-11-27T22:50:58.176Z [[31merror[39m]: Connected to MSSQL database Login failed for user 'zMustafa'.  Reason: The password of the account has expired.
+ConnectionError: Login failed for user 'zMustafa'.  Reason: The password of the account has expired.
+    at connectListener (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/connection-pool.js:85:17)
+    at Connection.onConnect (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tedious/src/connection.ts:1784:9)
+    at Object.onceWrapper (node:events:634:26)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tedious/src/connection.ts:3434:18
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2024-11-27T22:51:00.864Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-11-27T22:51:01.274Z [[31merror[39m]: Connected to MSSQL database Login failed for user 'zMustafa'.  Reason: The password of the account has expired.
+ConnectionError: Login failed for user 'zMustafa'.  Reason: The password of the account has expired.
+    at connectListener (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/connection-pool.js:85:17)
+    at Connection.onConnect (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tedious/src/connection.ts:1784:9)
+    at Object.onceWrapper (node:events:634:26)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tedious/src/connection.ts:3434:18
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2024-11-27T22:52:28.461Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-11-27T22:52:28.908Z [[32minfo[39m]: Connected to MSSQL database
+2024-11-27T22:57:11.579Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-11-27T22:57:12.021Z [[32minfo[39m]: Connected to MSSQL database
+2024-11-27T23:10:35.878Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-11-27T23:10:36.320Z [[32minfo[39m]: Connected to MSSQL database
+2024-11-27T23:15:06.195Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-11-27T23:15:06.645Z [[32minfo[39m]: Connected to MSSQL database
+2024-11-27T23:25:09.202Z [[31merror[39m]: Must declare the scalar variable "@currencyType".
+RequestError: Must declare the scalar variable "@currencyType".
+    at handleError (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:384:15)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at RequestTokenHandler.onErrorMessage (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tedious/src/token/handler.ts:386:21)
+    at Readable.<anonymous> (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tedious/src/token/token-stream-parser.ts:23:55)
+    at Readable.emit (node:events:519:28)
+    at Readable.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushObjectMode (node:internal/streams/readable:538:3)
+2024-11-27T23:25:14.669Z [[31merror[39m]: Must declare the scalar variable "@currencyType".
+RequestError: Must declare the scalar variable "@currencyType".
+    at handleError (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:384:15)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at RequestTokenHandler.onErrorMessage (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tedious/src/token/handler.ts:386:21)
+    at Readable.<anonymous> (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tedious/src/token/token-stream-parser.ts:23:55)
+    at Readable.emit (node:events:519:28)
+    at Readable.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushObjectMode (node:internal/streams/readable:538:3)
+2024-11-27T23:25:58.242Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-11-27T23:25:58.714Z [[32minfo[39m]: Connected to MSSQL database
+2024-11-27T23:42:16.439Z [[31merror[39m]: operation timed out for an unknown reason
+Error: operation timed out for an unknown reason
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tarn/dist/PendingOperation.js:17:27
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:555:9)
+    at processTimers (node:internal/timers:529:7)
+2024-11-27T23:42:16.447Z [[31merror[39m]: operation timed out for an unknown reason
+Error: operation timed out for an unknown reason
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tarn/dist/PendingOperation.js:17:27
+2024-11-27T23:42:33.389Z [[31merror[39m]: operation timed out for an unknown reason
+Error: operation timed out for an unknown reason
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tarn/dist/PendingOperation.js:17:27
+2024-11-27T23:42:49.704Z [[31merror[39m]: operation timed out for an unknown reason
+Error: operation timed out for an unknown reason
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tarn/dist/PendingOperation.js:17:27
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:555:9)
+    at processTimers (node:internal/timers:529:7)
+2024-11-27T23:44:00.318Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-11-27T23:44:00.981Z [[31merror[39m]: Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:53:32
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:4:12)
+2024-11-27T23:44:01.306Z [[31merror[39m]: Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:53:32
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:4:12)
+2024-11-27T23:44:02.098Z [[31merror[39m]: Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:53:32
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:4:12)
+2024-11-27T23:44:02.711Z [[31merror[39m]: Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:53:32
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:4:12)
+2024-11-27T23:44:02.840Z [[31merror[39m]: Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:53:32
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:4:12)
+2024-11-27T23:44:02.996Z [[31merror[39m]: Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:53:32
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:4:12)
+2024-11-27T23:44:03.146Z [[31merror[39m]: Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:53:32
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:4:12)
+2024-11-27T23:44:03.287Z [[31merror[39m]: Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:53:32
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:4:12)
+2024-11-27T23:44:03.431Z [[31merror[39m]: Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:53:32
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:4:12)
+2024-11-27T23:44:03.563Z [[31merror[39m]: Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:53:32
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:4:12)
+2024-11-27T23:44:03.707Z [[31merror[39m]: Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:53:32
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:4:12)
+2024-11-27T23:44:03.866Z [[31merror[39m]: Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:53:32
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:4:12)
+2024-11-27T23:44:04.035Z [[31merror[39m]: Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:53:32
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:4:12)
+2024-11-27T23:44:04.188Z [[31merror[39m]: Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:53:32
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:4:12)
+2024-11-27T23:44:04.340Z [[31merror[39m]: Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:53:32
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:4:12)
+2024-11-27T23:44:04.471Z [[31merror[39m]: Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:53:32
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:4:12)
+2024-11-27T23:44:04.613Z [[31merror[39m]: Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:53:32
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:4:12)
+2024-11-27T23:44:04.801Z [[31merror[39m]: Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:53:32
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:4:12)
+2024-11-27T23:44:04.967Z [[31merror[39m]: Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:53:32
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:4:12)
+2024-11-27T23:44:05.120Z [[31merror[39m]: Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:53:32
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:4:12)
+2024-11-27T23:44:05.272Z [[31merror[39m]: Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:53:32
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:4:12)
+2024-11-27T23:44:05.690Z [[31merror[39m]: Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:53:32
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:4:12)
+2024-11-27T23:44:05.827Z [[31merror[39m]: Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:53:32
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:4:12)
+2024-11-27T23:44:35.419Z [[31merror[39m]: Connected to MSSQL database Failed to connect to 89.58.27.201:21458 - Could not connect (sequence)
+ConnectionError: Failed to connect to 89.58.27.201:21458 - Could not connect (sequence)
+    at connectListener (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/connection-pool.js:85:17)
+    at Connection.onConnect (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tedious/src/connection.ts:1784:9)
+    at Object.onceWrapper (node:events:634:26)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tedious/src/connection.ts:1927:18)
+    at Connection.socketError (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tedious/src/connection.ts:2334:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/tedious/src/connection.ts:2123:37
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+2024-11-27T23:49:59.240Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-11-27T23:49:59.746Z [[32minfo[39m]: Connected to MSSQL database
+2024-11-27T23:50:05.659Z [[31merror[39m]: Cannot read properties of undefined (reading '0')
+TypeError: Cannot read properties of undefined (reading '0')
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:39:61
+    at Generator.next (<anonymous>)
+    at fulfilled (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2024-11-27T23:50:25.047Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-11-27T23:50:25.483Z [[32minfo[39m]: Connected to MSSQL database
+2024-11-30T11:57:49.400Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-11-30T11:57:52.578Z [[31merror[39m]: Giriş yapılırken hata oluştu. Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:7:6
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:4:12)
+2024-11-30T11:58:19.078Z [[31merror[39m]: Giriş yapılırken hata oluştu. Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:7:6
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:4:12)
+2024-11-30T11:58:19.524Z [[31merror[39m]: Giriş yapılırken hata oluştu. Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:7:6
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:4:12)
+2024-11-30T11:58:19.668Z [[31merror[39m]: Giriş yapılırken hata oluştu. Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:7:6
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:4:12)
+2024-11-30T11:58:19.816Z [[31merror[39m]: Giriş yapılırken hata oluştu. Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:7:6
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:4:12)
+2024-11-30T11:58:19.968Z [[31merror[39m]: Giriş yapılırken hata oluştu. Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:7:6
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:4:12)
+2024-11-30T11:58:20.122Z [[31merror[39m]: Giriş yapılırken hata oluştu. Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:7:6
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:4:12)
+2024-11-30T11:58:20.264Z [[31merror[39m]: Giriş yapılırken hata oluştu. Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:7:6
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:4:12)
+2024-11-30T11:58:28.556Z [[31merror[39m]: Giriş yapılırken hata oluştu. Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:7:6
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/userModel.ts:4:12)
+2024-11-30T12:03:08.508Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-11-30T12:03:08.970Z [[32minfo[39m]: Connected to MSSQL database
+2024-12-15T15:34:54.987Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-15T15:34:55.437Z [[32minfo[39m]: Connected to MSSQL database
+2024-12-15T15:57:01.888Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-15T15:57:02.317Z [[32minfo[39m]: Connected to MSSQL database
+2024-12-15T15:57:51.361Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-15T15:57:51.792Z [[32minfo[39m]: Connected to MSSQL database
+2024-12-15T15:58:12.414Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-15T15:58:12.827Z [[32minfo[39m]: Connected to MSSQL database
+2024-12-15T15:59:02.984Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-15T15:59:03.422Z [[32minfo[39m]: Connected to MSSQL database
+2024-12-15T16:00:37.588Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-15T16:00:38.060Z [[32minfo[39m]: Connected to MSSQL database
+2024-12-15T16:01:15.238Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-15T16:01:15.672Z [[32minfo[39m]: Connected to MSSQL database
+2024-12-15T16:02:20.850Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-15T16:02:21.283Z [[32minfo[39m]: Connected to MSSQL database
+2024-12-15T16:03:45.104Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-15T16:03:45.569Z [[31merror[39m]: Connection is closed.
+ConnectionError: Connection is closed.
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:497:37)
+    at Request._query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/tedious/request.js:363:11)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:461:12
+    at new Promise (<anonymous>)
+    at Request.query (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/mssql/lib/base/request.js:460:12)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.js:59:10
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.js:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/models/flightModel.js:4:12)
+2024-12-15T16:03:45.670Z [[32minfo[39m]: Connected to MSSQL database
+2024-12-15T16:04:33.696Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-15T16:04:34.114Z [[32minfo[39m]: Connected to MSSQL database
+2024-12-15T16:12:08.947Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-15T16:12:09.401Z [[32minfo[39m]: Connected to MSSQL database
+2024-12-15T16:15:08.946Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-15T16:15:09.393Z [[32minfo[39m]: Connected to MSSQL database
+2024-12-15T16:15:47.986Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-15T16:15:48.434Z [[32minfo[39m]: Connected to MSSQL database
+2024-12-15T16:15:57.275Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-15T16:15:57.738Z [[32minfo[39m]: Connected to MSSQL database
+2024-12-15T16:17:34.827Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-15T16:17:35.287Z [[32minfo[39m]: Connected to MSSQL database
+2024-12-16T22:26:13.324Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-16T22:26:13.737Z [[32minfo[39m]: Connected to MSSQL database
+2024-12-16T22:29:10.024Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-16T22:29:10.438Z [[32minfo[39m]: Connected to MSSQL database
+2024-12-16T22:31:56.087Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-16T22:31:56.510Z [[32minfo[39m]: Connected to MSSQL database
+2024-12-16T22:32:26.008Z [[31merror[39m]: Invalid URL
+TypeError: Invalid URL
+    at new URL (node:internal/url:816:29)
+    at new HttpsProxyAgent (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/https-proxy-agent/src/index.ts:54:44)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/services/flightService.js:64:23
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/services/flightService.js:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/services/flightService.js:4:12)
+    at getAutoCompleteTextService (/Users/mustafacicen/Documents/byaras/flight_project/api/src/services/flightService.js:61:46)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/controllers/flightController.js:116:79
+    at Generator.next (<anonymous>)
+2024-12-16T22:32:31.220Z [[31merror[39m]: Invalid URL
+TypeError: Invalid URL
+    at new URL (node:internal/url:816:29)
+    at new HttpsProxyAgent (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/https-proxy-agent/src/index.ts:54:44)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/services/flightService.js:64:23
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/services/flightService.js:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/services/flightService.js:4:12)
+    at getAutoCompleteTextService (/Users/mustafacicen/Documents/byaras/flight_project/api/src/services/flightService.js:61:46)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/controllers/flightController.js:116:79
+    at Generator.next (<anonymous>)
+2024-12-16T22:32:50.082Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-16T22:32:50.502Z [[32minfo[39m]: Connected to MSSQL database
+2024-12-16T22:32:52.557Z [[31merror[39m]: Invalid URL
+TypeError: Invalid URL
+    at new URL (node:internal/url:816:29)
+    at new HttpsProxyAgent (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/https-proxy-agent/src/index.ts:54:44)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/services/flightService.js:64:23
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/services/flightService.js:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/services/flightService.js:4:12)
+    at getAutoCompleteTextService (/Users/mustafacicen/Documents/byaras/flight_project/api/src/services/flightService.js:61:46)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/controllers/flightController.js:116:79
+    at Generator.next (<anonymous>)
+2024-12-16T22:33:12.644Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-16T22:33:13.079Z [[32minfo[39m]: Connected to MSSQL database
+2024-12-16T22:33:14.721Z [[31merror[39m]: Invalid URL
+TypeError: Invalid URL
+    at new URL (node:internal/url:816:29)
+    at new HttpsProxyAgent (/Users/mustafacicen/Documents/byaras/flight_project/api/node_modules/https-proxy-agent/src/index.ts:54:44)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/services/flightService.js:64:23
+    at Generator.next (<anonymous>)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/services/flightService.js:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/mustafacicen/Documents/byaras/flight_project/api/src/services/flightService.js:4:12)
+    at getAutoCompleteTextService (/Users/mustafacicen/Documents/byaras/flight_project/api/src/services/flightService.js:61:46)
+    at /Users/mustafacicen/Documents/byaras/flight_project/api/src/controllers/flightController.js:116:79
+    at Generator.next (<anonymous>)
+2024-12-16T22:33:27.768Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-16T22:33:28.237Z [[32minfo[39m]: Connected to MSSQL database
+2024-12-16T22:33:45.117Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-16T22:33:45.565Z [[32minfo[39m]: Connected to MSSQL database
+2024-12-16T22:34:49.100Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-16T22:34:49.527Z [[32minfo[39m]: Connected to MSSQL database
+2024-12-16T22:35:52.850Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-16T22:35:53.305Z [[32minfo[39m]: Connected to MSSQL database
+2024-12-16T22:36:07.964Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-16T22:36:08.390Z [[32minfo[39m]: Connected to MSSQL database
+2024-12-16T22:36:37.507Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-16T22:36:37.932Z [[32minfo[39m]: Connected to MSSQL database
+2024-12-16T22:36:59.141Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-16T22:36:59.559Z [[32minfo[39m]: Connected to MSSQL database
+2024-12-16T22:39:04.112Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-16T22:39:04.536Z [[32minfo[39m]: Connected to MSSQL database
+2024-12-21T12:55:29.527Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-21T12:55:30.371Z [[32minfo[39m]: Connected to MSSQL database
+2024-12-23T22:15:04.037Z [[32minfo[39m]: Server is running on http://localhost:1433
+2024-12-23T22:15:24.062Z [[31merror[39m]: Connected to MSSQL database Failed to connect to 202.61.227.225:1433 - Could not connect (sequence)
+ConnectionError: Failed to connect to 202.61.227.225:1433 - Could not connect (sequence)
+    at connectListener (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/mssql/lib/tedious/connection-pool.js:85:17)
+    at Connection.onConnect (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:1784:9)
+    at Object.onceWrapper (node:events:634:26)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:1927:18)
+    at Connection.socketError (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:2334:12)
+    at /Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:2123:37
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+2024-12-23T22:15:49.055Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-23T22:18:23.257Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-23T22:18:43.286Z [[31merror[39m]: Connected to MSSQL database Failed to connect to 202.61.227.225:1433 - Could not connect (sequence)
+ConnectionError: Failed to connect to 202.61.227.225:1433 - Could not connect (sequence)
+    at connectListener (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/mssql/lib/tedious/connection-pool.js:85:17)
+    at Connection.onConnect (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:1784:9)
+    at Object.onceWrapper (node:events:634:26)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:1927:18)
+    at Connection.socketError (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:2334:12)
+    at /Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:2123:37
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+2024-12-23T22:19:35.543Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-23T22:19:55.566Z [[31merror[39m]: Connected to MSSQL database Failed to connect to 202.61.227.225:1433 - Could not connect (sequence)
+ConnectionError: Failed to connect to 202.61.227.225:1433 - Could not connect (sequence)
+    at connectListener (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/mssql/lib/tedious/connection-pool.js:85:17)
+    at Connection.onConnect (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:1784:9)
+    at Object.onceWrapper (node:events:634:26)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:1927:18)
+    at Connection.socketError (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:2334:12)
+    at /Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:2123:37
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+2024-12-23T22:20:52.916Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-23T22:21:12.955Z [[31merror[39m]: Connected to MSSQL database Failed to connect to 202.61.227.225:1433 - Could not connect (sequence)
+ConnectionError: Failed to connect to 202.61.227.225:1433 - Could not connect (sequence)
+    at connectListener (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/mssql/lib/tedious/connection-pool.js:85:17)
+    at Connection.onConnect (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:1784:9)
+    at Object.onceWrapper (node:events:634:26)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:1927:18)
+    at Connection.socketError (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:2334:12)
+    at /Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:2123:37
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+2024-12-23T22:22:13.860Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-23T22:22:33.887Z [[31merror[39m]: Connected to MSSQL database Failed to connect to 202.61.227.225:1433 - Could not connect (sequence)
+ConnectionError: Failed to connect to 202.61.227.225:1433 - Could not connect (sequence)
+    at connectListener (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/mssql/lib/tedious/connection-pool.js:85:17)
+    at Connection.onConnect (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:1784:9)
+    at Object.onceWrapper (node:events:634:26)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:1927:18)
+    at Connection.socketError (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:2334:12)
+    at /Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:2123:37
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+2024-12-23T22:25:34.507Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-23T22:25:34.902Z [[31merror[39m]: Connected to MSSQL database Login failed for user 'zMustafa'.
+ConnectionError: Login failed for user 'zMustafa'.
+    at connectListener (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/mssql/lib/tedious/connection-pool.js:85:17)
+    at Connection.onConnect (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:1784:9)
+    at Object.onceWrapper (node:events:634:26)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:1927:18)
+    at /Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:3434:18
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2024-12-23T22:28:09.791Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-23T22:28:10.163Z [[31merror[39m]: Connected to MSSQL database Login failed for user 'zMustafa'.
+ConnectionError: Login failed for user 'zMustafa'.
+    at connectListener (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/mssql/lib/tedious/connection-pool.js:85:17)
+    at Connection.onConnect (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:1784:9)
+    at Object.onceWrapper (node:events:634:26)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:1927:18)
+    at /Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:3434:18
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2024-12-23T22:28:57.880Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-23T22:28:58.273Z [[31merror[39m]: Connected to MSSQL database Login failed for user 'zMustafa'.
+ConnectionError: Login failed for user 'zMustafa'.
+    at connectListener (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/mssql/lib/tedious/connection-pool.js:85:17)
+    at Connection.onConnect (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:1784:9)
+    at Object.onceWrapper (node:events:634:26)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:1927:18)
+    at /Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:3434:18
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2024-12-23T22:29:19.016Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-23T22:29:19.421Z [[31merror[39m]: Connected to MSSQL database Login failed for user 'zMustafa'.
+ConnectionError: Login failed for user 'zMustafa'.
+    at connectListener (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/mssql/lib/tedious/connection-pool.js:85:17)
+    at Connection.onConnect (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:1784:9)
+    at Object.onceWrapper (node:events:634:26)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:1927:18)
+    at /Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:3434:18
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2024-12-23T22:29:57.363Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-23T22:29:57.757Z [[31merror[39m]: Connected to MSSQL database Login failed for user 'zMustafa'.
+ConnectionError: Login failed for user 'zMustafa'.
+    at connectListener (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/mssql/lib/tedious/connection-pool.js:85:17)
+    at Connection.onConnect (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:1784:9)
+    at Object.onceWrapper (node:events:634:26)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:1927:18)
+    at /Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:3434:18
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2024-12-23T22:31:34.524Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-23T22:31:34.922Z [[31merror[39m]: Connected to MSSQL database Login failed for user 'zzMustafa'.
+ConnectionError: Login failed for user 'zzMustafa'.
+    at connectListener (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/mssql/lib/tedious/connection-pool.js:85:17)
+    at Connection.onConnect (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:1784:9)
+    at Object.onceWrapper (node:events:634:26)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:1927:18)
+    at /Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:3434:18
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2024-12-23T22:32:06.358Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-23T22:32:06.765Z [[31merror[39m]: Connected to MSSQL database Login failed for user 'zzMustafa'.
+ConnectionError: Login failed for user 'zzMustafa'.
+    at connectListener (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/mssql/lib/tedious/connection-pool.js:85:17)
+    at Connection.onConnect (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:1784:9)
+    at Object.onceWrapper (node:events:634:26)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:1927:18)
+    at /Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:3434:18
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2024-12-23T22:34:26.361Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-23T22:34:26.778Z [[31merror[39m]: Connected to MSSQL database Login failed for user 'zzMustafa'.
+ConnectionError: Login failed for user 'zzMustafa'.
+    at connectListener (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/mssql/lib/tedious/connection-pool.js:85:17)
+    at Connection.onConnect (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:1784:9)
+    at Object.onceWrapper (node:events:634:26)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:1927:18)
+    at /Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:3434:18
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2024-12-23T22:34:33.880Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-23T22:34:34.272Z [[31merror[39m]: Connected to MSSQL database Login failed for user 'zMustafa'.
+ConnectionError: Login failed for user 'zMustafa'.
+    at connectListener (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/mssql/lib/tedious/connection-pool.js:85:17)
+    at Connection.onConnect (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:1784:9)
+    at Object.onceWrapper (node:events:634:26)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:1927:18)
+    at /Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:3434:18
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2024-12-23T22:35:11.008Z [[32minfo[39m]: Server is running on http://localhost:5002
+2024-12-23T22:35:11.471Z [[32minfo[39m]: Connected to MSSQL database
+2025-01-16T17:38:55.938Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-01-16T17:38:57.028Z [[32minfo[39m]: Connected to MSSQL database
+2025-01-16T19:59:31.675Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-01-16T19:59:32.102Z [[32minfo[39m]: Connected to MSSQL database
+2025-01-16T20:00:40.208Z [[31merror[39m]: Invalid object name 'tbReview'.
+RequestError: Invalid object name 'tbReview'.
+    at handleError (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/mssql/lib/tedious/request.js:384:15)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:1927:18)
+    at RequestTokenHandler.onErrorMessage (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/token/handler.ts:386:21)
+    at Readable.<anonymous> (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/token/token-stream-parser.ts:23:55)
+    at Readable.emit (node:events:519:28)
+    at Readable.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushObjectMode (node:internal/streams/readable:538:3)
+2025-01-16T20:01:53.638Z [[31merror[39m]: Invalid object name 'tbReview'.
+RequestError: Invalid object name 'tbReview'.
+    at handleError (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/mssql/lib/tedious/request.js:384:15)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/connection.ts:1927:18)
+    at RequestTokenHandler.onErrorMessage (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/token/handler.ts:386:21)
+    at Readable.<anonymous> (/Users/mustafacicen/Documents/turka/new_react/api/node_modules/tedious/src/token/token-stream-parser.ts:23:55)
+    at Readable.emit (node:events:519:28)
+    at Readable.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushObjectMode (node:internal/streams/readable:538:3)
+2025-01-16T20:02:05.084Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-01-16T20:02:05.516Z [[32minfo[39m]: Connected to MSSQL database
+2025-01-18T18:14:28.831Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-01-18T18:14:29.327Z [[32minfo[39m]: Connected to MSSQL database
+2025-01-19T10:12:21.452Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-01-19T10:12:21.953Z [[32minfo[39m]: Connected to MSSQL database
+2025-01-19T12:36:28.270Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-01-19T12:36:28.377Z [[32minfo[39m]: Connected to MSSQL database
+2025-01-29T04:58:15.210Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-01-29T04:58:16.271Z [[31merror[39m]: Connected to MSSQL database Failed to connect to 202.61.227.225:1433 - Could not connect (sequence)
+ConnectionError: Failed to connect to 202.61.227.225:1433 - Could not connect (sequence)
+    at connectListener (C:\Users\Administrator\Desktop\review_react\api\node_modules\mssql\lib\tedious\connection-pool.js:85:17)
+    at Connection.onConnect (C:\Users\Administrator\Desktop\review_react\api\node_modules\tedious\src\connection.ts:1784:9)
+    at Object.onceWrapper (node:events:634:26)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at Connection.emit (C:\Users\Administrator\Desktop\review_react\api\node_modules\tedious\src\connection.ts:1927:18)
+    at Connection.socketError (C:\Users\Administrator\Desktop\review_react\api\node_modules\tedious\src\connection.ts:2334:12)
+    at C:\Users\Administrator\Desktop\review_react\api\node_modules\tedious\src\connection.ts:2123:37
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-01-29T04:59:35.343Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-01-29T04:59:35.443Z [[32minfo[39m]: Connected to MSSQL database
+2025-01-29T12:26:36.711Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-01-29T12:26:36.837Z [[32minfo[39m]: Connected to MSSQL database
+2025-03-05T12:17:41.697Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-03-05T12:17:41.820Z [[32minfo[39m]: Connected to MSSQL database
+2025-03-18T10:18:10.249Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-03-18T10:18:10.331Z [[32minfo[39m]: Connected to MSSQL database
+2025-03-18T12:56:02.987Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-03-18T12:56:03.092Z [[32minfo[39m]: Connected to MSSQL database
+2025-03-18T18:24:28.313Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-03-18T18:24:28.401Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-09T12:32:55.725Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-09T12:32:56.155Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-09T12:34:08.487Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-09T12:34:08.909Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-09T12:35:05.546Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-09T12:35:05.985Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-09T12:37:26.748Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-09T12:37:27.181Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-09T12:49:07.439Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-09T12:49:07.857Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-09T12:50:40.960Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-09T12:50:41.482Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-09T12:50:47.683Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-09T12:50:48.105Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-09T12:53:02.832Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-09T12:53:03.251Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-09T12:55:27.683Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-09T12:55:28.109Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-09T12:57:15.381Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-09T12:57:15.795Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-09T12:59:29.133Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-09T12:59:29.581Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-09T13:08:01.155Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-09T13:08:01.595Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-09T13:08:59.096Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-09T13:08:59.523Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-09T13:10:04.232Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-09T13:10:04.661Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-09T15:36:40.763Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-09T15:36:41.197Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-09T16:15:18.014Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-09T16:15:18.441Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-09T16:15:36.474Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-09T16:15:36.911Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-09T16:18:08.243Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-09T16:18:08.665Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-09T16:20:34.732Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-09T16:20:35.175Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-09T16:22:44.532Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-09T16:22:44.963Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-09T16:23:57.262Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-09T16:23:57.708Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-09T16:25:12.328Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-09T16:25:12.798Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-09T16:32:17.992Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-09T16:32:18.423Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-09T16:34:31.413Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-09T16:34:31.849Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-09T16:42:17.451Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-09T16:42:17.888Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-09T16:43:30.928Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-09T16:43:31.359Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-09T16:45:54.122Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-09T16:45:54.553Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-10T03:54:17.446Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-10T03:54:17.901Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-10T03:55:14.684Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-10T03:55:15.153Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-10T03:56:56.363Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-10T03:56:56.791Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-10T03:57:57.251Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-10T03:57:57.690Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-10T04:00:25.725Z [[32minfo[39m]: Server is running on http://localhost:5002
+2025-05-10T04:00:26.144Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-10T04:13:01.739Z [[32minfo[39m]: Server is running on http://localhost:5467
+2025-05-10T04:13:01.880Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-10T04:19:31.771Z [[32minfo[39m]: Server is running on http://localhost:5467
+2025-05-10T04:19:31.875Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-13T10:01:29.066Z [[32minfo[39m]: Server is running on http://localhost:5598
+2025-05-13T10:01:29.162Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-13T10:58:45.457Z [[32minfo[39m]: Server is running on http://localhost:5598
+2025-05-13T10:58:45.589Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-13T11:00:10.192Z [[32minfo[39m]: Server is running on http://localhost:5598
+2025-05-13T11:00:10.296Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-13T11:00:57.581Z [[32minfo[39m]: Server is running on http://localhost:5598
+2025-05-13T11:00:57.677Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-13T11:02:05.701Z [[32minfo[39m]: Server is running on http://localhost:5598
+2025-05-13T11:02:05.796Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-13T11:07:52.516Z [[32minfo[39m]: Server is running on http://localhost:5598
+2025-05-13T11:07:52.644Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-13T11:11:31.465Z [[32minfo[39m]: Server is running on http://localhost:5598
+2025-05-13T11:11:31.569Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-13T11:40:21.669Z [[32minfo[39m]: Server is running on http://localhost:5598
+2025-05-13T11:40:21.792Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-13T11:41:34.899Z [[32minfo[39m]: Server is running on http://localhost:5598
+2025-05-13T11:41:35.003Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-13T11:43:11.560Z [[32minfo[39m]: Server is running on http://localhost:5598
+2025-05-13T11:43:11.711Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-13T11:51:42.915Z [[32minfo[39m]: Server is running on http://localhost:5598
+2025-05-13T11:51:43.028Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-13T11:52:36.995Z [[32minfo[39m]: Server is running on http://localhost:5598
+2025-05-13T11:52:37.139Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-13T11:53:52.358Z [[32minfo[39m]: Server is running on http://localhost:5598
+2025-05-13T11:53:52.468Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-13T12:29:30.588Z [[32minfo[39m]: Server is running on http://localhost:5598
+2025-05-13T12:29:30.683Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-13T12:33:21.451Z [[32minfo[39m]: Server is running on http://localhost:5598
+2025-05-13T12:33:21.560Z [[32minfo[39m]: Connected to MSSQL database
+2025-05-13T12:34:31.174Z [[32minfo[39m]: Server is running on http://localhost:5598
+2025-05-13T12:34:31.261Z [[32minfo[39m]: Connected to MSSQL database

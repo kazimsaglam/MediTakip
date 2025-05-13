@@ -1,0 +1,9 @@
+Api üzerinden search keyword ile gelen veriden veritabanına
+ slug
+ id 
+ gidiş tarihi
+
+
+default parametre;
+
+yetiskin=1&sinif=ekonomi&save=1&aktarmasiz=1&geotrip=domestic&trip=domestic&ref=ft-homepage
