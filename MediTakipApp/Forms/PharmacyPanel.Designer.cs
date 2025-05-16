@@ -96,15 +96,15 @@
             btnStockAndSupply.FlatStyle = FlatStyle.Flat;
             btnStockAndSupply.Font = new Font("Bahnschrift SemiCondensed", 16.2F, FontStyle.Bold);
             btnStockAndSupply.ForeColor = Color.White;
-            btnStockAndSupply.Location = new Point(0, 290);
-            btnStockAndSupply.Name = "btnStock";
+            btnStockAndSupply.Location = new Point(0, 360);
+            btnStockAndSupply.Name = "btnStockAndSupply";
             btnStockAndSupply.Padding = new Padding(20, 0, 0, 0);
             btnStockAndSupply.Size = new Size(246, 70);
-            btnStockAndSupply.TabIndex = 3;
+            btnStockAndSupply.TabIndex = 2;
             btnStockAndSupply.Text = "📦 Stok / Tedarik";
             btnStockAndSupply.TextAlign = ContentAlignment.MiddleLeft;
             btnStockAndSupply.UseVisualStyleBackColor = false;
-            btnStockAndSupply.Click += PharmacyInventoryControl_Click;
+            btnStockAndSupply.Click += btnStockAndSupply_Click;
             // 
             // btnSell
             // 

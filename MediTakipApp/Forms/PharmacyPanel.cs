@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using MediTakipApp.Forms.PharmacyPanelContent;
-using MediTakipApp.Utils;
 using Timer = System.Windows.Forms.Timer;
+using MediTakipApp.Utils;
 
 namespace MediTakipApp.Forms
 {
@@ -44,7 +44,6 @@ namespace MediTakipApp.Forms
             SetHoverEffects(btnPrescriptions);
             SetHoverEffects(btnSell);
             SetHoverEffects(btnStockAndSupply);
-            SetHoverEffects(btnStockAndSupply);
 
             SetActiveButton(btnHome);
         }
@@ -73,7 +72,7 @@ namespace MediTakipApp.Forms
         }
 
 
-        private void PharmacyInventoryControl_Click(object sender, EventArgs e)
+        private void btnStockAndSupply_Click(object sender, EventArgs e)
         {
             lblTitle.Text = "💊 Stok Yönetimi";
             LoadControl(new PharmacyInventoryControl());

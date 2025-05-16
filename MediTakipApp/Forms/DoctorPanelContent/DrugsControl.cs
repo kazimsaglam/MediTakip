@@ -1,24 +1,39 @@
 ﻿using System.Data;
+using System.Diagnostics;
 using System.Text;
 using MediTakipApp.Utils;
-using Microsoft.Data.SqlClient;
+using Timer = System.Windows.Forms.Timer;
 
 namespace MediTakipApp.Forms.DoctorPanelContent
 {
     public partial class DrugsControl : UserControl
     {
-        string connStr = "Server=202.61.227.225,1433;Database=metidata;User Id=metidata_user;Password=1q2w3e4r.;Encrypt=False;TrustServerCertificate=True;";
         private Dictionary<Panel, Panel> drugsDetailMap = new Dictionary<Panel, Panel>();
         private Dictionary<Panel, Panel> prescriptionDetailMap = new Dictionary<Panel, Panel>();
         private List<PrescribedDrug> selectedDrugs = new List<PrescribedDrug>();
-        private DataTable allDrugs = new DataTable();
+        private List<DrugDto> allDrugs = new();
+        private HashSet<string> recommendedDrugNames = new HashSet<string>();
+        private Timer detailHideTimer;
+        private List<PrescriptionSummaryDto> prescriptionCache = new();
+
+
 
         public DrugsControl()
         {
             InitializeComponent();
+
+            detailHideTimer = new Timer { Interval = 100 };
+            detailHideTimer.Tick += (s, e) =>
+            {
+                if (!this.ClientRectangle.Contains(this.PointToClient(MousePosition)))
+                {
+                    HideAllPrescriptionDetails();
+                }
+            };
+            detailHideTimer.Start();
         }
 
-        private void DrugsControl_Load(object sender, EventArgs e)
+        private async void DrugsControl_Load(object sender, EventArgs e)
         {
             if (SelectedPatient.Id == 0)
             {
@@ -28,50 +43,30 @@ namespace MediTakipApp.Forms.DoctorPanelContent
 
             lblPatientInfo.Text = $"Seçilen Hasta: {SelectedPatient.FullName} ({GetAge(SelectedPatient.BirthDate)} yaşında)";
 
-            LoadDrugs();
+            await LoadDrugsAsync();
             LoadPatientPrescriptions();
         }
 
-        private void LoadDrugs()
+        private async Task LoadDrugsAsync()
         {
-            flpDrugs.Controls.Clear();
-
-            using (SqlConnection conn = new SqlConnection(connStr))
+            try
             {
-                conn.Open();
+                allDrugs = await ApiService.GetListAsync<DrugDto>("drug/list");
 
-                string query = @"
-            SELECT d.*, 
-                ISNULL((
-                    SELECT SUM(ds.StockQuantity)
-                    FROM DrugStocks ds
-                    WHERE ds.DrugId = d.Id
-                        AND ds.ExpirationDate >= CAST(GETDATE() AS DATE)
-                        AND ds.StockQuantity > 0
-                ), 0) AS TotalStock
-            FROM Drugs d
-            WHERE d.IsActive = 1
-            AND EXISTS (
-                SELECT 1
-                FROM DrugStocks ds
-                WHERE ds.DrugId = d.Id
-                AND ds.ExpirationDate >= CAST(GETDATE() AS DATE)
-                AND ds.StockQuantity > 0
-            )";
+                flpDrugs.Controls.Clear();
 
-                SqlDataAdapter da = new SqlDataAdapter(query, conn);
-                allDrugs.Clear();
-                da.Fill(allDrugs);
-
-                foreach (DataRow row in allDrugs.Rows)
+                foreach (var drug in allDrugs)
                 {
-                    Panel card = CreateDrugCard(row);
-                    flpDrugs.Controls.Add(card);
+                    flpDrugs.Controls.Add(CreateDrugCard(drug));
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("HTTP ilaç yükleme hatası: " + ex.Message);
             }
         }
 
-        private Panel CreateDrugCard(DataRow row)
+        private Panel CreateDrugCard(DrugDto drug)
         {
             Panel card = new Panel
             {
@@ -80,7 +75,7 @@ namespace MediTakipApp.Forms.DoctorPanelContent
                 BackColor = Color.White,
                 Margin = new Padding(10, 10, 10, 30),
                 BorderStyle = BorderStyle.FixedSingle,
-                Tag = row,
+                Tag = drug,
                 Cursor = Cursors.Hand
             };
 
@@ -98,39 +93,50 @@ namespace MediTakipApp.Forms.DoctorPanelContent
             detailPanel.BringToFront();
             drugsDetailMap[card] = detailPanel;
 
-            // Güncellenmiş sütun: TotalStock
-            int stock = row["TotalStock"] == DBNull.Value ? 0 : Convert.ToInt32(row["TotalStock"]);
-
-
             // Kart içeriği
-            card.Controls.Add(new TransparentLabel { Text = $"💊 {row["Name"]}", Font = new Font("Bahnschrift SemiCondensed", 14, FontStyle.Bold), Location = new Point(10, 10), AutoSize = true });
-            card.Controls.Add(new TransparentLabel { Text = $"🔬 Etken Madde: {row["ActiveIngredient"]}", Location = new Point(10, 40), AutoSize = true });
-            card.Controls.Add(new TransparentLabel { Text = $"👶 Kullanım Yaşı: {row["UsageAge"]}+", Location = new Point(10, 60), AutoSize = true });
-            card.Controls.Add(new TransparentLabel { Text = $"🏷️ Barkod: {row["Barcode"]}", Location = new Point(10, 80), AutoSize = true });
-            card.Controls.Add(new TransparentLabel { Text = $"📦 Stok: {stock} adet", Location = new Point(10, 100), AutoSize = true });
+            card.Controls.Add(new TransparentLabel { Text = $"💊 {drug.Name}", Font = new Font("Bahnschrift SemiCondensed", 14, FontStyle.Bold), Location = new Point(10, 10), AutoSize = true });
+            card.Controls.Add(new TransparentLabel { Text = $"🔬 Etken Madde: {drug.ActiveIngredient}", Location = new Point(10, 40), AutoSize = true });
+            card.Controls.Add(new TransparentLabel { Text = $"👶 Kullanım Yaşı: {drug.UsageAge}+", Location = new Point(10, 60), AutoSize = true });
+            card.Controls.Add(new TransparentLabel { Text = $"🏷️ Barkod: {drug.Barcode}", Location = new Point(10, 80), AutoSize = true });
+            card.Controls.Add(new TransparentLabel { Text = $"📦 Stok: {drug.TotalStock} adet", Location = new Point(10, 100), AutoSize = true });
 
-            // Reçeteli/Reçetesiz
-            string prescriptionInfo = Convert.ToBoolean(row["IsPrescription"]) ? "Reçeteli" : "Reçetesiz";
-            Color presColor = Convert.ToBoolean(row["IsPrescription"]) ? Color.Red : Color.DarkGreen;
-
+            string prescriptionInfo = drug.IsPrescription ? "Reçeteli" : "Reçetesiz";
+            Color presColor = drug.IsPrescription ? Color.Red : Color.DarkGreen;
             card.Controls.Add(new TransparentLabel { Text = $"🩺 {prescriptionInfo}", Location = new Point(10, 140), AutoSize = true, ForeColor = presColor });
 
-            // ⚠️ Uyarılar
-            int warningY = 165;
-            if (stock < 50)
+
+            // ⚠️ Düşük Stok Uyarıları
+            if (drug.TotalStock < 50)
             {
                 card.Controls.Add(new TransparentLabel
                 {
                     Text = "⚠️ Stok az!",
                     Font = new Font("Bahnschrift SemiCondensed", 10F, FontStyle.Bold),
                     ForeColor = Color.DarkOrange,
-                    Location = new Point(10, warningY),
+                    Location = new Point(10, 165),
                     AutoSize = true
                 });
             }
 
+            if (recommendedDrugNames.Contains(drug.Name))
+            {
+                card.BackColor = Color.LightGoldenrodYellow;
+
+                Label lblStar = new Label
+                {
+                    Text = "⭐️ Önerilen",
+                    Font = new Font("Bahnschrift SemiCondensed", 16F, FontStyle.Bold),
+                    ForeColor = Color.DarkOrange,
+                    BackColor = Color.Transparent,
+                    AutoSize = true,
+                    Location = new Point(160, 160)
+                };
+
+                card.Controls.Add(lblStar);
+            }
+
             // Eventler
-            card.Click += (s, e) => OnDrugCardClick(row);
+            card.Click += (s, e) => OnDrugCardClick(drug);
             card.MouseEnter += (s, e) => { card.BackColor = Color.LightGray; ShowDescriptionDetail(card); };
             card.MouseLeave += (s, e) => { card.BackColor = Color.White; HideDescriptionDetail(card); };
 
@@ -139,15 +145,15 @@ namespace MediTakipApp.Forms.DoctorPanelContent
 
         private void ShowDescriptionDetail(Panel card)
         {
-            if (drugsDetailMap.TryGetValue(card, out Panel detailPanel) && card.Tag is DataRow row)
+            if (drugsDetailMap.TryGetValue(card, out Panel detailPanel) && card.Tag is DrugDto drug)
             {
                 detailPanel.Controls.Clear();
 
                 Label lblDescription = new Label
                 {
-                    Text = string.IsNullOrWhiteSpace(row["Description"]?.ToString())
+                    Text = string.IsNullOrWhiteSpace(drug.Description)
                            ? "🏷️ Açıklama bulunamadı."
-                           : $"🏷️ {row["Description"].ToString()}",
+                           : $"🏷️ {drug.Description}",
                     Font = new Font("Bahnschrift SemiCondensed", 10F, FontStyle.Regular),
                     ForeColor = Color.Black,
                     Dock = DockStyle.Fill,
@@ -178,32 +184,27 @@ namespace MediTakipApp.Forms.DoctorPanelContent
             }
         }
 
-        private void OnDrugCardClick(DataRow row)
+        private void OnDrugCardClick(DrugDto drug)
         {
-            int drugId = Convert.ToInt32(row["Id"]);
-            string drugName = row["Name"].ToString();
-
-            // Eğer zaten ekliyse uyarı ver
-            if (selectedDrugs.Any(d => d.DrugId == drugId))
+            if (selectedDrugs.Any(d => d.DrugId == drug.Id))
             {
-                MessageBox.Show($"{drugName} zaten reçeteye eklenmiş!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show($"{drug.Name} zaten reçeteye eklenmiş!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Yeni giriş formu aç
-            using (DrugDetailForm form = new DrugDetailForm(drugName))
+            using (DrugDetailForm form = new DrugDetailForm(drug.Name))
             {
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     selectedDrugs.Add(new PrescribedDrug
                     {
-                        DrugId = drugId,
-                        DrugName = drugName,
+                        DrugId = drug.Id,
+                        DrugName = drug.Name,
                         Quantity = form.Quantity,
                         Instructions = form.Dosage,
                         UsagePeriod = form.UsagePeriod,
                         SpecialInstructions = form.SpecialInstructions,
-                        Price = Convert.ToDecimal(row["Price"])
+                        Price = drug.Price
                     });
 
                     RefreshSelectedDrugList();
@@ -276,7 +277,7 @@ namespace MediTakipApp.Forms.DoctorPanelContent
             }
         }
 
-        private void BtnSavePrescription_Click(object sender, EventArgs e)
+        private async void BtnSavePrescription_Click(object sender, EventArgs e)
         {
             if (selectedDrugs.Count == 0 || SelectedPatient.Id == 0 || string.IsNullOrWhiteSpace(txtDiagnosis.Text))
             {
@@ -284,93 +285,76 @@ namespace MediTakipApp.Forms.DoctorPanelContent
                 return;
             }
 
-            using (SqlConnection conn = new SqlConnection(connStr))
+            var requestBody = new
             {
-                string prescriptionCode = GeneratePrescriptionCode();
-                conn.Open();
-
-                // Ana reçete kaydı
-                SqlCommand cmd = new SqlCommand(@"
-            INSERT INTO Prescriptions (PrescriptionCode, PatientId, DoctorId, Diagnosis, PrescriptionDate) 
-            OUTPUT INSERTED.PrescriptionId 
-            VALUES (@code, @pId, @docId, @diag, @date)", conn);
-
-                cmd.Parameters.AddWithValue("@code", prescriptionCode);
-                cmd.Parameters.AddWithValue("@pId", SelectedPatient.Id);
-                cmd.Parameters.AddWithValue("@docId", LoggedUser.Id);
-                cmd.Parameters.AddWithValue("@diag", txtDiagnosis.Text.Trim());
-                cmd.Parameters.AddWithValue("@date", DateTime.Now);
-
-                int prescriptionId = (int)cmd.ExecuteScalar();
-
-                // İlaçları kayıt et
-                foreach (var drug in selectedDrugs)
+                PatientId = SelectedPatient.Id.ToString(), // API bunu string alıyor olabilir
+                DoctorId = LoggedUser.Id.ToString(),       // aynı şekilde
+                Diagnosis = txtDiagnosis.Text.Trim(),
+                Drugs = selectedDrugs.Select(drug => new
                 {
-                    SqlCommand detailCmd = new SqlCommand(@"
-                INSERT INTO PrescriptionDetails 
-                (PrescriptionId, DrugId, Dosage, UsagePeriod, SpecialInstructions, Quantity) 
-                VALUES 
-                (@presId, @drugId, @dosage, @period, @special, @qty)", conn);
+                    DrugId = drug.DrugId,
+                    Dosage = drug.Instructions,
+                    UsagePeriod = drug.UsagePeriod,
+                    SpecialInstructions = string.IsNullOrWhiteSpace(drug.SpecialInstructions) ? "" : drug.SpecialInstructions,
+                    Quantity = drug.Quantity
+                }).ToList()
+            };
 
-                    detailCmd.Parameters.AddWithValue("@presId", prescriptionId);
-                    detailCmd.Parameters.AddWithValue("@drugId", drug.DrugId);
-                    detailCmd.Parameters.AddWithValue("@dosage", drug.Instructions);
-                    detailCmd.Parameters.AddWithValue("@period", drug.UsagePeriod);
-                    detailCmd.Parameters.AddWithValue("@special", (object?)drug.SpecialInstructions ?? DBNull.Value);
-                    detailCmd.Parameters.AddWithValue("@qty", drug.Quantity);
+            // Log amaçlı (dilersen bakabilirsin)
+            string previewJson = System.Text.Json.JsonSerializer.Serialize(requestBody);
+            Debug.WriteLine("Giden JSON:\n" + previewJson);
 
-                    detailCmd.ExecuteNonQuery();
-                }
+            var result = await ApiService.PostAsync<ApiResult<string>>("prescription/create", requestBody);
+
+            if (result == null || !result.Success)
+            {
+                MessageBox.Show("❌ Reçete kaydedilemedi.\n" + (result?.Message ?? "Sunucu hatası"), "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
-            MessageBox.Show("Reçete başarıyla kaydedildi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("✅ Reçete başarıyla kaydedildi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             selectedDrugs.Clear();
             txtDiagnosis.Clear();
             RefreshSelectedDrugList();
-            LoadPatientPrescriptions();
+            await LoadPatientPrescriptions();
         }
+
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             string keyword = txtSearch.Text.Trim().ToLower();
             flpDrugs.Controls.Clear();
 
-            foreach (DataRow row in allDrugs.Rows)
+            foreach (var drug in allDrugs)
             {
-                string name = row["Name"].ToString().ToLower();
-                string barcode = row["Barcode"].ToString().ToLower();
-
-                if (name.Contains(keyword) || barcode.Contains(keyword))
+                if (drug.Name.ToLower().Contains(keyword) || drug.Barcode.ToLower().Contains(keyword))
                 {
-                    flpDrugs.Controls.Add(CreateDrugCard(row));
+                    flpDrugs.Controls.Add(CreateDrugCard(drug));
                 }
             }
         }
 
-        private void LoadPatientPrescriptions()
+        private async Task LoadPatientPrescriptions()
         {
-            if (SelectedPatient.Id == 0) return;
+            if (SelectedPatient.Id == 0)
+                return;
 
             flpHistory.Controls.Clear();
 
-            using (SqlConnection conn = new SqlConnection(connStr))
+            try
             {
-                conn.Open();
+                var result = await ApiService.GetAsync<ApiResult<List<PrescriptionSummaryDto>>>("prescription/list");
+                var allPrescriptions = result?.Data ?? new List<PrescriptionSummaryDto>();
 
-                SqlCommand cmd = new SqlCommand(@"
-SELECT p.PrescriptionId, p.PrescriptionCode, p.Diagnosis, p.PrescriptionDate, 
-       (SELECT COUNT(*) FROM PrescriptionDetails pd WHERE pd.PrescriptionId = p.PrescriptionId) AS DrugCount
-FROM Prescriptions p
-WHERE p.PatientId = @pId
-ORDER BY p.PrescriptionDate DESC", conn);
+                // Hasta ID'sine göre filtrele
+                var prescriptions = allPrescriptions
+                    .Where(p => p.PatientId == SelectedPatient.Id)
+                    .OrderByDescending(p => p.PrescriptionDate)
+                    .ToList();
 
-                cmd.Parameters.AddWithValue("@pId", SelectedPatient.Id);
 
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                foreach (var pres in prescriptions)
                 {
-                    int prescriptionId = (int)reader["PrescriptionId"];
-                    string diagnosis = reader["Diagnosis"].ToString();
                     int cardHeight = 150;
 
                     Panel card = new Panel
@@ -382,7 +366,7 @@ ORDER BY p.PrescriptionDate DESC", conn);
                         Width = flpHistory.Width - 25,
                         Height = cardHeight,
                         Cursor = Cursors.Hand,
-                        Tag = prescriptionId
+                        Tag = pres.PrescriptionId
                     };
 
                     Panel detailPanel = new Panel
@@ -396,37 +380,35 @@ ORDER BY p.PrescriptionDate DESC", conn);
                     };
                     this.Controls.Add(detailPanel);
                     detailPanel.BringToFront();
-
                     prescriptionDetailMap[card] = detailPanel;
 
                     // Kart içerikleri
-                    TransparentLabel lblDate = new TransparentLabel
+                    card.Controls.Add(new TransparentLabel
                     {
-                        Text = $"📅 {Convert.ToDateTime(reader["PrescriptionDate"]).ToString("dd.MM.yyyy HH:mm")}",
+                        Text = $"📅 {pres.PrescriptionDate:dd.MM.yyyy HH:mm}",
                         Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold),
                         ForeColor = Color.DarkSlateGray,
                         Location = new Point(10, 10),
                         AutoSize = true
-                    };
+                    });
 
-                    TransparentLabel lblDiag = new TransparentLabel
+                    card.Controls.Add(new TransparentLabel
                     {
-                        Text = $"📝 {reader["Diagnosis"].ToString()}",
+                        Text = $"📝 {pres.Diagnosis}",
                         Font = new Font("Bahnschrift SemiCondensed", 12F),
                         Location = new Point(10, 35),
                         AutoSize = true
-                    };
+                    });
 
-                    TransparentLabel lblDrugCount = new TransparentLabel
+                    card.Controls.Add(new TransparentLabel
                     {
-                        Text = $"💊 {reader["DrugCount"]} ilaç",
+                        Text = $"💊 {pres.DrugCount} ilaç",
                         Font = new Font("Bahnschrift SemiCondensed", 12F),
                         ForeColor = Color.DarkSlateGray,
                         Location = new Point(10, 60),
                         AutoSize = true
-                    };
+                    });
 
-                    // ↩ Ekle Butonu
                     Button btnAddWholePrescription = new Button
                     {
                         Text = "↩ Bu Reçeteyi Kopyala",
@@ -438,11 +420,11 @@ ORDER BY p.PrescriptionDate DESC", conn);
                         Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold),
                         FlatStyle = FlatStyle.Flat,
                         Cursor = Cursors.Hand,
-                        Tag = prescriptionId
+                        Tag = pres.PrescriptionCode
                     };
                     btnAddWholePrescription.FlatAppearance.BorderSize = 0;
 
-                    btnAddWholePrescription.Click += (s, e) =>
+                    btnAddWholePrescription.Click += async (s, e) =>
                     {
                         if (selectedDrugs.Count > 0)
                         {
@@ -450,42 +432,30 @@ ORDER BY p.PrescriptionDate DESC", conn);
                             return;
                         }
 
-                        using (SqlConnection innerConn = new SqlConnection(connStr))
+                        var response = await ApiService.GetAsync<ApiResult<List<PrescriptionDrugDetailDto>>>($"prescription/list/{pres.PrescriptionCode}");
+                        if (response == null || !response.Success || response.Data == null)
                         {
-                            innerConn.Open();
-
-                            SqlCommand detailCmd = new SqlCommand(@"
-                        SELECT d.Id, d.Name, pd.Quantity, pd.Dosage, pd.UsagePeriod
-                        FROM PrescriptionDetails pd
-                        JOIN Drugs d ON pd.DrugId = d.Id
-                        WHERE pd.PrescriptionId = @presId", innerConn);
-
-                            detailCmd.Parameters.AddWithValue("@presId", prescriptionId);
-                            SqlDataReader detailReader = detailCmd.ExecuteReader();
-
-                            while (detailReader.Read())
-                            {
-                                selectedDrugs.Add(new PrescribedDrug
-                                {
-                                    DrugId = Convert.ToInt32(detailReader["Id"]),
-                                    DrugName = detailReader["Name"].ToString(),
-                                    Quantity = Convert.ToInt32(detailReader["Quantity"]),
-                                    Instructions = detailReader["Dosage"].ToString(),
-                                    UsagePeriod = detailReader["UsagePeriod"].ToString()
-                                });
-                            }
-
-                            detailReader.Close();
+                            MessageBox.Show("Reçete detayları alınamadı!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                         }
 
-                        txtDiagnosis.Text = diagnosis;
+                        foreach (var d in response.Data)
+                        {
+                            selectedDrugs.Add(new PrescribedDrug
+                            {
+                                DrugId = d.DrugId,
+                                DrugName = d.Name,
+                                Quantity = d.Quantity,
+                                Instructions = d.Dosage,
+                                UsagePeriod = d.UsagePeriod
+                            });
+                        }
+
+                        txtDiagnosis.Text = pres.Diagnosis;
                         RefreshSelectedDrugList();
                         MessageBox.Show("Reçetedeki ilaçlar başarıyla eklendi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     };
 
-                    card.Controls.Add(lblDate);
-                    card.Controls.Add(lblDiag);
-                    card.Controls.Add(lblDrugCount);
                     card.Controls.Add(btnAddWholePrescription);
 
                     card.MouseEnter += (s, e) =>
@@ -501,119 +471,162 @@ ORDER BY p.PrescriptionDate DESC", conn);
                     };
 
                     flpHistory.Controls.Add(card);
+                    prescriptionCache = prescriptions;
                 }
-
-                reader.Close();
             }
-        }
-
-        private void ShowPrescriptionDetail(Panel card)
-        {
-            if (prescriptionDetailMap.TryGetValue(card, out Panel detailPanel) && card.Tag is int prescriptionId)
+            catch (Exception ex)
             {
-                detailPanel.Controls.Clear();
-                detailPanel.AutoScroll = true;
-                detailPanel.BackColor = Color.White;
-                detailPanel.BorderStyle = BorderStyle.FixedSingle;
-                detailPanel.Padding = new Padding(5);
-
-                using (SqlConnection conn = new SqlConnection(connStr))
-                {
-                    conn.Open();
-
-                    SqlCommand cmdPres = new SqlCommand("SELECT PrescriptionCode, Diagnosis, PrescriptionDate FROM Prescriptions WHERE PrescriptionId = @id", conn);
-                    cmdPres.Parameters.AddWithValue("@id", prescriptionId);
-
-                    SqlDataReader presReader = cmdPres.ExecuteReader();
-                    string prescriptionCode = "", diagnosis = "", date = "";
-
-                    if (presReader.Read())
-                    {
-                        prescriptionCode = presReader["PrescriptionCode"].ToString();
-                        diagnosis = presReader["Diagnosis"].ToString();
-                        date = Convert.ToDateTime(presReader["PrescriptionDate"]).ToString("dd.MM.yyyy");
-                    }
-                    presReader.Close();
-
-                    Panel headerPanel = new Panel { AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink, BackColor = Color.Lavender, Dock = DockStyle.Top, Padding = new Padding(8), Margin = new Padding(0, 0, 0, 10) };
-                    headerPanel.Controls.Add(new Label { Text = $"📝 Teşhis: {diagnosis}", Font = new Font("Bahnschrift SemiCondensed", 12F), Dock = DockStyle.Top, Height = 25 });
-                    headerPanel.Controls.Add(new Label { Text = $"📅 Tarih: {date}", Font = new Font("Bahnschrift SemiCondensed", 10F, FontStyle.Italic), Dock = DockStyle.Top, Height = 20 });
-                    headerPanel.Controls.Add(new Label { Text = $"📋 Reçete Kodu: {prescriptionCode}", Font = new Font("Bahnschrift SemiCondensed", 11F, FontStyle.Bold), Dock = DockStyle.Top, Height = 25 });
-
-                    Panel drugsContainer = new Panel { AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink, Dock = DockStyle.Top, Padding = new Padding(5) };
-                    SqlCommand cmdDetails = new SqlCommand("SELECT d.Name, pd.Quantity, pd.Dosage, pd.UsagePeriod FROM PrescriptionDetails pd JOIN Drugs d ON pd.DrugId = d.Id WHERE pd.PrescriptionId = @presId", conn);
-                    cmdDetails.Parameters.AddWithValue("@presId", prescriptionId);
-
-                    SqlDataReader detailReader = cmdDetails.ExecuteReader();
-                    while (detailReader.Read())
-                    {
-                        Panel drugPanel = new Panel { Height = 80, Dock = DockStyle.Top, Padding = new Padding(8), BackColor = Color.WhiteSmoke, Margin = new Padding(0, 0, 0, 10), BorderStyle = BorderStyle.FixedSingle };
-                        drugPanel.Controls.Add(new Label { Text = $"💊 {detailReader["Name"]} x{detailReader["Quantity"]}", Font = new Font("Bahnschrift SemiCondensed", 11F, FontStyle.Bold), Dock = DockStyle.Top, Height = 25 });
-                        drugPanel.Controls.Add(new Label { Text = $"📖 Doz: {detailReader["Dosage"]}", Font = new Font("Bahnschrift SemiCondensed", 10F), Dock = DockStyle.Top, Height = 20 });
-                        drugPanel.Controls.Add(new Label { Text = $"⏳ Süre: {detailReader["UsagePeriod"]}", Font = new Font("Bahnschrift SemiCondensed", 10F), Dock = DockStyle.Top, Height = 20 });
-
-                        Button btnAddAgain = new Button
-                        {
-                            Text = "↩ Ekle",
-                            Width = 60,
-                            Height = 25,
-                            BackColor = Color.LightBlue,
-                            ForeColor = Color.Black,
-                            Font = new Font("Bahnschrift SemiCondensed", 9F, FontStyle.Bold),
-                            Location = new Point(drugPanel.Width - 70, 10)
-                        };
-                        string drugName = detailReader["Name"].ToString();
-                        int quantity = Convert.ToInt32(detailReader["Quantity"]);
-                        string dosage = detailReader["Dosage"].ToString();
-                        string usage = detailReader["UsagePeriod"].ToString();
-                        btnAddAgain.Click += (s, e) =>
-                        {
-                            selectedDrugs.Add(new PrescribedDrug
-                            {
-                                DrugId = GetDrugIdByName(drugName),
-                                DrugName = drugName,
-                                Quantity = quantity,
-                                Instructions = dosage,
-                                UsagePeriod = usage
-                            });
-                            RefreshSelectedDrugList();
-                        };
-                        drugPanel.Controls.Add(btnAddAgain);
-
-                        drugsContainer.Controls.Add(drugPanel);
-                    }
-                    detailReader.Close();
-
-                    detailPanel.Controls.Add(drugsContainer);
-                    detailPanel.Controls.Add(headerPanel);
-                }
-
-                // 🔥 Konum ve maksimum yükseklik ayarla
-                int totalHeight = detailPanel.Controls.Cast<Control>().Sum(c => c.Height + c.Margin.Top + c.Margin.Bottom) + 20;
-                int maxHeight = (int)(this.Height * 0.75); // Formun %75'i kadar yükseklik
-                detailPanel.Height = Math.Min(totalHeight, maxHeight);
-
-                Point cardLocation = card.PointToScreen(Point.Empty);
-                Point relativeLocation = this.PointToClient(cardLocation);
-
-                int x = relativeLocation.X + card.Width + 5;
-                if (x + detailPanel.Width > this.Width)
-                    x = relativeLocation.X - detailPanel.Width - 5;
-
-                int y = Math.Max(relativeLocation.Y, 0);
-                if (y + detailPanel.Height > this.Height)
-                    y = this.Height - detailPanel.Height - 10;
-
-                detailPanel.Location = new Point(x, y);
-                detailPanel.Visible = true;
-                detailPanel.BringToFront();
+                MessageBox.Show("HTTP reçete yükleme hatası: " + ex.Message);
             }
         }
 
-        private int GetDrugIdByName(string name)
+        private async void ShowPrescriptionDetail(Panel card)
         {
-            var row = allDrugs.AsEnumerable().FirstOrDefault(r => r["Name"].ToString() == name);
-            return row != null ? Convert.ToInt32(row["Id"]) : 0;
+            if (!prescriptionDetailMap.TryGetValue(card, out Panel detailPanel) || card.Tag is not int prescriptionId)
+                return;
+
+            detailPanel.Controls.Clear();
+            detailPanel.AutoScroll = true;
+            detailPanel.BackColor = Color.White;
+            detailPanel.BorderStyle = BorderStyle.FixedSingle;
+            detailPanel.Padding = new Padding(5);
+
+            // Prescription listesinden ilgili reçeteyi bul
+            var selectedPrescription = prescriptionCache.FirstOrDefault(p => p.PrescriptionId == prescriptionId);
+
+            if (selectedPrescription == null) return;
+
+            var detailResult = await ApiService.GetAsync<ApiResult<List<PrescriptionDrugDetailDto>>>($"prescription/list/{selectedPrescription.PrescriptionCode}");
+            var details = detailResult?.Data ?? new List<PrescriptionDrugDetailDto>();
+            if (details == null) return;
+
+            // Header Panel
+            Panel headerPanel = new Panel
+            {
+                AutoSize = true,
+                AutoSizeMode = AutoSizeMode.GrowAndShrink,
+                BackColor = Color.Lavender,
+                Dock = DockStyle.Top,
+                Padding = new Padding(8),
+                Margin = new Padding(0, 0, 0, 10)
+            };
+
+            headerPanel.Controls.Add(new Label
+            {
+                Text = $"📝 Teşhis: {selectedPrescription.Diagnosis}",
+                Font = new Font("Bahnschrift SemiCondensed", 12F),
+                Dock = DockStyle.Top,
+                Height = 25
+            });
+
+            headerPanel.Controls.Add(new Label
+            {
+                Text = $"📅 Tarih: {selectedPrescription.PrescriptionDate:dd.MM.yyyy}",
+                Font = new Font("Bahnschrift SemiCondensed", 10F, FontStyle.Italic),
+                Dock = DockStyle.Top,
+                Height = 20
+            });
+
+            headerPanel.Controls.Add(new Label
+            {
+                Text = $"📋 Reçete Kodu: {selectedPrescription.PrescriptionCode}",
+                Font = new Font("Bahnschrift SemiCondensed", 11F, FontStyle.Bold),
+                Dock = DockStyle.Top,
+                Height = 25
+            });
+
+            detailPanel.Controls.Add(headerPanel);
+
+            // Detayları listele
+            foreach (var drug in details)
+            {
+                Panel drugPanel = new Panel
+                {
+                    Height = 80,
+                    Dock = DockStyle.Top,
+                    Padding = new Padding(8),
+                    BackColor = Color.WhiteSmoke,
+                    Margin = new Padding(0, 0, 0, 10),
+                    BorderStyle = BorderStyle.FixedSingle
+                };
+
+                drugPanel.Controls.Add(new Label
+                {
+                    Text = $"💊 {drug.Name} x{drug.Quantity}",
+                    Font = new Font("Bahnschrift SemiCondensed", 11F, FontStyle.Bold),
+                    Dock = DockStyle.Top,
+                    Height = 25
+                });
+
+                drugPanel.Controls.Add(new Label
+                {
+                    Text = $"📖 Doz: {drug.Dosage}",
+                    Font = new Font("Bahnschrift SemiCondensed", 10F),
+                    Dock = DockStyle.Top,
+                    Height = 20
+                });
+
+                drugPanel.Controls.Add(new Label
+                {
+                    Text = $"⏳ Süre: {drug.UsagePeriod}",
+                    Font = new Font("Bahnschrift SemiCondensed", 10F),
+                    Dock = DockStyle.Top,
+                    Height = 20
+                });
+
+                // Ekle butonu
+                Button btnAddAgain = new Button
+                {
+                    Text = "↩ Ekle",
+                    Width = 60,
+                    Height = 25,
+                    BackColor = Color.LightBlue,
+                    ForeColor = Color.Black,
+                    Font = new Font("Bahnschrift SemiCondensed", 9F, FontStyle.Bold),
+                    Location = new Point(drugPanel.Width - 70, 10)
+                };
+
+                string drugName = drug.Name;
+                int quantity = drug.Quantity;
+                string dosage = drug.Dosage;
+                string usage = drug.UsagePeriod;
+
+                btnAddAgain.Click += (s, e) =>
+                {
+                    selectedDrugs.Add(new PrescribedDrug
+                    {
+                        DrugId = drug.DrugId,
+                        DrugName = drugName,
+                        Quantity = quantity,
+                        Instructions = dosage,
+                        UsagePeriod = usage
+                    });
+                    RefreshSelectedDrugList();
+                };
+
+                drugPanel.Controls.Add(btnAddAgain);
+                detailPanel.Controls.Add(drugPanel);
+            }
+
+            // Konum ve yükseklik ayarla
+            int totalHeight = detailPanel.Controls.Cast<Control>().Sum(c => c.Height + c.Margin.Top + c.Margin.Bottom) + 20;
+            int maxHeight = (int)(this.Height * 0.75);
+            detailPanel.Height = Math.Min(totalHeight, maxHeight);
+
+            Point cardLocation = card.PointToScreen(Point.Empty);
+            Point relativeLocation = this.PointToClient(cardLocation);
+
+            int x = relativeLocation.X + card.Width + 5;
+            if (x + detailPanel.Width > this.Width)
+                x = relativeLocation.X - detailPanel.Width - 5;
+
+            int y = Math.Max(relativeLocation.Y, 0);
+            if (y + detailPanel.Height > this.Height)
+                y = this.Height - detailPanel.Height - 10;
+
+            detailPanel.Location = new Point(x, y);
+            detailPanel.Visible = true;
+            detailPanel.BringToFront();
         }
 
         private void HidePrescriptionDetail(Panel card)
@@ -624,27 +637,20 @@ ORDER BY p.PrescriptionDate DESC", conn);
             }
         }
 
+        private void HideAllPrescriptionDetails()
+        {
+            foreach (var panel in prescriptionDetailMap.Values)
+            {
+                panel.Visible = false;
+            }
+        }
+
+
         private int GetAge(DateTime birthDate)
         {
             int age = DateTime.Now.Year - birthDate.Year;
             if (DateTime.Now.DayOfYear < birthDate.DayOfYear) age--;
             return age;
-        }
-
-        private string GeneratePrescriptionCode()
-        {
-            string today = DateTime.Now.ToString("yyyyMMdd");
-            int countToday = 0;
-
-            using (SqlConnection conn = new SqlConnection(connStr))
-            {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM Prescriptions WHERE CAST(PrescriptionDate AS DATE) = CAST(GETDATE() AS DATE)", conn);
-                countToday = (int)cmd.ExecuteScalar();
-            }
-
-            countToday++; // yeni kayıt için 1 artır
-            return $"REC-{today}-{countToday:D3}"; // REC-20240427-001 gibi
         }
 
         private async void BtnRecommend_Click(object sender, EventArgs e)
@@ -657,14 +663,12 @@ ORDER BY p.PrescriptionDate DESC", conn);
 
             int age = GetAge(SelectedPatient.BirthDate);
 
-            // İlaç listesini sade JSON formatında hazırla
-            var drugsList = allDrugs.AsEnumerable()
-                .Select(row => new
-                {
-                    Name = row["Name"].ToString(),
-                    UsageAge = Convert.ToInt32(row["UsageAge"]),
-                    ActiveIngredient = row["ActiveIngredient"].ToString()
-                }).ToList();
+            var drugsList = allDrugs.Select(drug => new
+            {
+                drug.Name,
+                drug.UsageAge,
+                drug.ActiveIngredient
+            }).ToList();
 
             var requestBody = new
             {
@@ -673,115 +677,66 @@ ORDER BY p.PrescriptionDate DESC", conn);
                 drugs = drugsList
             };
 
-            string json = System.Text.Json.JsonSerializer.Serialize(requestBody);
+            btnRecommend.Enabled = false;
+            btnRecommend.Text = "⏳ Öneriler alınıyor...";
 
-            using (var client = new HttpClient())
+            try
             {
-                btnRecommend.Enabled = false;
-                btnRecommend.Text = "⏳ Öneriler alınıyor...";
+                var response = await ApiService.PostAsync<ApiResult<string>>("drug/recommend", requestBody);
 
+                if (response == null || !response.Success || string.IsNullOrWhiteSpace(response.Data))
+                {
+                    MessageBox.Show("⚠️ API geçerli bir cevap döndürmedi.");
+                    return;
+                }
+
+                // Kod bloğu markdown'ını temizle: ```json\n[...]\n```
+                string rawJson = response.Data
+                    .Replace("```json", "")
+                    .Replace("```", "")
+                    .Trim();
+
+                Debug.WriteLine("Temizlenmiş JSON: " + rawJson);
+
+                List<string> suggestions;
                 try
                 {
-                    var content = new StringContent(json, Encoding.UTF8, "application/json");
-                    var response = await client.PostAsync("http://localhost:5001/recommend", content);
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var resultJson = await response.Content.ReadAsStringAsync();
-                        var result = System.Text.Json.JsonDocument.Parse(resultJson);
-
-                        string raw = result.RootElement.GetProperty("raw_response").ToString();
-
-                        var match = System.Text.RegularExpressions.Regex.Match(raw, @"\[\s*""[^]]+?\]");
-                        if (!match.Success)
-                        {
-                            MessageBox.Show("⚠️ Model geçerli bir JSON cevabı döndürmedi.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
-
-                        string jsonArray = match.Value;
-                        var suggestions = System.Text.Json.JsonSerializer.Deserialize<List<string>>(jsonArray);
-
-                        // 🔄 Önce eski öneri etiketlerini ve arka planları sıfırla
-                        foreach (Control control in flpDrugs.Controls)
-                        {
-                            if (control is Panel panel)
-                            {
-                                panel.BackColor = Color.White;
-
-                                // Mevcut "⭐️ Önerilen" etiketlerini kaldır
-                                foreach (var lbl in panel.Controls.OfType<Label>().Where(l => l.Text.Contains("⭐️ Önerilen")).ToList())
-                                {
-                                    panel.Controls.Remove(lbl);
-                                }
-                            }
-                        }
-
-                        // 🔁 Kartları en baştan sırala: önce önerilenler → sonra kalanlar
-                        var allPanels = flpDrugs.Controls.OfType<Panel>().ToList();
-                        flpDrugs.Controls.Clear();
-
-                        var sortedPanels = allPanels
-                            .OrderByDescending(panel =>
-                            {
-                                if (panel.Tag is DataRow row)
-                                {
-                                    string drugName = row["Name"].ToString();
-                                    return suggestions.Contains(drugName) ? 1 : 0;
-                                }
-                                return 0;
-                            })
-                            .ToList();
-
-                        foreach (var panel in sortedPanels)
-                        {
-                            if (panel.Tag is DataRow row)
-                            {
-                                string drugName = row["Name"].ToString();
-
-                                if (suggestions.Contains(drugName))
-                                {
-                                    if (!allDrugs.AsEnumerable().Any(r => r["Name"].ToString() == drugName))
-                                        continue; // Veritabanında yoksa bu kartı gösterme
-
-                                    panel.BackColor = Color.LightGoldenrodYellow;
-
-                                    // ⭐️ etiketi ekle
-                                    Label lblStar = new Label
-                                    {
-                                        Text = "⭐️ Önerilen",
-                                        Font = new Font("Bahnschrift SemiCondensed", 16F, FontStyle.Bold),
-                                        ForeColor = Color.DarkOrange,
-                                        BackColor = Color.Transparent,
-                                        AutoSize = true,
-                                        Location = new Point(160, 160)
-                                    };
-                                    panel.Controls.Add(lblStar);
-                                }
-                            }
-
-                            flpDrugs.Controls.Add(panel);
-                        }
-
-                        MessageBox.Show("✅ Öneriler alındı ve vurgulandı!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("❌ Öneri alınamadı: " + response.StatusCode, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    suggestions = System.Text.Json.JsonSerializer.Deserialize<List<string>>(rawJson);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("⚠️ Bağlantı hatası: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    btnRecommend.Enabled = true;
-                    btnRecommend.Text = "🔮 İlaç Öner";
+                    MessageBox.Show("⚠️ AI cevabı geçersiz formatta: " + ex.Message);
+                    return;
                 }
 
+                if (suggestions == null || suggestions.Count == 0)
+                {
+                    MessageBox.Show("⚠️ Model geçerli öneri döndürmedi.");
+                    return;
+                }
+
+                recommendedDrugNames = new HashSet<string>(suggestions);
+
+                var sortedDrugs = allDrugs
+                    .OrderByDescending(d => recommendedDrugNames.Contains(d.Name))
+                    .ToList();
+
+                flpDrugs.Controls.Clear();
+                foreach (var drug in sortedDrugs)
+                    flpDrugs.Controls.Add(CreateDrugCard(drug));
+
+                MessageBox.Show("✅ Öneriler alındı ve vurgulandı!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("⚠️ Bağlantı hatası: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
                 btnRecommend.Enabled = true;
                 btnRecommend.Text = "🔮 İlaç Öner";
             }
         }
-
 
     }
 
@@ -794,6 +749,5 @@ ORDER BY p.PrescriptionDate DESC", conn);
         public string Instructions { get; set; } = "Günde 2 kez";
         public string? SpecialInstructions { get; set; }
         public decimal Price { get; set; }
-
     }
 }

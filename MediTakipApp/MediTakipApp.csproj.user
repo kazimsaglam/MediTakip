@@ -25,6 +25,9 @@
     <Compile Update="Forms\PharmacyPanelContent\PharmacySellControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="Forms\PharmacyPanelContent\InventoryControlContent\SupplyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\_LoginScreen.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using MediTakipApp.Forms.DoctorPanelContent;
-using MediTakipApp.Utils;
 using Timer = System.Windows.Forms.Timer;
+using MediTakipApp.Utils;
 
 namespace MediTakipApp.Forms
 {
