@@ -21,6 +21,8 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
         private Panel panelHistory;
         private Panel panelCards;
 
+        private Button btnOpenSupplyForm;
+
         private Panel dashboardPanel;
         private ComboBox cmbStockFilter;
         private Label lblSearch;
@@ -39,6 +41,8 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
         private DataGridView dgvHistory;
         private DataGridView dgvGroupedHistory;
         private DataTable cachedHistoryData;
+        private DataGridView dgvSupplyTracking;
+
 
 
 
@@ -210,6 +214,25 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
                 Margin = new Padding(0),
                 Padding = new Padding(0)
             };
+
+            btnOpenSupplyForm = new Button
+            {
+                Text = "📲  Barkod İle İlaç Ekle",
+                Location = new Point(720, 8),
+                Size = new Size(300, 36),
+                BackColor = Color.MediumSlateBlue,
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat,
+                Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold),
+                Cursor = Cursors.Hand,
+                Padding = new Padding(6, 2, 6, 2),
+                TextAlign = ContentAlignment.MiddleCenter
+            };
+            btnOpenSupplyForm.FlatAppearance.BorderSize = 0;
+            btnOpenSupplyForm.FlatAppearance.MouseOverBackColor = Color.SlateBlue;
+            btnOpenSupplyForm.FlatAppearance.MouseDownBackColor = Color.DarkSlateBlue;
+
+            panelSupplyTopBar.Controls.Add(btnOpenSupplyForm);
 
             panelSupplyTopBar.Controls.Add(lblSearch);
             panelSupplyTopBar.Controls.Add(txtSearchSupply);

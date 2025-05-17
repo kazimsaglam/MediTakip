@@ -13,6 +13,9 @@
     <Compile Update="Forms\DoctorPanelContent\HomeControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="Forms\PharmacyPanelContent\InventoryControlContent\SupplyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\PharmacyPanelContent\PharmacyHomeControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -24,9 +27,6 @@
     </Compile>
     <Compile Update="Forms\PharmacyPanelContent\PharmacySellControl.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Forms\PharmacyPanelContent\InventoryControlContent\SupplyForm.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\_LoginScreen.cs">
       <SubType>Form</SubType>

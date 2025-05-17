@@ -48,6 +48,14 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
             txtSearch.TextChanged += (s, e) => LoadStockCards();
             txtSearchSupply.TextChanged += (s, e) => LoadSupplyCards(txtSearchSupply.Text);
             cmbSupplyFilter.SelectedIndexChanged += (s, e) => LoadSupplyCards(txtSearchSupply.Text, cmbSupplyFilter.SelectedItem.ToString());
+
+            btnOpenSupplyForm.Click += (s, e) =>
+            {
+                var form = new SupplyForm();
+                form.ShowDialog();
+                LoadSupplyCards();
+            };
+
         }
 
         private void LoadStockCards()
@@ -487,24 +495,16 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
                         tblSuppliers.Controls.Add(new Label { Text = supplierName, Anchor = AnchorStyles.Left, AutoSize = true, Padding = new Padding(5, 5, 0, 0) });
                         tblSuppliers.Controls.Add(new Label { Text = region, Anchor = AnchorStyles.Left, AutoSize = true, Padding = new Padding(5, 5, 0, 0) });
                         tblSuppliers.Controls.Add(new Label { Text = $"{price:C2}", Anchor = AnchorStyles.Left, AutoSize = true, Padding = new Padding(5, 5, 0, 0) });
-
-                        Label lblStock = new Label
-                        {
-                            Text = stock.ToString(),
-                            ForeColor = stock < 20 ? Color.DarkRed : Color.Black,
-                            Anchor = AnchorStyles.Left,
-                            AutoSize = true,
-                            Padding = new Padding(5, 5, 0, 0)
-                        };
-                        tblSuppliers.Controls.Add(lblStock);
+                        tblSuppliers.Controls.Add(new Label { Text = stock.ToString(), Anchor = AnchorStyles.Left, AutoSize = true, Padding = new Padding(5, 5, 0, 0) });
 
                         Button btnSelect = new Button
                         {
                             Text = "➕",
+                            Anchor = AnchorStyles.Left,
                             BackColor = Color.RoyalBlue,
                             ForeColor = Color.White,
                             Font = new Font("Bahnschrift", 10F, FontStyle.Bold),
-                            Size = new Size(60, 30),
+                            Size = new Size(70, 30),
                             FlatStyle = FlatStyle.Flat
                         };
                         btnSelect.FlatAppearance.BorderSize = 0;
@@ -678,6 +678,7 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
                     cmd.Parameters.AddWithValue("@supplier", supplier);
 
                     cmd.ExecuteNonQuery();
+                    LoadSupplyTracking(selectedDrugId);
                 }
 
                 MessageBox.Show("İlaç başarıyla tedarik edildi!", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -708,7 +709,7 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
                     D.Name AS [İlaç Adı],
                     S.StockQuantity AS [Miktar],
                     FORMAT(S.ExpirationDate, 'dd.MM.yyyy') AS [SKT],
-                    FORMAT(S.EntryDate, 'dd.MM.yyyy HH:mm') AS [Giriş Tarihi],
+                    FORMAT(S.EntryDate, 'dd.MM.yyyy') AS [Giriş Tarihi],
                     S.Supplier AS [Tedarikçi]
                 FROM DrugStocks S
                 INNER JOIN Drugs D ON D.Id = S.DrugId
@@ -787,7 +788,7 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
 
             Button btnExport = new Button()
             {
-                Text = "📤 Dışa Aktar",
+                Text = "📄 Dışa Aktar",
                 Location = new Point(700, 10),
                 Size = new Size(150, 30),
                 BackColor = Color.MediumSeaGreen,
@@ -796,7 +797,6 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
             };
             btnExport.Click += (s, e) => ExportToCsv(dgvHistory.DataSource as DataTable, dgvGroupedHistory.DataSource as DataTable);
 
-            // == Özet Bilgiler ==
             int totalStock = cachedHistoryData.AsEnumerable()
                 .Sum(r => Convert.ToInt32(r["Miktar"]));
 
@@ -811,7 +811,6 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
                 .Select(g => g.Key)
                 .FirstOrDefault() ?? "-";
 
-            // === Dashboard Özet Label'ları ===
             TransparentLabel lblTotalStock = new TransparentLabel()
             {
                 Text = $"🔢 Toplam Stok: {totalStock} adet",
@@ -845,7 +844,6 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
             topBar.Controls.Add(lblSearch);
             topBar.Controls.Add(txtSearchHistory);
 
-            // === Gridler
             dgvHistory = new DataGridView()
             {
                 Dock = DockStyle.Fill,
@@ -865,6 +863,18 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
             dgvHistory.DefaultCellStyle.SelectionBackColor = Color.LightSteelBlue;
             dgvHistory.AlternatingRowsDefaultCellStyle.BackColor = Color.WhiteSmoke;
 
+            // === İmha Et Butonu ===
+            DataGridViewButtonColumn btnDeleteColumn = new DataGridViewButtonColumn
+            {
+                HeaderText = "İşlem",
+                Text = "🗑️ İmha Et",
+                UseColumnTextForButtonValue = true,
+                Width = 100,
+                FlatStyle = FlatStyle.Flat
+            };
+            dgvHistory.Columns.Add(btnDeleteColumn);
+            dgvHistory.CellContentClick += DgvHistory_CellContentClick;
+
             dgvGroupedHistory = new DataGridView()
             {
                 Dock = DockStyle.Fill,
@@ -883,11 +893,156 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
             dgvGroupedHistory.EnableHeadersVisualStyles = false;
             dgvGroupedHistory.DefaultCellStyle.SelectionBackColor = Color.LightGreen;
 
+            dgvSupplyTracking = new DataGridView()
+            {
+                Dock = DockStyle.Fill,
+                ReadOnly = true,
+                BackgroundColor = Color.White,
+                BorderStyle = BorderStyle.FixedSingle,
+                SelectionMode = DataGridViewSelectionMode.FullRowSelect,
+                AllowUserToAddRows = false,
+                AllowUserToDeleteRows = false,
+                AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            };
+            dgvSupplyTracking.DefaultCellStyle.Font = new Font("Bahnschrift SemiCondensed", 10F);
+            dgvSupplyTracking.ColumnHeadersDefaultCellStyle.Font = new Font("Bahnschrift SemiCondensed", 11F, FontStyle.Bold);
+            dgvSupplyTracking.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkSlateGray;
+            dgvSupplyTracking.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvSupplyTracking.EnableHeadersVisualStyles = false;
+            dgvSupplyTracking.DefaultCellStyle.SelectionBackColor = Color.LightGreen;
+
+            dgvSupplyTracking.Columns.Add("DrugName", "İlaç");
+            dgvSupplyTracking.Columns.Add("EntryDate", "Tarih");
+            dgvSupplyTracking.Columns.Add("Quantity", "Miktar");
+            dgvSupplyTracking.Columns.Add("Supplier", "Tedarikçi");
+            dgvSupplyTracking.Columns.Add("Status", "Durum");
+
+            dgvSupplyTracking.Rows.Add("Parol", "2025-05-18", "100", "BetaMed", "🕓 Teslim Bekleniyor");
+            dgvSupplyTracking.Rows.Add("Aferin", "2025-05-15", "50", "Ege İlaç", "🚚 Yolda");
+            dgvSupplyTracking.Rows.Add("Dolorex", "2025-05-14", "42", "Karadeniz", "❌ İptal Edildi");
+            dgvSupplyTracking.Rows.Add("Aspirin", "2025-05-19", "42", "Karadeniz", "⏸ Beklemeye Alındı");
+
             layout.Controls.Add(topBar, 0, 0);
+            layout.SetColumnSpan(topBar, 1);
             layout.Controls.Add(dgvHistory, 0, 1);
-            layout.Controls.Add(dgvGroupedHistory, 0, 2);
+
+            TableLayoutPanel bottomRow = new TableLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                ColumnCount = 2,
+                RowCount = 2
+            };
+            bottomRow.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
+            bottomRow.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
+            bottomRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50));
+            bottomRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50));
+
+            Label lblGroupedTitle = new Label
+            {
+                Text = "📦 Gruplu Tedarik Miktarı",
+                Font = new Font("Bahnschrift SemiCondensed", 13F, FontStyle.Bold),
+                Dock = DockStyle.Fill,
+                TextAlign = ContentAlignment.MiddleLeft,
+                Padding = new Padding(5)
+            };
+
+            Label lblTrackingTitle = new Label
+            {
+                Text = "🚚 Tedarik Süreci",
+                Font = new Font("Bahnschrift SemiCondensed", 13F, FontStyle.Bold),
+                Dock = DockStyle.Fill,
+                TextAlign = ContentAlignment.MiddleLeft,
+                Padding = new Padding(5)
+            };
+
+            bottomRow.Controls.Add(lblGroupedTitle, 0, 0);
+            bottomRow.Controls.Add(lblTrackingTitle, 1, 0);
+            bottomRow.Controls.Add(dgvGroupedHistory, 0, 1);
+            bottomRow.Controls.Add(dgvSupplyTracking, 1, 1);
+
+            layout.Controls.Add(bottomRow, 0, 2);
 
             panelHistory.Controls.Add(layout);
+        }
+
+        private void DgvHistory_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && dgvHistory.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+            {
+                string ilacAdi = dgvHistory.Rows[e.RowIndex].Cells["İlaç Adı"].Value.ToString();
+                string tarih = dgvHistory.Rows[e.RowIndex].Cells["Giriş Tarihi"].Value.ToString();
+                string tedarikci = dgvHistory.Rows[e.RowIndex].Cells["Tedarikçi"].Value.ToString();
+                string skt = dgvHistory.Rows[e.RowIndex].Cells["SKT"].Value.ToString();
+
+                DialogResult result = MessageBox.Show($"\"{ilacAdi}\" ilacına ait bu parti silinecek. Emin misiniz?", "İmha Et", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    using (SqlConnection conn = new SqlConnection(connStr))
+                    {
+                        conn.Open();
+                        SqlCommand cmd = new SqlCommand(@"
+                    DELETE FROM DrugStocks
+                    WHERE 
+                        DrugId = (SELECT Id FROM Drugs WHERE Name = @name)
+                        AND FORMAT(EntryDate, 'dd.MM.yyyy') = @entryDate
+                        AND FORMAT(ExpirationDate, 'dd.MM.yyyy') = @expiryDate
+                        AND Supplier = @supplier", conn);
+
+                        cmd.Parameters.AddWithValue("@name", ilacAdi);
+                        cmd.Parameters.AddWithValue("@entryDate", tarih);
+                        cmd.Parameters.AddWithValue("@expiryDate", skt);
+                        cmd.Parameters.AddWithValue("@supplier", tedarikci);
+
+                        int affected = cmd.ExecuteNonQuery();
+                        if (affected > 0)
+                        {
+                            MessageBox.Show("İlaç partisi başarıyla imha edildi!", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            cachedHistoryData = null;
+                            LoadStockHistory();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Silme işlemi başarısız oldu.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void LoadSupplyTracking(int drugId)
+        {
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand(@"
+            SELECT TOP 1
+                D.Name AS DrugName,
+                DS.EntryDate,
+                DS.StockQuantity AS Quantity,
+                DS.Supplier,
+                '🕓 Teslim Bekleniyor' AS Status
+            FROM DrugStocks DS
+            JOIN Drugs D ON DS.DrugId = D.Id
+            WHERE DS.DrugId = @drugId
+            ORDER BY DS.EntryDate DESC", conn);
+
+                cmd.Parameters.AddWithValue("@drugId", drugId);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        dgvSupplyTracking.Rows.Add(
+                            reader["DrugName"].ToString(),
+                            Convert.ToDateTime(reader["EntryDate"]).ToShortDateString(),
+                            reader["Quantity"].ToString(),
+                            reader["Supplier"].ToString(),
+                            reader["Status"].ToString()
+                        );
+                    }
+                }
+            }
         }
 
         private void ApplyHistoryFilter()

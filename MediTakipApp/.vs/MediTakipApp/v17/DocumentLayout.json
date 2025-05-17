@@ -22,12 +22,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -36,7 +32,7 @@
               "RelativeDocumentMoniker": "Forms\\PharmacyPanelContent\\PharmacyInventoryControl.cs",
               "ToolTip": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\Forms\\PharmacyPanelContent\\PharmacyInventoryControl.cs",
               "RelativeToolTip": "Forms\\PharmacyPanelContent\\PharmacyInventoryControl.cs",
-              "ViewState": "AgIAAKYBAAAAAAAAAAAcwLwBAAArAAAAAAAAAA==",
+              "ViewState": "AgIAAFIDAAAAAAAAAAAjwGQDAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-14T16:06:41.918Z",
               "EditorCaption": ""
@@ -49,9 +45,10 @@
               "RelativeDocumentMoniker": "Forms\\PharmacyPanelContent\\PharmacyInventoryControl.Designer.cs",
               "ToolTip": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\Forms\\PharmacyPanelContent\\PharmacyInventoryControl.Designer.cs",
               "RelativeToolTip": "Forms\\PharmacyPanelContent\\PharmacyInventoryControl.Designer.cs",
-              "ViewState": "AgIAAIEAAAAAAAAAAAAAwI8AAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAAOAAAAAAAAAAAAApwOMAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T16:45:01.686Z"
+              "WhenOpened": "2025-05-14T16:45:01.686Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -62,7 +59,8 @@
               "ToolTip": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\Forms\\PharmacyPanelContent\\PharmacyInventoryControl.cs [Tasar\u0131m]",
               "RelativeToolTip": "Forms\\PharmacyPanelContent\\PharmacyInventoryControl.cs [Tasar\u0131m]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T09:01:51.951Z"
+              "WhenOpened": "2025-05-15T09:01:51.951Z",
+              "EditorCaption": " [Tasar\u0131m]"
             }
           ]
         }

@@ -5,6 +5,9 @@
         private System.ComponentModel.IContainer components = null;
         private Label lblTitle;
         private Label lblDrugName;
+        private Label lblQuantity;
+        private Label lblExpiry;
+        private Label lblSupplier;
         private NumericUpDown nudQuantity;
         private DateTimePicker dtpExpiry;
         private ComboBox cmbSupplier;
@@ -19,73 +22,146 @@
 
         private void InitializeComponent()
         {
-            this.lblTitle = new Label();
-            this.lblDrugName = new Label();
-            this.nudQuantity = new NumericUpDown();
-            this.dtpExpiry = new DateTimePicker();
-            this.cmbSupplier = new ComboBox();
-            this.btnSave = new Button();
-            this.btnCancel = new Button();
-            ((System.ComponentModel.ISupportInitialize)(nudQuantity)).BeginInit();
-            this.SuspendLayout();
-
-            // Form
-            this.Text = "Tedarik Ekle";
-            this.Size = new Size(400, 300);
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
-            this.StartPosition = FormStartPosition.CenterParent;
-            this.MaximizeBox = false;
-
+            lblTitle = new Label();
+            lblDrugName = new Label();
+            lblQuantity = new Label();
+            lblExpiry = new Label();
+            lblSupplier = new Label();
+            nudQuantity = new NumericUpDown();
+            dtpExpiry = new DateTimePicker();
+            cmbSupplier = new ComboBox();
+            btnSave = new Button();
+            btnCancel = new Button();
+            ((System.ComponentModel.ISupportInitialize)nudQuantity).BeginInit();
+            SuspendLayout();
+            // 
             // lblTitle
-            lblTitle.Text = "🩺 Tedarik Girişi";
-            lblTitle.Font = new Font("Bahnschrift SemiCondensed", 14F, FontStyle.Bold);
+            // 
+            lblTitle.Font = new Font("Bahnschrift SemiCondensed", 16F, FontStyle.Bold);
             lblTitle.Location = new Point(20, 20);
-            lblTitle.Size = new Size(300, 30);
-
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(350, 30);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "\U0001fa7a Tedarik Girişi";
+            // 
             // lblDrugName
-            lblDrugName.Text = "İlaç: " + drugName;
+            // 
+            lblDrugName.Font = new Font("Bahnschrift SemiCondensed", 13F, FontStyle.Bold);
             lblDrugName.Location = new Point(20, 60);
-            lblDrugName.Size = new Size(300, 20);
-
+            lblDrugName.Name = "lblDrugName";
+            lblDrugName.Size = new Size(360, 24);
+            lblDrugName.TabIndex = 1;
+            lblDrugName.Text = "İlaç: -";
+            // 
+            // lblQuantity
+            // 
+            lblQuantity.Location = new Point(20, 100);
+            lblQuantity.Name = "lblQuantity";
+            lblQuantity.Size = new Size(100, 24);
+            lblQuantity.TabIndex = 2;
+            lblQuantity.Font = new Font("Bahnschrift", 11F);
+            lblQuantity.Text = "🔢 Miktar:";
+            // 
+            // lblExpiry
+            // 
+            lblExpiry.Location = new Point(20, 135);
+            lblExpiry.Name = "lblExpiry";
+            lblExpiry.Size = new Size(100, 24);
+            lblExpiry.TabIndex = 4;
+            lblExpiry.Font = new Font("Bahnschrift", 11F);
+            lblExpiry.Text = "📅 SKT:";
+            // 
+            // lblSupplier
+            // 
+            lblSupplier.Location = new Point(20, 170);
+            lblSupplier.Name = "lblSupplier";
+            lblSupplier.Size = new Size(120, 24);
+            lblSupplier.TabIndex = 6;
+            lblSupplier.Font = new Font("Bahnschrift", 11F);
+            lblSupplier.Text = "🏭 Tedarikçi:";
+            // 
             // nudQuantity
-            nudQuantity.Location = new Point(20, 90);
-            nudQuantity.Minimum = 1;
-            nudQuantity.Maximum = 10000;
-            nudQuantity.Value = 1;
-            nudQuantity.Size = new Size(150, 30);
-
+            // 
+            nudQuantity.Font = new Font("Bahnschrift", 11F);
+            nudQuantity.Location = new Point(140, 97);
+            nudQuantity.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
+            nudQuantity.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            nudQuantity.Name = "nudQuantity";
+            nudQuantity.Size = new Size(200, 28);
+            nudQuantity.TabIndex = 3;
+            nudQuantity.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            // 
             // dtpExpiry
-            dtpExpiry.Location = new Point(20, 130);
-            dtpExpiry.Size = new Size(250, 30);
-
+            // 
+            dtpExpiry.Font = new Font("Bahnschrift", 11F);
+            dtpExpiry.Format = DateTimePickerFormat.Short;
+            dtpExpiry.Location = new Point(140, 132);
+            dtpExpiry.Name = "dtpExpiry";
+            dtpExpiry.Size = new Size(200, 28);
+            dtpExpiry.TabIndex = 5;
+            // 
             // cmbSupplier
-            cmbSupplier.Location = new Point(20, 170);
-            cmbSupplier.Size = new Size(250, 30);
+            // 
             cmbSupplier.DropDownStyle = ComboBoxStyle.DropDownList;
-
+            cmbSupplier.Font = new Font("Bahnschrift", 11F);
+            cmbSupplier.Location = new Point(140, 167);
+            cmbSupplier.Name = "cmbSupplier";
+            cmbSupplier.Size = new Size(200, 29);
+            cmbSupplier.TabIndex = 7;
+            // 
             // btnSave
+            // 
+            btnSave.BackColor = Color.SeaGreen;
+            btnSave.FlatStyle = FlatStyle.Flat;
+            btnSave.Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold);
+            btnSave.ForeColor = Color.White;
+            btnSave.Location = new Point(70, 220);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(120, 40);
+            btnSave.TabIndex = 8;
             btnSave.Text = "💾 Kaydet";
-            btnSave.Location = new Point(60, 220);
-            btnSave.Size = new Size(100, 35);
+            btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += BtnSave_Click;
-
+            // 
             // btnCancel
+            // 
+            btnCancel.BackColor = Color.IndianRed;
+            btnCancel.FlatStyle = FlatStyle.Flat;
+            btnCancel.Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold);
+            btnCancel.ForeColor = Color.White;
+            btnCancel.Location = new Point(210, 220);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(120, 40);
+            btnCancel.TabIndex = 9;
             btnCancel.Text = "❌ Vazgeç";
-            btnCancel.Location = new Point(180, 220);
-            btnCancel.Size = new Size(100, 35);
+            btnCancel.UseVisualStyleBackColor = false;
             btnCancel.Click += BtnCancel_Click;
-
-            // Controls
-            this.Controls.Add(lblTitle);
-            this.Controls.Add(lblDrugName);
-            this.Controls.Add(nudQuantity);
-            this.Controls.Add(dtpExpiry);
-            this.Controls.Add(cmbSupplier);
-            this.Controls.Add(btnSave);
-            this.Controls.Add(btnCancel);
-
-            ((System.ComponentModel.ISupportInitialize)(nudQuantity)).EndInit();
-            this.ResumeLayout(false);
+            // 
+            // SupplyForm
+            // 
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.StartPosition = FormStartPosition.CenterParent;
+            this.BackColor = Color.WhiteSmoke;
+            this.Padding = new Padding(10);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Font = new Font("Bahnschrift", 16F, FontStyle.Regular);
+            ClientSize = new Size(402, 293);
+            Controls.Add(lblTitle);
+            Controls.Add(lblDrugName);
+            Controls.Add(lblQuantity);
+            Controls.Add(nudQuantity);
+            Controls.Add(lblExpiry);
+            Controls.Add(dtpExpiry);
+            Controls.Add(lblSupplier);
+            Controls.Add(cmbSupplier);
+            Controls.Add(btnSave);
+            Controls.Add(btnCancel);
+            MaximizeBox = false;
+            Name = "SupplyForm";
+            Text = "İlaç Tedarik Et";
+            ((System.ComponentModel.ISupportInitialize)nudQuantity).EndInit();
+            ResumeLayout(false);
         }
     }
 }
