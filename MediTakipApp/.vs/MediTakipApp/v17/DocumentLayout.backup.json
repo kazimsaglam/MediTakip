@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{552E0FD6-1286-406D-923D-8D5DF3C9B37A}|MediTakipApp.csproj|c:\\users\\kazim\\onedrive\\belgeler\\meditakipapp\\forms\\pharmacypanelcontent\\pharmacyinventorycontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{552E0FD6-1286-406D-923D-8D5DF3C9B37A}|MediTakipApp.csproj|solutionrelative:forms\\pharmacypanelcontent\\pharmacyinventorycontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{552E0FD6-1286-406D-923D-8D5DF3C9B37A}|MediTakipApp.csproj|c:\\users\\kazim\\onedrive\\belgeler\\meditakipapp\\forms\\pharmacypanelcontent\\inventorycontrolcontent\\supplyform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{552E0FD6-1286-406D-923D-8D5DF3C9B37A}|MediTakipApp.csproj|solutionrelative:forms\\pharmacypanelcontent\\inventorycontrolcontent\\supplyform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{552E0FD6-1286-406D-923D-8D5DF3C9B37A}|MediTakipApp.csproj|c:\\users\\kazim\\onedrive\\belgeler\\meditakipapp\\forms\\pharmacypanelcontent\\pharmacyinventorycontrol.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{552E0FD6-1286-406D-923D-8D5DF3C9B37A}|MediTakipApp.csproj|solutionrelative:forms\\pharmacypanelcontent\\pharmacyinventorycontrol.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{552E0FD6-1286-406D-923D-8D5DF3C9B37A}|MediTakipApp.csproj|c:\\users\\kazim\\onedrive\\belgeler\\meditakipapp\\forms\\pharmacypanelcontent\\inventorycontrolcontent\\supplyform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{552E0FD6-1286-406D-923D-8D5DF3C9B37A}|MediTakipApp.csproj|solutionrelative:forms\\pharmacypanelcontent\\inventorycontrolcontent\\supplyform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{552E0FD6-1286-406D-923D-8D5DF3C9B37A}|MediTakipApp.csproj|C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\forms\\pharmacypanelcontent\\pharmacyinventorycontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{552E0FD6-1286-406D-923D-8D5DF3C9B37A}|MediTakipApp.csproj|solutionrelative:forms\\pharmacypanelcontent\\pharmacyinventorycontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{552E0FD6-1286-406D-923D-8D5DF3C9B37A}|MediTakipApp.csproj|C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\forms\\pharmacypanelcontent\\inventorycontrolcontent\\supplyform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{552E0FD6-1286-406D-923D-8D5DF3C9B37A}|MediTakipApp.csproj|solutionrelative:forms\\pharmacypanelcontent\\inventorycontrolcontent\\supplyform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{552E0FD6-1286-406D-923D-8D5DF3C9B37A}|MediTakipApp.csproj|c:\\users\\kazim\\onedrive\\belgeler\\meditakipapp\\forms\\pharmacypanelcontent\\pharmacyhomecontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{552E0FD6-1286-406D-923D-8D5DF3C9B37A}|MediTakipApp.csproj|solutionrelative:forms\\pharmacypanelcontent\\pharmacyhomecontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{552E0FD6-1286-406D-923D-8D5DF3C9B37A}|MediTakipApp.csproj|C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\forms\\pharmacypanelcontent\\pharmacyhomecontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{552E0FD6-1286-406D-923D-8D5DF3C9B37A}|MediTakipApp.csproj|solutionrelative:forms\\pharmacypanelcontent\\pharmacyhomecontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,40 +35,64 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "PharmacyInventoryControl.cs",
-              "DocumentMoniker": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\Forms\\PharmacyPanelContent\\PharmacyInventoryControl.cs",
-              "RelativeDocumentMoniker": "Forms\\PharmacyPanelContent\\PharmacyInventoryControl.cs",
-              "ToolTip": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\Forms\\PharmacyPanelContent\\PharmacyInventoryControl.cs",
-              "RelativeToolTip": "Forms\\PharmacyPanelContent\\PharmacyInventoryControl.cs",
-              "ViewState": "AgIAAFIDAAAAAAAAAAAjwGoDAAA0AAAAAAAAAA==",
+              "Title": "SupplyForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\Forms\\PharmacyPanelContent\\InventoryControlContent\\SupplyForm.Designer.cs",
+              "RelativeDocumentMoniker": "Forms\\PharmacyPanelContent\\InventoryControlContent\\SupplyForm.Designer.cs",
+              "ToolTip": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\Forms\\PharmacyPanelContent\\InventoryControlContent\\SupplyForm.Designer.cs",
+              "RelativeToolTip": "Forms\\PharmacyPanelContent\\InventoryControlContent\\SupplyForm.Designer.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAYwJwAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T16:06:41.918Z",
+              "WhenOpened": "2025-05-18T17:16:56.527Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "PharmacyInventoryControl.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\Forms\\PharmacyPanelContent\\PharmacyInventoryControl.Designer.cs",
-              "RelativeDocumentMoniker": "Forms\\PharmacyPanelContent\\PharmacyInventoryControl.Designer.cs",
-              "ToolTip": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\Forms\\PharmacyPanelContent\\PharmacyInventoryControl.Designer.cs",
-              "RelativeToolTip": "Forms\\PharmacyPanelContent\\PharmacyInventoryControl.Designer.cs",
-              "ViewState": "AgIAAOAAAAAAAAAAAAApwOMAAAAyAAAAAAAAAA==",
+              "Title": "SupplyForm.cs",
+              "DocumentMoniker": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\Forms\\PharmacyPanelContent\\InventoryControlContent\\SupplyForm.cs",
+              "RelativeDocumentMoniker": "Forms\\PharmacyPanelContent\\InventoryControlContent\\SupplyForm.cs",
+              "ToolTip": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\Forms\\PharmacyPanelContent\\InventoryControlContent\\SupplyForm.cs",
+              "RelativeToolTip": "Forms\\PharmacyPanelContent\\InventoryControlContent\\SupplyForm.cs",
+              "ViewState": "AgIAAIoAAAAAAAAAAAAuwLMAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T16:45:01.686Z",
+              "WhenOpened": "2025-05-18T11:22:25.219Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "PharmacyInventoryControl.cs [Tasar\u0131m]",
-              "DocumentMoniker": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\Forms\\PharmacyPanelContent\\PharmacyInventoryControl.cs",
-              "RelativeDocumentMoniker": "Forms\\PharmacyPanelContent\\PharmacyInventoryControl.cs",
-              "ToolTip": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\Forms\\PharmacyPanelContent\\PharmacyInventoryControl.cs [Tasar\u0131m]",
-              "RelativeToolTip": "Forms\\PharmacyPanelContent\\PharmacyInventoryControl.cs [Tasar\u0131m]",
+              "Title": "SupplyForm.cs [Tasar\u0131m]",
+              "DocumentMoniker": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\Forms\\PharmacyPanelContent\\InventoryControlContent\\SupplyForm.cs",
+              "RelativeDocumentMoniker": "Forms\\PharmacyPanelContent\\InventoryControlContent\\SupplyForm.cs",
+              "ToolTip": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\Forms\\PharmacyPanelContent\\InventoryControlContent\\SupplyForm.cs [Tasar\u0131m]",
+              "RelativeToolTip": "Forms\\PharmacyPanelContent\\InventoryControlContent\\SupplyForm.cs [Tasar\u0131m]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T09:01:51.951Z",
+              "WhenOpened": "2025-05-18T11:22:21.943Z",
               "EditorCaption": " [Tasar\u0131m]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PharmacyHomeControl.cs",
+              "DocumentMoniker": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\Forms\\PharmacyPanelContent\\PharmacyHomeControl.cs",
+              "RelativeDocumentMoniker": "Forms\\PharmacyPanelContent\\PharmacyHomeControl.cs",
+              "ToolTip": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\Forms\\PharmacyPanelContent\\PharmacyHomeControl.cs",
+              "RelativeToolTip": "Forms\\PharmacyPanelContent\\PharmacyHomeControl.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAwDEAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T02:13:24.405Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PharmacyHomeControl.cs [Tasar\u0131m]",
+              "DocumentMoniker": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\Forms\\PharmacyPanelContent\\PharmacyHomeControl.cs",
+              "RelativeDocumentMoniker": "Forms\\PharmacyPanelContent\\PharmacyHomeControl.cs",
+              "ToolTip": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\Forms\\PharmacyPanelContent\\PharmacyHomeControl.cs [Tasar\u0131m]",
+              "RelativeToolTip": "Forms\\PharmacyPanelContent\\PharmacyHomeControl.cs [Tasar\u0131m]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T02:13:25.956Z"
             }
           ]
         }

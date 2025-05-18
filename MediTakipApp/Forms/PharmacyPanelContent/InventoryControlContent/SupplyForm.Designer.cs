@@ -8,6 +8,14 @@
         private Label lblQuantity;
         private Label lblExpiry;
         private Label lblSupplier;
+
+        private TextBox txtBarcode;
+        private TextBox txtName;
+        private TextBox txtIngredient;
+        private TextBox txtUsageAge;
+        private CheckBox chkPrescription;
+        private TextBox txtPrice;
+
         private NumericUpDown nudQuantity;
         private DateTimePicker dtpExpiry;
         private ComboBox cmbSupplier;
@@ -22,146 +30,141 @@
 
         private void InitializeComponent()
         {
-            lblTitle = new Label();
-            lblDrugName = new Label();
-            lblQuantity = new Label();
-            lblExpiry = new Label();
-            lblSupplier = new Label();
-            nudQuantity = new NumericUpDown();
-            dtpExpiry = new DateTimePicker();
-            cmbSupplier = new ComboBox();
-            btnSave = new Button();
-            btnCancel = new Button();
-            ((System.ComponentModel.ISupportInitialize)nudQuantity).BeginInit();
-            SuspendLayout();
-            // 
-            // lblTitle
-            // 
-            lblTitle.Font = new Font("Bahnschrift SemiCondensed", 16F, FontStyle.Bold);
-            lblTitle.Location = new Point(20, 20);
-            lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(350, 30);
-            lblTitle.TabIndex = 0;
-            lblTitle.Text = "\U0001fa7a Tedarik Girişi";
-            // 
-            // lblDrugName
-            // 
-            lblDrugName.Font = new Font("Bahnschrift SemiCondensed", 13F, FontStyle.Bold);
-            lblDrugName.Location = new Point(20, 60);
-            lblDrugName.Name = "lblDrugName";
-            lblDrugName.Size = new Size(360, 24);
-            lblDrugName.TabIndex = 1;
-            lblDrugName.Text = "İlaç: -";
-            // 
-            // lblQuantity
-            // 
-            lblQuantity.Location = new Point(20, 100);
-            lblQuantity.Name = "lblQuantity";
-            lblQuantity.Size = new Size(100, 24);
-            lblQuantity.TabIndex = 2;
-            lblQuantity.Font = new Font("Bahnschrift", 11F);
-            lblQuantity.Text = "🔢 Miktar:";
-            // 
-            // lblExpiry
-            // 
-            lblExpiry.Location = new Point(20, 135);
-            lblExpiry.Name = "lblExpiry";
-            lblExpiry.Size = new Size(100, 24);
-            lblExpiry.TabIndex = 4;
-            lblExpiry.Font = new Font("Bahnschrift", 11F);
-            lblExpiry.Text = "📅 SKT:";
-            // 
-            // lblSupplier
-            // 
-            lblSupplier.Location = new Point(20, 170);
-            lblSupplier.Name = "lblSupplier";
-            lblSupplier.Size = new Size(120, 24);
-            lblSupplier.TabIndex = 6;
-            lblSupplier.Font = new Font("Bahnschrift", 11F);
-            lblSupplier.Text = "🏭 Tedarikçi:";
-            // 
-            // nudQuantity
-            // 
-            nudQuantity.Font = new Font("Bahnschrift", 11F);
-            nudQuantity.Location = new Point(140, 97);
-            nudQuantity.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
-            nudQuantity.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            nudQuantity.Name = "nudQuantity";
-            nudQuantity.Size = new Size(200, 28);
-            nudQuantity.TabIndex = 3;
-            nudQuantity.Value = new decimal(new int[] { 1, 0, 0, 0 });
-            // 
-            // dtpExpiry
-            // 
-            dtpExpiry.Font = new Font("Bahnschrift", 11F);
-            dtpExpiry.Format = DateTimePickerFormat.Short;
-            dtpExpiry.Location = new Point(140, 132);
-            dtpExpiry.Name = "dtpExpiry";
-            dtpExpiry.Size = new Size(200, 28);
-            dtpExpiry.TabIndex = 5;
-            // 
-            // cmbSupplier
-            // 
-            cmbSupplier.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbSupplier.Font = new Font("Bahnschrift", 11F);
-            cmbSupplier.Location = new Point(140, 167);
-            cmbSupplier.Name = "cmbSupplier";
-            cmbSupplier.Size = new Size(200, 29);
-            cmbSupplier.TabIndex = 7;
-            // 
-            // btnSave
-            // 
-            btnSave.BackColor = Color.SeaGreen;
-            btnSave.FlatStyle = FlatStyle.Flat;
-            btnSave.Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold);
-            btnSave.ForeColor = Color.White;
-            btnSave.Location = new Point(70, 220);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(120, 40);
-            btnSave.TabIndex = 8;
-            btnSave.Text = "💾 Kaydet";
-            btnSave.UseVisualStyleBackColor = false;
-            btnSave.Click += BtnSave_Click;
-            // 
-            // btnCancel
-            // 
-            btnCancel.BackColor = Color.IndianRed;
-            btnCancel.FlatStyle = FlatStyle.Flat;
-            btnCancel.Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold);
-            btnCancel.ForeColor = Color.White;
-            btnCancel.Location = new Point(210, 220);
-            btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(120, 40);
-            btnCancel.TabIndex = 9;
-            btnCancel.Text = "❌ Vazgeç";
-            btnCancel.UseVisualStyleBackColor = false;
-            btnCancel.Click += BtnCancel_Click;
-            // 
-            // SupplyForm
-            // 
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.StartPosition = FormStartPosition.CenterParent;
+            this.components = new System.ComponentModel.Container();
+            this.lblTitle = new Label();
+            this.lblDrugName = new Label();
+            this.lblQuantity = new Label();
+            this.lblExpiry = new Label();
+            this.lblSupplier = new Label();
+
+            this.txtBarcode = new TextBox();
+            this.txtName = new TextBox();
+            this.txtIngredient = new TextBox();
+            this.txtUsageAge = new TextBox();
+            this.chkPrescription = new CheckBox();
+            this.txtPrice = new TextBox();
+
+            this.nudQuantity = new NumericUpDown();
+            this.dtpExpiry = new DateTimePicker();
+            this.cmbSupplier = new ComboBox();
+            this.btnSave = new Button();
+            this.btnCancel = new Button();
+
+            ((System.ComponentModel.ISupportInitialize)this.nudQuantity).BeginInit();
+            this.SuspendLayout();
+
+            // Title
+            this.lblTitle.Text = "📦 İlaç Tedarik";
+            this.lblTitle.Font = new Font("Bahnschrift SemiCondensed", 16F, FontStyle.Bold);
+            this.lblTitle.Location = new Point(20, 15);
+            this.lblTitle.Size = new Size(300, 32);
+
+            // Barcode
+            this.txtBarcode.Location = new Point(20, 60);
+            this.txtBarcode.Size = new Size(340, 28);
+            this.txtBarcode.Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold);
+            this.txtBarcode.PlaceholderText = "Barkod";
+
+            // Name
+            this.txtName.Location = new Point(20, 95);
+            this.txtName.Size = new Size(340, 28);
+            this.txtName.Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold);
+            this.txtName.PlaceholderText = "İlaç Adı";
+
+            // Ingredient
+            this.txtIngredient.Location = new Point(20, 130);
+            this.txtIngredient.Size = new Size(340, 28);
+            this.txtIngredient.Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold);
+            this.txtIngredient.PlaceholderText = "Etken Madde";
+
+            // Usage Age
+            this.txtUsageAge.Location = new Point(20, 165);
+            this.txtUsageAge.Size = new Size(340, 28);
+            this.txtUsageAge.Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold);
+            this.txtUsageAge.PlaceholderText = "Kullanım Yaşı";
+
+            // Prescription
+            this.chkPrescription.Text = "📄 Reçeteli mi?";
+            this.chkPrescription.Location = new Point(20, 200);
+            this.chkPrescription.Size = new Size(400, 28);
+            this.chkPrescription.Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold);
+
+            // Price
+            this.txtPrice.Location = new Point(20, 230);
+            this.txtPrice.Size = new Size(340, 28);
+            this.txtPrice.Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold);
+            this.txtPrice.PlaceholderText = "Fiyat (₺)";
+
+            // Quantity
+            this.lblQuantity.Text = "🔢 Miktar";
+            this.lblQuantity.Location = new Point(20, 270);
+            this.lblQuantity.Size = new Size(100, 24);
+            this.lblQuantity.Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold);
+
+            this.nudQuantity.Location = new Point(140, 267);
+            this.nudQuantity.Size = new Size(220, 28);
+            this.nudQuantity.Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold);
+            this.nudQuantity.Minimum = 1;
+            this.nudQuantity.Maximum = 10000;
+            this.nudQuantity.Value = 1;
+
+            // Expiry
+            this.lblExpiry.Text = "📅 SKT";
+            this.lblExpiry.Location = new Point(20, 305);
+            this.lblExpiry.Size = new Size(100, 24);
+            this.lblExpiry.Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold);
+
+            this.dtpExpiry.Location = new Point(140, 302);
+            this.dtpExpiry.Size = new Size(220, 28);
+            this.dtpExpiry.Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold);
+            this.dtpExpiry.Format = DateTimePickerFormat.Short;
+
+            // Supplier
+            this.lblSupplier.Text = "🏭 Tedarikçi";
+            this.lblSupplier.Location = new Point(20, 340);
+            this.lblSupplier.Size = new Size(120, 24);
+            this.lblSupplier.Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold);
+
+            this.cmbSupplier.Location = new Point(140, 337);
+            this.cmbSupplier.Size = new Size(220, 28);
+            this.cmbSupplier.Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold);
+            this.cmbSupplier.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            // Buttons
+            this.btnSave.Text = "💾 Kaydet";
+            this.btnSave.Location = new Point(60, 390);
+            this.btnSave.Size = new Size(120, 40);
+            this.btnSave.Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold);
+            this.btnSave.BackColor = Color.SeaGreen;
+            this.btnSave.ForeColor = Color.White;
+            this.btnSave.FlatStyle = FlatStyle.Flat;
+            this.btnSave.Click += BtnSave_Click;
+
+            this.btnCancel.Text = "❌ Vazgeç";
+            this.btnCancel.Location = new Point(200, 390);
+            this.btnCancel.Size = new Size(120, 40);
+            this.btnCancel.Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold);
+            this.btnCancel.BackColor = Color.IndianRed;
+            this.btnCancel.ForeColor = Color.White;
+            this.btnCancel.FlatStyle = FlatStyle.Flat;
+            this.btnCancel.Click += BtnCancel_Click;
+
+            // Form
+            this.Text = "İlaç Tedarik Et";
             this.BackColor = Color.WhiteSmoke;
-            this.Padding = new Padding(10);
+            this.ClientSize = new Size(390, 460);
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            Load += SupplyForm_Load;
+            FormClosed += SupplyForm_FormClosed;
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Font = new Font("Bahnschrift", 16F, FontStyle.Regular);
-            ClientSize = new Size(402, 293);
-            Controls.Add(lblTitle);
-            Controls.Add(lblDrugName);
-            Controls.Add(lblQuantity);
-            Controls.Add(nudQuantity);
-            Controls.Add(lblExpiry);
-            Controls.Add(dtpExpiry);
-            Controls.Add(lblSupplier);
-            Controls.Add(cmbSupplier);
-            Controls.Add(btnSave);
-            Controls.Add(btnCancel);
-            MaximizeBox = false;
-            Name = "SupplyForm";
-            Text = "İlaç Tedarik Et";
-            ((System.ComponentModel.ISupportInitialize)nudQuantity).EndInit();
-            ResumeLayout(false);
+            this.Controls.AddRange(new Control[] {
+                lblTitle, txtBarcode, txtName, txtIngredient, txtUsageAge, chkPrescription, txtPrice,
+                lblQuantity, nudQuantity, lblExpiry, dtpExpiry, lblSupplier, cmbSupplier,
+                btnSave, btnCancel
+            });
+            this.StartPosition = FormStartPosition.CenterParent;
+            ((System.ComponentModel.ISupportInitialize)this.nudQuantity).EndInit();
+            this.ResumeLayout(false);
         }
     }
 }

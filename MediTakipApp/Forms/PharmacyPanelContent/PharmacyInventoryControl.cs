@@ -10,7 +10,7 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
 {
     public partial class PharmacyInventoryControl : UserControl
     {
-        string connStr = "Server=202.61.227.225,1433;Database=metidata;User Id=metidata_user;Password=1q2w3e4r.;Encrypt=False;TrustServerCertificate=True;";
+        private string connStr = "Server=202.61.227.225,1433;Database=metidata;User Id=metidata_user;Password=1q2w3e4r.;Encrypt=False;TrustServerCertificate=True;";
         private int selectedDrugId = 0;
         private int selectedSupplierMaxStock = 0;
 

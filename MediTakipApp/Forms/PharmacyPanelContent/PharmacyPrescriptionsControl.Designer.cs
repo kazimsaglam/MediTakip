@@ -133,7 +133,7 @@
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pictureBox1.Image = Properties.Resources.Meditakip_Logo;
+            pictureBox1.Image = Properties.Resources.Odeme_Logo;
             pictureBox1.Location = new Point(924, 18);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(309, 62);

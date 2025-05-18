@@ -73,6 +73,16 @@ namespace MediTakipApp.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap Odeme_Logo {
+            get {
+                object obj = ResourceManager.GetObject("Odeme_Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap Padlock_Logo {
             get {
                 object obj = ResourceManager.GetObject("Padlock_Logo", resourceCulture);
