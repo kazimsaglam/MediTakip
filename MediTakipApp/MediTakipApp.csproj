@@ -12,8 +12,8 @@
     <PackageReference Include="iTextSharp" Version="5.5.13.4" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="ScottPlot" Version="5.0.55" />
     <PackageReference Include="Topshelf" Version="4.3.0" />
+    <PackageReference Include="WinForms.DataVisualization" Version="1.10.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,6 +33,25 @@
 
   <ItemGroup>
     <Folder Include="Database\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Resources\arial.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\DejaVuSans.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\DejaVuSansCondensed-BoldOblique.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\DejaVuSansCondensed.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\NotoSansSymbols-Black.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

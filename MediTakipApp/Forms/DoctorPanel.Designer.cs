@@ -61,7 +61,7 @@
             lblFooter.Name = "lblFooter";
             lblFooter.Size = new Size(246, 30);
             lblFooter.TabIndex = 0;
-            lblFooter.Text = "v1.0.0 © 2025 MediTakip";
+            lblFooter.Text = "v1.1.0 © 2025 MediTakip";
             lblFooter.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnPower
@@ -113,7 +113,7 @@
             btnHome.Padding = new Padding(20, 0, 0, 0);
             btnHome.Size = new Size(246, 70);
             btnHome.TabIndex = 6;
-            btnHome.Text = "🏠 Ana Sayfa";
+            btnHome.Text = "👨‍⚕️ Hastalar";
             btnHome.TextAlign = ContentAlignment.MiddleLeft;
             btnHome.UseVisualStyleBackColor = false;
             btnHome.Click += btnHome_Click;

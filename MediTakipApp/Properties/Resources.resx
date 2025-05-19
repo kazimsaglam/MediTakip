@@ -133,4 +133,10 @@
   <data name="Odeme_Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Odeme_Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Eczane_Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Eczane_Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DejaVuSans" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DejaVuSans.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

@@ -24,7 +24,7 @@ namespace MediTakipApp.Forms
 
         private void DoctorPanel_Load(object sender, EventArgs e)
         {
-            lblTitle.Text = "Ana Sayfa";
+            lblTitle.Text = "Hastalar";
             LoadControl(new HomeControl());
             lblDoctorName.Text = LoggedUser.FullName;
 
@@ -47,7 +47,7 @@ namespace MediTakipApp.Forms
 
         private void btnHome_Click(object sender, EventArgs e)
         {
-            lblTitle.Text = "Ana Sayfa";
+            lblTitle.Text = "Hastalar";
             LoadControl(new HomeControl());
             SetActiveButton(btnHome);
         }

@@ -32,6 +32,7 @@
             dataGridView2 = new DataGridView();
             btnPay = new Button();
             pictureBox1 = new PictureBox();
+            Fatura = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvPrescriptions).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
@@ -55,6 +56,7 @@
             // 
             // txtSearch
             // 
+            txtSearch.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 162);
             txtSearch.Location = new Point(22, 10);
             txtSearch.Multiline = true;
             txtSearch.Name = "txtSearch";
@@ -67,6 +69,7 @@
             // btnSearch
             // 
             btnSearch.BackColor = Color.MediumSeaGreen;
+            btnSearch.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 162);
             btnSearch.ForeColor = Color.White;
             btnSearch.Location = new Point(612, 10);
             btnSearch.Name = "btnSearch";
@@ -78,6 +81,7 @@
             // 
             // txtPrescriptionCode
             // 
+            txtPrescriptionCode.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 162);
             txtPrescriptionCode.Location = new Point(330, 10);
             txtPrescriptionCode.Multiline = true;
             txtPrescriptionCode.Name = "txtPrescriptionCode";
@@ -114,7 +118,7 @@
             dataGridView2.Location = new Point(924, 86);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 51;
-            dataGridView2.Size = new Size(309, 542);
+            dataGridView2.Size = new Size(309, 437);
             dataGridView2.TabIndex = 5;
             dataGridView2.CellContentClick += dataGridView2_CellContentClick;
             // 
@@ -122,10 +126,11 @@
             // 
             btnPay.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnPay.BackColor = Color.MediumSeaGreen;
+            btnPay.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 162);
             btnPay.ForeColor = Color.White;
-            btnPay.Location = new Point(924, 640);
+            btnPay.Location = new Point(921, 529);
             btnPay.Name = "btnPay";
-            btnPay.Size = new Size(309, 47);
+            btnPay.Size = new Size(312, 75);
             btnPay.TabIndex = 6;
             btnPay.UseVisualStyleBackColor = false;
             btnPay.Click += btnPay_Click;
@@ -142,10 +147,26 @@
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
             // 
+            // Fatura
+            // 
+            Fatura.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            Fatura.BackColor = Color.Red;
+            Fatura.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            Fatura.ForeColor = Color.White;
+            Fatura.Location = new Point(924, 610);
+            Fatura.Name = "Fatura";
+            Fatura.Size = new Size(164, 37);
+            Fatura.TabIndex = 8;
+            Fatura.Text = "Fatura Yazdır";
+            Fatura.TextImageRelation = TextImageRelation.TextBeforeImage;
+            Fatura.UseVisualStyleBackColor = false;
+            Fatura.Click += btnFatura_Click;
+            // 
             // PharmacyPrescriptionsControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(Fatura);
             Controls.Add(pictureBox1);
             Controls.Add(btnPay);
             Controls.Add(dataGridView2);
@@ -171,5 +192,6 @@
         private DataGridView dataGridView2;
         private Button btnPay;
         private PictureBox pictureBox1;
+        private Button Fatura;
     }
 }

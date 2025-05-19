@@ -15,8 +15,6 @@ namespace MediTakipApp.Forms
 
         // Ana Alanlar
         private FlowLayoutPanel flpPatients;
-        private Panel panelDashboard;
-        private FlowLayoutPanel flpDashboardCards;
 
         // Sayfalama
         private Panel panelPagination;
@@ -24,18 +22,8 @@ namespace MediTakipApp.Forms
         private Button btnPaginationNext;
         private Label lblPaginationInfo;
 
-        // Dashboard Kartları
-        private Panel cardPatient;
-        private Panel cardPrescription;
-        private Panel cardDrug;
-
-        private TransparentLabel lblPatientCount;
-        private TransparentLabel lblPrescriptionCount;
-        private TransparentLabel lblDrugCount;
-
-        private TransparentLabel lblPatientTitle;
-        private TransparentLabel lblPrescriptionTitle;
-        private TransparentLabel lblDrugTitle;
+        private ComboBox cmbFilterDoctor;
+        private Label lblTopPatientCount;
 
         protected override void Dispose(bool disposing)
         {
@@ -60,28 +48,14 @@ namespace MediTakipApp.Forms
             btnAdd = new Button();
             btnUpdate = new Button();
             btnDelete = new Button();
+            lblTopPatientCount = new Label();
+            cmbFilterDoctor = new ComboBox();
             flpPatients = new FlowLayoutPanel();
-            panelDashboard = new Panel();
-            panelSummaryView = new Panel();
-            flpDashboardCards = new FlowLayoutPanel();
-            cardPatient = new Panel();
-            cardPrescription = new Panel();
-            cardDrug = new Panel();
-            lblDashboardTitle = new Label();
             panelPagination = new Panel();
             btnPaginationPrev = new Button();
             lblPaginationInfo = new Label();
             btnPaginationNext = new Button();
-            lblPatientCount = new TransparentLabel();
-            lblPrescriptionCount = new TransparentLabel();
-            lblDrugCount = new TransparentLabel();
-            lblPatientTitle = new TransparentLabel();
-            lblPrescriptionTitle = new TransparentLabel();
-            lblDrugTitle = new TransparentLabel();
             topPanel.SuspendLayout();
-            panelDashboard.SuspendLayout();
-            panelSummaryView.SuspendLayout();
-            flpDashboardCards.SuspendLayout();
             panelPagination.SuspendLayout();
             SuspendLayout();
             // 
@@ -93,10 +67,12 @@ namespace MediTakipApp.Forms
             topPanel.Controls.Add(btnAdd);
             topPanel.Controls.Add(btnUpdate);
             topPanel.Controls.Add(btnDelete);
+            topPanel.Controls.Add(lblTopPatientCount);
+            topPanel.Controls.Add(cmbFilterDoctor);
             topPanel.Dock = DockStyle.Top;
             topPanel.Location = new Point(0, 0);
             topPanel.Name = "topPanel";
-            topPanel.Size = new Size(1020, 80);
+            topPanel.Size = new Size(1300, 80);
             topPanel.TabIndex = 2;
             // 
             // txtSearch
@@ -148,6 +124,29 @@ namespace MediTakipApp.Forms
             btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += BtnDeletePatient_Click;
             // 
+            // lblTopPatientCount
+            // 
+            lblTopPatientCount.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblTopPatientCount.Font = new Font("Bahnschrift SemiCondensed", 16F, FontStyle.Bold);
+            lblTopPatientCount.ForeColor = Color.DarkSlateGray;
+            lblTopPatientCount.Location = new Point(1037, 17);
+            lblTopPatientCount.Name = "lblTopPatientCount";
+            lblTopPatientCount.Size = new Size(209, 50);
+            lblTopPatientCount.TabIndex = 4;
+            lblTopPatientCount.Text = "👥 Toplam: 0";
+            lblTopPatientCount.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // cmbFilterDoctor
+            // 
+            cmbFilterDoctor.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbFilterDoctor.Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold);
+            cmbFilterDoctor.Items.AddRange(new object[] { "Tüm Hastalar", "Sadece Benimkiler" });
+            cmbFilterDoctor.Location = new Point(650, 25);
+            cmbFilterDoctor.Name = "cmbFilterDoctor";
+            cmbFilterDoctor.Size = new Size(180, 32);
+            cmbFilterDoctor.TabIndex = 5;
+            cmbFilterDoctor.SelectedIndexChanged += CmbFilterDoctor_SelectedIndexChanged;
+            // 
             // flpPatients
             // 
             flpPatients.AutoScroll = true;
@@ -156,99 +155,40 @@ namespace MediTakipApp.Forms
             flpPatients.Dock = DockStyle.Fill;
             flpPatients.Location = new Point(0, 80);
             flpPatients.Name = "flpPatients";
-            flpPatients.Padding = new Padding(10);
-            flpPatients.Size = new Size(1020, 720);
+            flpPatients.Padding = new Padding(5);
+            flpPatients.Size = new Size(1300, 720);
             flpPatients.TabIndex = 0;
-            // 
-            // panelDashboard
-            // 
-            panelDashboard.BackColor = Color.White;
-            panelDashboard.BorderStyle = BorderStyle.Fixed3D;
-            panelDashboard.Controls.Add(flpDashboardCards);
-            panelDashboard.Controls.Add(panelPagination);
-            panelDashboard.Dock = DockStyle.Right;
-            panelDashboard.Location = new Point(1020, 0);
-            panelDashboard.Name = "panelDashboard";
-            panelDashboard.Padding = new Padding(10);
-            panelDashboard.Size = new Size(280, 800);
-            panelDashboard.TabIndex = 1;
-            // 
-            // flpDashboardCards
-            // 
-            flpDashboardCards.AutoScroll = true;
-            flpDashboardCards.Controls.Add(cardPatient);
-            flpDashboardCards.Controls.Add(cardPrescription);
-            flpDashboardCards.Controls.Add(cardDrug);
-            flpDashboardCards.Dock = DockStyle.Fill;
-            flpDashboardCards.FlowDirection = FlowDirection.TopDown;
-            flpDashboardCards.Location = new Point(0, 0);
-            flpDashboardCards.Name = "flpDashboardCards";
-            flpDashboardCards.Size = new Size(256, 711);
-            flpDashboardCards.TabIndex = 0;
-            flpDashboardCards.WrapContents = false;
-            // 
-            // cardPatient
-            // 
-            cardPatient.Location = new Point(3, 3);
-            cardPatient.Name = "cardPatient";
-            cardPatient.Size = new Size(200, 100);
-            cardPatient.TabIndex = 0;
-            // 
-            // cardPrescription
-            // 
-            cardPrescription.Location = new Point(3, 109);
-            cardPrescription.Name = "cardPrescription";
-            cardPrescription.Size = new Size(200, 100);
-            cardPrescription.TabIndex = 1;
-            // 
-            // cardDrug
-            // 
-            cardDrug.Location = new Point(3, 215);
-            cardDrug.Name = "cardDrug";
-            cardDrug.Size = new Size(200, 100);
-            cardDrug.TabIndex = 2;
-            // 
-            // lblDashboardTitle
-            // 
-            lblDashboardTitle.BackColor = Color.SteelBlue;
-            lblDashboardTitle.Dock = DockStyle.Top;
-            lblDashboardTitle.Font = new Font("Bahnschrift SemiCondensed", 16F, FontStyle.Bold);
-            lblDashboardTitle.ForeColor = Color.White;
-            lblDashboardTitle.Location = new Point(0, 0);
-            lblDashboardTitle.Name = "lblDashboardTitle";
-            lblDashboardTitle.Size = new Size(256, 45);
-            lblDashboardTitle.TabIndex = 1;
-            lblDashboardTitle.Text = "📊 İstatistikler";
-            lblDashboardTitle.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panelPagination
             // 
-            panelPagination.BackColor = Color.Transparent;
+            panelPagination.BackColor = Color.WhiteSmoke;
             panelPagination.Controls.Add(btnPaginationPrev);
             panelPagination.Controls.Add(lblPaginationInfo);
             panelPagination.Controls.Add(btnPaginationNext);
             panelPagination.Dock = DockStyle.Bottom;
-            panelPagination.Location = new Point(10, 721);
+            panelPagination.Location = new Point(0, 720);
             panelPagination.Name = "panelPagination";
             panelPagination.Padding = new Padding(10);
-            panelPagination.Size = new Size(256, 65);
+            panelPagination.Size = new Size(1300, 38);
             panelPagination.TabIndex = 1;
             // 
             // btnPaginationPrev
             // 
+            btnPaginationPrev.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnPaginationPrev.Font = new Font("Bahnschrift SemiCondensed", 10F, FontStyle.Bold);
-            btnPaginationPrev.Location = new Point(10, 10);
+            btnPaginationPrev.Location = new Point(1061, 4);
             btnPaginationPrev.Name = "btnPaginationPrev";
-            btnPaginationPrev.Size = new Size(70, 40);
+            btnPaginationPrev.Size = new Size(67, 38);
             btnPaginationPrev.TabIndex = 0;
             btnPaginationPrev.Text = "◀ Geri";
             btnPaginationPrev.Click += BtnPaginationPrev_Click;
             // 
             // lblPaginationInfo
             // 
+            lblPaginationInfo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblPaginationInfo.AutoSize = true;
             lblPaginationInfo.Font = new Font("Bahnschrift SemiCondensed", 10F, FontStyle.Bold);
-            lblPaginationInfo.Location = new Point(90, 20);
+            lblPaginationInfo.Location = new Point(1134, 13);
             lblPaginationInfo.Name = "lblPaginationInfo";
             lblPaginationInfo.Size = new Size(75, 21);
             lblPaginationInfo.TabIndex = 1;
@@ -256,96 +196,28 @@ namespace MediTakipApp.Forms
             // 
             // btnPaginationNext
             // 
+            btnPaginationNext.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnPaginationNext.Font = new Font("Bahnschrift SemiCondensed", 10F, FontStyle.Bold);
-            btnPaginationNext.Location = new Point(180, 10);
+            btnPaginationNext.Location = new Point(1220, 4);
             btnPaginationNext.Name = "btnPaginationNext";
-            btnPaginationNext.Size = new Size(70, 40);
+            btnPaginationNext.Size = new Size(67, 38);
             btnPaginationNext.TabIndex = 2;
             btnPaginationNext.Text = "İleri ▶";
             btnPaginationNext.Click += BtnPaginationNext_Click;
             // 
-            // lblPatientCount
-            // 
-            lblPatientCount.Location = new Point(0, 0);
-            lblPatientCount.Name = "lblPatientCount";
-            lblPatientCount.Size = new Size(100, 23);
-            lblPatientCount.TabIndex = 0;
-            // 
-            // lblPrescriptionCount
-            // 
-            lblPrescriptionCount.Location = new Point(0, 0);
-            lblPrescriptionCount.Name = "lblPrescriptionCount";
-            lblPrescriptionCount.Size = new Size(100, 23);
-            lblPrescriptionCount.TabIndex = 0;
-            // 
-            // lblDrugCount
-            // 
-            lblDrugCount.Location = new Point(0, 0);
-            lblDrugCount.Name = "lblDrugCount";
-            lblDrugCount.Size = new Size(100, 23);
-            lblDrugCount.TabIndex = 0;
-            // 
-            // lblPatientTitle
-            // 
-            lblPatientTitle.Location = new Point(0, 0);
-            lblPatientTitle.Name = "lblPatientTitle";
-            lblPatientTitle.Size = new Size(100, 23);
-            lblPatientTitle.TabIndex = 0;
-            // 
-            // lblPrescriptionTitle
-            // 
-            lblPrescriptionTitle.Location = new Point(0, 0);
-            lblPrescriptionTitle.Name = "lblPrescriptionTitle";
-            lblPrescriptionTitle.Size = new Size(100, 23);
-            lblPrescriptionTitle.TabIndex = 0;
-            // 
-            // lblDrugTitle
-            // 
-            lblDrugTitle.Location = new Point(0, 0);
-            lblDrugTitle.Name = "lblDrugTitle";
-            lblDrugTitle.Size = new Size(100, 23);
-            lblDrugTitle.TabIndex = 0;
-            // 
             // HomeControl
             // 
+            Controls.Add(panelPagination);
             Controls.Add(flpPatients);
             Controls.Add(topPanel);
-            Controls.Add(panelDashboard);
             Name = "HomeControl";
             Size = new Size(1300, 800);
             Load += HomeControl_Load;
             topPanel.ResumeLayout(false);
             topPanel.PerformLayout();
-            panelDashboard.ResumeLayout(false);
-            panelSummaryView.ResumeLayout(false);
-            flpDashboardCards.ResumeLayout(false);
             panelPagination.ResumeLayout(false);
             panelPagination.PerformLayout();
             ResumeLayout(false);
         }
-
-        private void CreateDashboardCard(Panel card, TransparentLabel title, TransparentLabel count, string titleText, Color color)
-        {
-            card.Size = new Size(250, 120);
-            card.BackColor = Color.White;
-            card.BorderStyle = BorderStyle.FixedSingle;
-
-            title.Text = titleText;
-            title.Font = new Font("Bahnschrift SemiCondensed", 16F, FontStyle.Bold);
-            title.ForeColor = Color.Gray;
-            title.Location = new Point(20, 10);
-            title.AutoSize = true;
-
-            count.Text = "0";
-            count.Font = new Font("Bahnschrift SemiCondensed", 26F, FontStyle.Bold);
-            count.ForeColor = color;
-            count.Location = new Point(20, 50);
-            count.AutoSize = true;
-
-            card.Controls.Add(title);
-            card.Controls.Add(count);
-        }
-        private Panel panelSummaryView;
-        private Label lblDashboardTitle;
     }
 }

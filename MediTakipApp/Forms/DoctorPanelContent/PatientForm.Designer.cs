@@ -84,7 +84,7 @@
             txtPhone = new TextBox();
 
             // Sigorta ve Cinsiyet combo örnekleri
-            cmbInsurance.Items.AddRange(new string[] { "SGK", "Bağ-Kur", "Özel Sigorta", "Diğer", "Yok" });
+            cmbInsurance.Items.AddRange(new string[] { "SGK", "Bağ-Kur", "Özel Sigorta","Emekli Sandığı", "Diğer", "Yok" });
             cmbGender.Items.AddRange(new string[] { "Erkek", "Kadın", "Diğer" });
 
             cmbInsurance.DropDownStyle = ComboBoxStyle.DropDownList;

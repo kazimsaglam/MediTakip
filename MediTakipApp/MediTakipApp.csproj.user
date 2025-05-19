@@ -37,6 +37,12 @@
     <Compile Update="Forms\PharmacyPanel.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Utils\RoundButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Utils\RoundPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="Utils\TransparentLabel.cs">
       <SubType>Component</SubType>
     </Compile>

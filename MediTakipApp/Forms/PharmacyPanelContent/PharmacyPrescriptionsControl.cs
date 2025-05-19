@@ -8,6 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
+using iTextFont = iTextSharp.text.Font;
+
 
 namespace MediTakipApp.Forms.PharmacyPanelContent
 {
@@ -41,7 +46,7 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
             btnDeliver.UseColumnTextForButtonValue = true;
             dataGridView1.Columns.Add(btnDeliver);
 
-            // 🔒 Kullanıcı yeni satır ekleyemesin:
+           
             dataGridView1.AllowUserToAddRows = false;
         }
 
@@ -62,7 +67,7 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
 
             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            // 👇 Alt satırın görünmesini engeller
+           
             dataGridView2.AllowUserToAddRows = false;
         }
 
@@ -96,7 +101,7 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
                     dgvPrescriptions.DataSource = dt;
 
 
-                    // Başlıkları Türkçeleştir
+                    
                     if (dgvPrescriptions.Columns.Contains("PrescriptionId"))
                         dgvPrescriptions.Columns["PrescriptionId"].HeaderText = "Reçete No";
 
@@ -159,7 +164,7 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
             string tc = txtSearch.Text.Trim();
             string code = txtPrescriptionCode.Text.Trim();
 
-            // 🔐 Her iki alan da boşsa uyarı ver, arama yapma
+            
             if (string.IsNullOrWhiteSpace(tc) && string.IsNullOrWhiteSpace(code))
             {
                 MessageBox.Show("Lütfen en az TC kimlik numarası veya Reçete Kodu giriniz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -180,7 +185,85 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
         private void PharmacyPrescriptionsControl_Load(object sender, EventArgs e)
         {
             LoadPrescriptions("", "");
-            UpdatePayButtonText(); // ilk açıldığında bile yazı görünür
+            Button btnFatura = new Button
+            {
+                Text = "Fiş Yazdır",
+                Font = new System.Drawing.Font("Segoe UI", 10, System.Drawing.FontStyle.Bold),
+                Size = new Size(100, 35),
+                Location = new Point(btnPay.Right + 10, btnPay.Top),
+                BackColor = Color.OrangeRed,
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat
+            };
+            btnFatura.Click += btnFatura_Click;
+
+            this.Controls.Add(btnFatura);
+
+            UpdatePayButtonText(); 
+        }
+
+        private void btnFatura_Click(object sender, EventArgs e)
+        {
+            if (dataGridView2.Rows.Count == 0)
+            {
+                MessageBox.Show("Fişe eklenecek ilaç bulunamadı.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string invoiceNumber = "FTR-" + DateTime.Now.ToString("yyyyMMddHHmmss");
+            string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), $"IlacFis_{invoiceNumber}.pdf");
+
+            Document doc = new Document();
+            try
+            {
+                PdfWriter.GetInstance(doc, new FileStream(path, FileMode.Create));
+                doc.Open();
+
+                string fontPath = Path.Combine(Application.StartupPath, "Resources", "arial.ttf");
+                BaseFont baseFont = BaseFont.CreateFont(fontPath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+                iTextFont headerFont = new iTextFont(baseFont, 16, iTextFont.BOLD);
+                iTextFont cellFont = new iTextFont(baseFont, 12);
+
+                Paragraph header = new Paragraph("Reçeteli İlaç Satış Faturası", headerFont);
+                header.Alignment = Element.ALIGN_CENTER;
+                doc.Add(header);
+                doc.Add(new Paragraph(" ")); // boşluk
+
+                PdfPTable table = new PdfPTable(dataGridView2.Columns.Count - 1); // ❌ buton hariç
+                table.WidthPercentage = 100;
+
+                // Başlıklar
+                for (int i = 0; i < dataGridView2.Columns.Count - 1; i++)
+                {
+                    table.AddCell(new Phrase(dataGridView2.Columns[i].HeaderText, cellFont));
+                }
+
+                // Satırlar
+                foreach (DataGridViewRow row in dataGridView2.Rows)
+                {
+                    if (row.IsNewRow) continue;
+                    for (int i = 0; i < dataGridView2.Columns.Count - 1; i++)
+                    {
+                        table.AddCell(new Phrase(row.Cells[i].Value?.ToString(), cellFont));
+                    }
+                }
+
+                doc.Add(table);
+
+                doc.Add(new Paragraph("\nTarih: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm"), cellFont));
+                doc.Add(new Paragraph("Fatura No: " + invoiceNumber, cellFont));
+                doc.Add(new Paragraph(" "));
+
+                MessageBox.Show("Fatura PDF başarıyla oluşturuldu:\n" + path, "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("PDF oluşturulurken hata: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                doc.Close();
+            }
         }
 
 
@@ -207,9 +290,9 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 4 && e.RowIndex >= 0) // Teslim Et butonu sütunu
+            if (e.ColumnIndex == 4 && e.RowIndex >= 0)
             {
-                // Önce sütunları hazırla (hata almamak için)
+                
                 if (dataGridView2.Columns.Count == 0)
                     SetupPaymentGrid();
 
@@ -221,7 +304,7 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
                 string insurance = GetPatientInsurance(tcNo);
                 decimal patientPays = CalculateCopayment(price, insurance);
 
-                // Önceki aynı ilacı tekrar eklemeyi önle
+                
                 bool alreadyExists = false;
                 foreach (DataGridViewRow row in dataGridView2.Rows)
                 {
@@ -234,7 +317,7 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
                 if (alreadyExists) return;
 
                 dataGridView2.Rows.Add(drugName, price.ToString("0.00"), insurance, patientPays.ToString("0.00"));
-                UpdatePayButtonText(); // ✅ toplam güncellenir ve buton yazısı gelir
+                UpdatePayButtonText();
 
                 MessageBox.Show(
                   $"İlaç: {drugName}\nFiyat: {price.ToString("0.00")} ₺\nSigorta Türü: {insurance}\nHastanın Ödeyeceği: {patientPays.ToString("0.00")} ₺",
@@ -262,7 +345,7 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // 🟢 Sabit index (silme butonu 4. indexte, 0'dan başlıyor)
+           
             if (e.RowIndex >= 0 && e.ColumnIndex == 4)
             {
                 dataGridView2.Rows.RemoveAt(e.RowIndex);
@@ -329,15 +412,67 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
 
         private decimal CalculatePatientShare(decimal price, string insurance)
         {
-            return CalculateCopayment(price, insurance); // Mevcut fonksiyonunu kullanıyoruz
+            return CalculateCopayment(price, insurance);
         }
 
+        public void ReduceStock(int drugId, int quantity)
+        {
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
 
+                while (quantity > 0)
+                {
+                    SqlCommand cmd = new SqlCommand(@"
+                     SELECT TOP 1 StockId, StockQuantity 
+                     FROM DrugStocks 
+                     WHERE DrugId = @drugId AND StockQuantity > 0 
+    ORDER BY ExpirationDate ASC", conn);
+                    cmd.Parameters.AddWithValue("@drugId", drugId);
+
+                        var reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        int partId = reader.GetInt32(0);          // StockId
+                        int available = reader.GetInt32(1);       // StockQuantity
+                        reader.Close();
+
+                        int used = Math.Min(available, quantity);
+                        SqlCommand updateCmd = new SqlCommand(
+                            "UPDATE DrugStocks SET StockQuantity = StockQuantity - @used WHERE StockId = @partId", conn);
+                        updateCmd.Parameters.AddWithValue("@used", used);
+                        updateCmd.Parameters.AddWithValue("@partId", partId);
+                        updateCmd.ExecuteNonQuery();
+
+                        quantity -= used;
+                    }
+
+                    else
+                    {
+                        reader.Close();
+                        MessageBox.Show("Yeterli stok yok!", "Stok Hatası");
+                        break;
+                    }
+                }
+            }
+        }
+
+        public int GetDrugIdByName(string drugName)
+        {
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT Id FROM Drugs WHERE Name = @name", conn);
+                cmd.Parameters.AddWithValue("@name", drugName);
+                var result = cmd.ExecuteScalar();
+                return result != null ? Convert.ToInt32(result) : -1;
+            }
+        }
 
         private void ShowPaymentDetails(int prescriptionId)
         {
             SetupPaymentGrid();
-            dataGridView2.Rows.Clear(); // varsa öncekileri temizle
+            dataGridView2.Rows.Clear();
 
             using (SqlConnection conn = new SqlConnection(connStr))
             {
@@ -363,10 +498,10 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
                 }
 
                 string drugQuery = @"
-        SELECT D.Name, D.Price
-        FROM PrescriptionDetails PD
-        JOIN Drugs D ON PD.DrugId = D.Id
-        WHERE PD.PrescriptionId = @prescriptionId";
+                SELECT D.Name, D.Price
+                FROM PrescriptionDetails PD
+                JOIN Drugs D ON PD.DrugId = D.Id
+                WHERE PD.PrescriptionId = @prescriptionId";
 
                 using (SqlCommand cmd = new SqlCommand(drugQuery, conn))
                 {
@@ -374,7 +509,6 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        // 🔽 TANIMLAR BURADA OLMALI
                         string drugName = reader["Name"].ToString();
                         decimal price = Convert.ToDecimal(reader["Price"]);
                         decimal patientPays = CalculateCopayment(price, insurance);
@@ -384,22 +518,7 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
                 }
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            decimal toplam = 0;
-
-            foreach (DataGridViewRow row in dataGridView2.Rows)
-            {
-                if (row.Cells["PatientPays"].Value != null)
-                {
-                    toplam += Convert.ToDecimal(row.Cells["PatientPays"].Value);
-                }
-            }
-
-            MessageBox.Show("Ödeme alındı. Geçmiş olsun!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
+          
 
         private void UpdatePayButtonText()
         {
@@ -421,14 +540,25 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
 
         private void SomeAction()
         {
-            UpdatePayButtonText(); // artık hata vermez
+            UpdatePayButtonText(); 
         }
 
         private void btnPay_Click(object sender, EventArgs e)
         {
+            foreach (DataGridViewRow row in dataGridView2.Rows)
+            {
+                if (row.IsNewRow) continue;
+
+                string drugName = row.Cells["DrugName"].Value.ToString();
+                int quantity = 1; 
+                int drugId = GetDrugIdByName(drugName);
+
+                ReduceStock(drugId, quantity);
+            }
+
             MessageBox.Show("Ödeme alındı. Geçmiş olsun!", "Bilgilendirme", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // DataGridView boşalt (satır satır)
+            
             for (int i = dataGridView2.Rows.Count - 1; i >= 0; i--)
             {
                 dataGridView2.Rows.RemoveAt(i);
@@ -436,6 +566,7 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
 
             UpdatePayButtonText();
         }
+
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {

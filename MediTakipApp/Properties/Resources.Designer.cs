@@ -61,6 +61,26 @@ namespace MediTakipApp.Properties {
         }
         
         /// <summary>
+        ///   System.Byte[] türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static byte[] DejaVuSans {
+            get {
+                object obj = ResourceManager.GetObject("DejaVuSans", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap Eczane_Logo {
+            get {
+                object obj = ResourceManager.GetObject("Eczane_Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
         internal static System.Drawing.Bitmap Meditakip_Logo {

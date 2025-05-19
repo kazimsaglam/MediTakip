@@ -41,6 +41,7 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
             {
                 ShowPanel(panelHistory);
                 LoadStockHistory();
+                LoadAllSupplyTrackingGrid();
             };
 
             btnTabStock.PerformClick();
@@ -678,7 +679,7 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
                     cmd.Parameters.AddWithValue("@supplier", supplier);
 
                     cmd.ExecuteNonQuery();
-                    LoadSupplyTracking(selectedDrugId);
+                    SaveSupplyTracking(selectedDrugId, qty, supplier);
                 }
 
                 MessageBox.Show("İlaç başarıyla tedarik edildi!", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -784,6 +785,7 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
             {
                 cachedHistoryData = null;
                 LoadStockHistory();
+                LoadAllSupplyTrackingGrid();
             };
 
             Button btnExport = new Button()
@@ -917,11 +919,6 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
             dgvSupplyTracking.Columns.Add("Supplier", "Tedarikçi");
             dgvSupplyTracking.Columns.Add("Status", "Durum");
 
-            dgvSupplyTracking.Rows.Add("Parol", "2025-05-18", "100", "BetaMed", "🕓 Teslim Bekleniyor");
-            dgvSupplyTracking.Rows.Add("Aferin", "2025-05-15", "50", "Ege İlaç", "🚚 Yolda");
-            dgvSupplyTracking.Rows.Add("Dolorex", "2025-05-14", "42", "Karadeniz", "❌ İptal Edildi");
-            dgvSupplyTracking.Rows.Add("Aspirin", "2025-05-19", "42", "Karadeniz", "⏸ Beklemeye Alındı");
-
             layout.Controls.Add(topBar, 0, 0);
             layout.SetColumnSpan(topBar, 1);
             layout.Controls.Add(dgvHistory, 0, 1);
@@ -1009,39 +1006,60 @@ namespace MediTakipApp.Forms.PharmacyPanelContent
             }
         }
 
-        private void LoadSupplyTracking(int drugId)
+        private void SaveSupplyTracking(int drugId, int qty, string supplier, string status = "🕓 Sipariş Alındı...")
         {
-            using (SqlConnection conn = new SqlConnection(connStr))
+            const string sql = @"
+        INSERT INTO SupplyTracking
+            (DrugId, EntryDate, Quantity, Supplier, Status)
+        VALUES
+            (@drugId, GETDATE(), @qty, @supplier, @status)";
+            using var conn = new SqlConnection(connStr);
+            using var cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@drugId", drugId);
+            cmd.Parameters.AddWithValue("@qty", qty);
+            cmd.Parameters.AddWithValue("@supplier", supplier);
+            cmd.Parameters.AddWithValue("@status", status);
+            conn.Open();
+            cmd.ExecuteNonQuery();
+        }
+
+        private void LoadAllSupplyTrackingGrid()
+        {
+            if (dgvSupplyTracking.Columns.Count == 0)
             {
-                conn.Open();
+                dgvSupplyTracking.Columns.Add("DrugName", "İlaç");
+                dgvSupplyTracking.Columns.Add("EntryDate", "Tarih");
+                dgvSupplyTracking.Columns.Add("Quantity", "Miktar");
+                dgvSupplyTracking.Columns.Add("Supplier", "Tedarikçi");
+                dgvSupplyTracking.Columns.Add("Status", "Durum");
+            }
 
-                SqlCommand cmd = new SqlCommand(@"
-            SELECT TOP 1
-                D.Name AS DrugName,
-                DS.EntryDate,
-                DS.StockQuantity AS Quantity,
-                DS.Supplier,
-                '🕓 Teslim Bekleniyor' AS Status
-            FROM DrugStocks DS
-            JOIN Drugs D ON DS.DrugId = D.Id
-            WHERE DS.DrugId = @drugId
-            ORDER BY DS.EntryDate DESC", conn);
+            dgvSupplyTracking.Rows.Clear();
 
-                cmd.Parameters.AddWithValue("@drugId", drugId);
+            const string sql = @"
+        SELECT D.Name     AS DrugName,
+               ST.EntryDate,
+               ST.Quantity,
+               ST.Supplier,
+               ST.Status
+        FROM SupplyTracking ST
+        JOIN Drugs D ON ST.DrugId = D.Id
+        ORDER BY ST.EntryDate DESC";
 
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        dgvSupplyTracking.Rows.Add(
-                            reader["DrugName"].ToString(),
-                            Convert.ToDateTime(reader["EntryDate"]).ToShortDateString(),
-                            reader["Quantity"].ToString(),
-                            reader["Supplier"].ToString(),
-                            reader["Status"].ToString()
-                        );
-                    }
-                }
+            using var conn = new SqlConnection(connStr);
+            using var cmd = new SqlCommand(sql, conn);
+            conn.Open();
+            using var reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                dgvSupplyTracking.Rows.Add(
+                    reader.GetString(reader.GetOrdinal("DrugName")),
+                    Convert.ToDateTime(reader["EntryDate"]).ToShortDateString(),
+                    reader.GetInt32(reader.GetOrdinal("Quantity")),
+                    reader.GetString(reader.GetOrdinal("Supplier")),
+                    reader.GetString(reader.GetOrdinal("Status"))
+                );
             }
         }
 

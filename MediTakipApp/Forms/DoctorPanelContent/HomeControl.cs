@@ -1,14 +1,19 @@
-﻿using System;
+﻿using MediTakipApp.Utils;
+using MetiDataTsApi;
+using MetiDataTsApi.Models;
+using Microsoft.Data.SqlClient;
+using System;
+using System.Collections.Generic;
 using System.Data;
-using MediTakipApp.Utils;
+using System.Drawing.Drawing2D;
 using Timer = System.Windows.Forms.Timer;
+
 
 namespace MediTakipApp.Forms
 {
     public partial class HomeControl : UserControl
     {
-        //private string connStr = @"Server=202.61.227.225;Database=metidata;Trusted_Connection=True;TrustServerCertificate=True;";
-        private List<PatientDto> allPatients = new();
+        private List<Patient> allPatients = new();
         private Dictionary<Panel, Panel> cardDetailMap = new();
         private Panel? selectedPatientCard = null;
         private Label? currentToast = null;
@@ -16,10 +21,8 @@ namespace MediTakipApp.Forms
 
         // Sayfalama
         private int currentPage = 1;
-        private int itemsPerPage = 20;
+        private int itemsPerPage = 25;
         private int totalPages = 1;
-        private int selectedPatientIdForDetails = -1;
-
 
 
         public HomeControl()
@@ -42,7 +45,7 @@ namespace MediTakipApp.Forms
         {
             if (detailHideTimer == null)
             {
-                detailHideTimer = new Timer { Interval = 100 };
+                detailHideTimer = new Timer { Interval = 200 };
                 detailHideTimer.Tick += (s, e) =>
                 {
                     if (!this.ClientRectangle.Contains(this.PointToClient(MousePosition)))
@@ -56,50 +59,37 @@ namespace MediTakipApp.Forms
 
         private void HomeControl_Load(object sender, EventArgs e)
         {
-            CreateDashboardCard(cardPatient, lblPatientTitle, lblPatientCount, "Toplam Hastalar", Color.MediumSeaGreen);
-            CreateDashboardCard(cardPrescription, lblPrescriptionTitle, lblPrescriptionCount, "Toplam Reçeteler", Color.SteelBlue);
-            CreateDashboardCard(cardDrug, lblDrugTitle, lblDrugCount, "Toplam İlaçlar", Color.DarkOrange);
-
-            LoadPatients();
-            UpdateDashboardCounts();
-
-            AddDashboardHoverEffects(cardPatient);
-            AddDashboardHoverEffects(cardPrescription);
-            AddDashboardHoverEffects(cardDrug);
+            ApiLoadPatients();
 
             ResetSelectedPatient();
+
+            cmbFilterDoctor.SelectedIndex = 0;
         }
 
-        private async void LoadPatients()
+        private async void ApiLoadPatients()
         {
             ResetSelectedPatient();
 
             foreach (var panel in cardDetailMap.Values)
+            {
                 if (!panel.IsDisposed) panel.Dispose();
+            }
             cardDetailMap.Clear();
 
             try
             {
-                var response = await ApiService.GetAsync<ApiResult<List<PatientDto>>>("doctor/patient/list");
 
-                if (response == null || !response.Success || response.Data == null)
-                {
-                    MessageBox.Show("Hasta listesi alınamadı.");
-                    return;
-                }
+                var api = new ApiClient();
+                var response = await api.GetPatientListAsync();
+                var fullList = response.Data ?? new List<Patient>();
 
-                allPatients = response.Data;
+                if (cmbFilterDoctor.SelectedIndex == 1)
+                    allPatients = fullList.Where(p => p.DoctorId == LoggedUser.Id).ToList();
+                else
+                    allPatients = fullList;
 
-                int totalRecords = allPatients.Count;
-                totalPages = (int)Math.Ceiling(totalRecords / (double)itemsPerPage);
-                int offset = (currentPage - 1) * itemsPerPage;
-
-                var paginated = allPatients.Skip(offset).Take(itemsPerPage).ToList();
-
-                flpPatients.SuspendLayout();
-                flpPatients.Controls.Clear();
-
-                if (paginated.Count == 0)
+                UpdateDashboardCounts();
+                if (!response.Success || response.Data == null || response.Data.Count == 0)
                 {
                     flpPatients.Controls.Add(new Label
                     {
@@ -113,24 +103,79 @@ namespace MediTakipApp.Forms
                 }
                 else
                 {
-                    foreach (var patient in paginated)
+
+                    int totalRecords = response.Data.Count;
+                    totalPages = (int)Math.Ceiling(totalRecords / (double)itemsPerPage);
+
+                    int offset = (currentPage - 1) * itemsPerPage;
+                    var pagedPatients = response.Data.Skip(offset).Take(itemsPerPage).ToList();
+
+                    flpPatients.SuspendLayout();
+                    flpPatients.Controls.Clear();
+
+                    foreach (var patient in pagedPatients)
                     {
-                        var card = CreatePatientCard(patient);
-                        flpPatients.Controls.Add(card);
+                        Panel patientCard = CreatePatientCard(patient);
+                        flpPatients.Controls.Add(patientCard);
                     }
                 }
 
                 flpPatients.ResumeLayout();
                 UpdatePaginationLabel();
 
+                // Disable/Enable pagination buttons
                 btnPaginationPrev.Enabled = currentPage > 1;
                 btnPaginationNext.Enabled = currentPage < totalPages;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("HTTP hasta yükleme hatası: " + ex.Message);
+                MessageBox.Show("Hasta yükleme hatası: " + ex.Message);
             }
         }
+
+        private async void LoadPatients()
+        {
+            ResetSelectedPatient();
+
+            foreach (var panel in cardDetailMap.Values)
+            {
+                if (!panel.IsDisposed) panel.Dispose();
+            }
+            cardDetailMap.Clear();
+
+            try
+            {
+                {
+
+                    int totalRecords = allPatients.Count;
+                    totalPages = (int)Math.Ceiling(totalRecords / (double)itemsPerPage);
+
+                    int offset = (currentPage - 1) * itemsPerPage;
+                    var pagedPatients = allPatients.Skip(offset).Take(itemsPerPage).ToList();
+
+                    flpPatients.SuspendLayout();
+                    flpPatients.Controls.Clear();
+
+                    foreach (var patient in pagedPatients)
+                    {
+                        Panel patientCard = CreatePatientCard(patient);
+                        flpPatients.Controls.Add(patientCard);
+                    }
+                }
+
+                flpPatients.ResumeLayout();
+                UpdatePaginationLabel();
+
+                // Disable/Enable pagination buttons
+                btnPaginationPrev.Enabled = currentPage > 1;
+                btnPaginationNext.Enabled = currentPage < totalPages;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hasta yükleme hatası: " + ex.Message);
+            }
+        }
+
 
         private void BtnPaginationPrev_Click(object sender, EventArgs e)
         {
@@ -152,10 +197,12 @@ namespace MediTakipApp.Forms
 
         private void UpdatePaginationLabel()
         {
+            totalPages = (int)Math.Ceiling(allPatients.Count / (double)itemsPerPage);
             lblPaginationInfo.Text = $"Sayfa {currentPage} / {totalPages}";
+
         }
 
-        private async void TxtSearch_TextChanged(object sender, EventArgs e)
+        private void TxtSearch_TextChanged(object sender, EventArgs e)
         {
             string keyword = txtSearch.Text.Trim().ToLower();
             flpPatients.SuspendLayout();
@@ -169,11 +216,11 @@ namespace MediTakipApp.Forms
                 return;
             }
 
-            List<PatientDto> fullList = await LoadAllPatientsForSearch();
+            List<Patient> fullList = LoadAllPatientsForSearch();
 
-            var filtered = fullList
-                .Where(p => ($"{p.FirstName} {p.LastName}".ToLower().Contains(keyword)
-                          || p.TcNo.ToLower().Contains(keyword)))
+            var filtered = fullList.AsEnumerable()
+                .Where(r => (r.FirstName + " " + r.LastName).ToString().ToLower().Contains(keyword)
+                         || r.TcNo.ToString().ToLower().Contains(keyword))
                 .ToList();
 
             if (filtered.Count == 0)
@@ -190,9 +237,23 @@ namespace MediTakipApp.Forms
             }
             else
             {
-                foreach (var patient in filtered)
+                foreach (var row in filtered)
                 {
-                    var card = CreatePatientCard(patient);
+                    Patient patient = new Patient
+                    {
+                        Id = Convert.ToInt32(row.Id),
+                        FirstName = row.FirstName.ToString(),
+                        LastName = row.LastName.ToString(),
+                        TcNo = row.TcNo.ToString(),
+                        Insurance = row.Insurance.ToString(),
+                        BirthDate = Convert.ToDateTime(row.BirthDate),
+                        Gender = row.Gender.ToString(),
+                        City = row.City.ToString(),
+                        District = row.District.ToString(),
+                        Phone = row.Phone.ToString()
+                    };
+
+                    Panel card = CreatePatientCard(patient);
                     flpPatients.Controls.Add(card);
                 }
             }
@@ -202,35 +263,37 @@ namespace MediTakipApp.Forms
             btnPaginationNext.Enabled = false;
         }
 
-        private async Task<List<PatientDto>> LoadAllPatientsForSearch()
+        private List<Patient> LoadAllPatientsForSearch()
         {
+            List<Patient> all = new();
             try
             {
-                var response = await ApiService.GetAsync<ApiResult<List<PatientDto>>>("doctor/patient/list");
-                return response?.Success == true && response.Data != null ? response.Data : new List<PatientDto>();
+                all = allPatients;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Arama verisi alınamadı: " + ex.Message);
-                return new List<PatientDto>();
+                MessageBox.Show("Arama verisi yüklenemedi: " + ex.Message);
             }
+
+            return all;
         }
 
-        private Panel CreatePatientCard(PatientDto patient)
+
+        private Panel CreatePatientCard(Patient patient)
         {
-            Panel card = new Panel
+            Panel card = new Panel()
             {
-                Width = 320,
-                Height = 190,
+                Width = 306,
+                Height = 185,
                 BackColor = Color.White,
                 Margin = new Padding(10, 10, 10, 10),
                 BorderStyle = BorderStyle.FixedSingle,
                 Tag = patient,
                 Cursor = Cursors.Hand,
-                Padding = new Padding(15, 20, 10, 20)
+                Padding = new Padding(10)
             };
 
-            Panel detailPanel = new Panel
+            Panel detailPanel = new Panel()
             {
                 Width = 300,
                 Height = 400,
@@ -244,6 +307,7 @@ namespace MediTakipApp.Forms
             detailPanel.BringToFront();
             cardDetailMap[card] = detailPanel;
 
+            // Etiketler
             card.Controls.Add(new TransparentLabel
             {
                 Text = $"👤 {patient.FirstName} {patient.LastName}",
@@ -262,7 +326,7 @@ namespace MediTakipApp.Forms
 
             card.Controls.Add(new TransparentLabel
             {
-                Text = $"🎂 Doğum: {patient.BirthDate:dd.MM.yyyy}",
+                Text = $"🎂 Doğum: {Convert.ToDateTime(patient.BirthDate).ToString("dd.MM.yyyy")}",
                 Font = new Font("Bahnschrift SemiCondensed", 12F),
                 Location = new Point(10, 75),
                 AutoSize = true
@@ -292,92 +356,80 @@ namespace MediTakipApp.Forms
                 AutoSize = true
             });
 
+            // Eventler
             card.Click += (s, e) => SelectPatientCard(card);
-            card.MouseEnter += (s, e) => { card.BackColor = Color.Gainsboro; HideAllDetails(); ShowPatientDetails(card); };
+            card.MouseEnter += (s, e) => { card.BackColor = Color.Gainsboro; ShowPatientDetails(card); };
             card.MouseLeave += (s, e) =>
             {
                 if (card != selectedPatientCard)
                     card.BackColor = Color.White;
-                HideAllDetails();
+                HidePatientDetails(card);
             };
 
             return card;
         }
 
-        private async Task ShowPatientDetails(Panel card)
+        private void ShowPatientDetails(Panel card)
         {
-            if (!cardDetailMap.TryGetValue(card, out Panel detailPanel) || card.Tag is not PatientDto patient)
-                return;
-
-            if (detailPanel.Visible && selectedPatientIdForDetails == patient.Id && !string.IsNullOrEmpty(patient.LastPrescriptionDate))
-                return;
-
-            selectedPatientIdForDetails = patient.Id;
-
-            detailPanel.Controls.Clear();
-
-            Label lblTitle = new Label()
+            if (cardDetailMap.TryGetValue(card, out Panel detailPanel) && card.Tag is Patient row)
             {
-                Text = "Hasta Detayları",
-                Font = new Font("Bahnschrift SemiCondensed", 14F, FontStyle.Bold),
-                Dock = DockStyle.Top,
-                Height = 40,
-                TextAlign = ContentAlignment.MiddleCenter,
-                BackColor = Color.SteelBlue,
-                ForeColor = Color.White,
-                Margin = new Padding(0)
-            };
+                if (detailPanel.Visible)
+                    return;
 
-            Panel contentPanel = new Panel()
-            {
-                Dock = DockStyle.Fill,
-                Padding = new Padding(10),
-                AutoScroll = true
-            };
+                detailPanel.Controls.Clear();
 
-            int yPos = 10;
-            int labelWidth = 120;
-            int valueWidth = 160;
-            int rowHeight = 35;
+                Label lblTitle = new Label()
+                {
+                    Text = "Hasta Detayları",
+                    Font = new Font("Bahnschrift SemiCondensed", 14F, FontStyle.Bold),
+                    Dock = DockStyle.Top,
+                    Height = 40,
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    BackColor = Color.SteelBlue,
+                    ForeColor = Color.White,
+                    Margin = new Padding(0)
+                };
 
-            AddDetailLabel(contentPanel, "Ad Soyad:", $"{patient.FirstName} {patient.LastName}", ref yPos, labelWidth, valueWidth, rowHeight);
-            AddDetailLabel(contentPanel, "TC No:", patient.TcNo, ref yPos, labelWidth, valueWidth, rowHeight);
-            AddDetailLabel(contentPanel, "Doğum Tarihi:", patient.BirthDate.ToShortDateString(), ref yPos, labelWidth, valueWidth, rowHeight);
-            AddDetailLabel(contentPanel, "Cinsiyet:", patient.Gender, ref yPos, labelWidth, valueWidth, rowHeight);
-            AddDetailLabel(contentPanel, "Telefon:", patient.Phone, ref yPos, labelWidth, valueWidth, rowHeight);
-            AddDetailLabel(contentPanel, "Şehir/İlçe:", $"{patient.City}/{patient.District}", ref yPos, labelWidth, valueWidth, rowHeight);
-            AddDetailLabel(contentPanel, "Sigorta:", patient.Insurance, ref yPos, labelWidth, valueWidth, rowHeight);
+                Panel contentPanel = new Panel()
+                {
+                    Dock = DockStyle.Fill,
+                    Padding = new Padding(10),
+                    AutoScroll = true
+                };
 
-            string lastDate;
-            if (string.IsNullOrEmpty(patient.LastPrescriptionDate))
-            {
-                lastDate = await GetLastPrescriptionDate(patient.Id);
-                patient.LastPrescriptionDate = lastDate;
+                int yPos = 10;
+                int labelWidth = 120;
+                int valueWidth = 160;
+                int rowHeight = 35;
+
+                AddDetailLabel(contentPanel, "Ad Soyad:", $"{row.FirstName} {row.LastName}", ref yPos, labelWidth, valueWidth, rowHeight);
+                AddDetailLabel(contentPanel, "TC No:", row.TcNo.ToString(), ref yPos, labelWidth, valueWidth, rowHeight);
+                AddDetailLabel(contentPanel, "Doğum Tarihi:", Convert.ToDateTime(row.BirthDate).ToShortDateString(), ref yPos, labelWidth, valueWidth, rowHeight);
+                AddDetailLabel(contentPanel, "Cinsiyet:", row.Gender.ToString(), ref yPos, labelWidth, valueWidth, rowHeight);
+                AddDetailLabel(contentPanel, "Telefon:", row.Phone.ToString(), ref yPos, labelWidth, valueWidth, rowHeight);
+                AddDetailLabel(contentPanel, "Şehir/İlçe:", $"{row.City}/{row.District}", ref yPos, labelWidth, valueWidth, rowHeight);
+                AddDetailLabel(contentPanel, "Sigorta:", row.Insurance.ToString(), ref yPos, labelWidth, valueWidth, rowHeight);
+                AddDetailLabel(contentPanel, "Son Muayene:", row.LastPrescriptionDate.HasValue ? row.LastPrescriptionDate.Value.ToShortDateString() : "Kayıt Yok", ref yPos, labelWidth, valueWidth, rowHeight); detailPanel.Controls.Add(contentPanel);
+                detailPanel.Controls.Add(lblTitle);
+
+                Point cardLocation = card.PointToScreen(Point.Empty);
+                Point relativeLocation = this.PointToClient(cardLocation);
+
+                // Panel ekran dışına taşmasın
+                int maxBottom = this.ClientSize.Height - detailPanel.Height - 10;
+                int y = Math.Min(relativeLocation.Y, Math.Max(0, maxBottom));
+
+                // Sağ ya da sol tarafa yerleştir
+                int x = relativeLocation.X + card.Width + 5;
+                if (x + detailPanel.Width > this.Width)
+                    x = relativeLocation.X - detailPanel.Width - 5;
+
+                detailPanel.Location = new Point(x, y);
+                detailPanel.Visible = true;
+                detailPanel.BringToFront();
             }
-            else
-            {
-                lastDate = patient.LastPrescriptionDate;
-            }
-
-            AddDetailLabel(contentPanel, "Son Muayene:", lastDate, ref yPos, labelWidth, valueWidth, rowHeight);
-
-            detailPanel.Controls.Add(contentPanel);
-            detailPanel.Controls.Add(lblTitle);
-
-            Point cardLocation = card.PointToScreen(Point.Empty);
-            Point relativeLocation = this.PointToClient(cardLocation);
-
-            int maxBottom = this.ClientSize.Height - detailPanel.Height - 10;
-            int y = Math.Min(relativeLocation.Y, Math.Max(0, maxBottom));
-            int x = relativeLocation.X + card.Width + 5;
-
-            if (x + detailPanel.Width > this.Width)
-                x = relativeLocation.X - detailPanel.Width - 5;
-
-            detailPanel.Location = new Point(x, y);
-            detailPanel.Visible = true;
-            detailPanel.BringToFront();
         }
+
 
         private void AddDetailLabel(Panel parent, string labelText, string valueText, ref int yPos, int labelWidth, int valueWidth, int rowHeight)
         {
@@ -423,8 +475,9 @@ namespace MediTakipApp.Forms
             }
         }
 
-        private async void SelectPatientCard(Panel card)
+        private void SelectPatientCard(Panel card)
         {
+            // Önceki seçimi temizle
             if (selectedPatientCard != null)
             {
                 selectedPatientCard.BackColor = Color.White;
@@ -432,76 +485,39 @@ namespace MediTakipApp.Forms
                     oldDetail.Visible = false;
             }
 
+            // Yeni seçim yap
             selectedPatientCard = card;
             card.BackColor = Color.LightBlue;
 
-            if (card.Tag is PatientDto patient)
+            if (card.Tag is Patient row)
             {
-                SelectedPatient.Id = patient.Id;
-                SelectedPatient.FirstName = patient.FirstName;
-                SelectedPatient.LastName = patient.LastName;
-                SelectedPatient.TcNo = patient.TcNo;
-                SelectedPatient.Insurance = patient.Insurance;
-                SelectedPatient.BirthDate = patient.BirthDate;
-                SelectedPatient.Gender = patient.Gender;
-                SelectedPatient.City = patient.City;
-                SelectedPatient.District = patient.District;
-                SelectedPatient.Phone = patient.Phone;
+                SelectedPatient.Id = Convert.ToInt32(row.Id);
+                SelectedPatient.FirstName = row.FirstName.ToString();
+                SelectedPatient.LastName = row.LastName.ToString();
+                SelectedPatient.TcNo = row.TcNo.ToString();
+                SelectedPatient.Insurance = row.Insurance.ToString();
+                SelectedPatient.BirthDate = Convert.ToDateTime(row.BirthDate);
+                SelectedPatient.Gender = row.Gender.ToString();
+                SelectedPatient.City = row.City.ToString();
+                SelectedPatient.District = row.District.ToString();
+                SelectedPatient.Phone = row.Phone.ToString();
 
-                await ShowPatientDetails(card);
+                ShowPatientDetails(card);
                 ShowToast($"{SelectedPatient.FirstName} seçildi");
             }
         }
 
-
-        private async Task<string> GetLastPrescriptionDate(int patientId)
+        private void UpdateDashboardCounts()
         {
             try
             {
-                var response = await ApiService.GetAsync<ApiResult<List<PrescriptionDto>>>("prescription/list");
-
-                if (response == null || !response.Success || response.Data == null)
-                    return "Kayıt Yok";
-
-                var last = response.Data
-                    .Where(p => p.PatientId == patientId)
-                    .OrderByDescending(p => p.PrescriptionDate)
-                    .FirstOrDefault();
-
-                return last != null ? last.PrescriptionDate.ToShortDateString() : "Kayıt Yok";
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Son reçete hatası: " + ex.Message);
-                return "Kayıt Yok";
-            }
-        }
-
-
-        private async void UpdateDashboardCounts()
-        {
-            try
-            {
-                var patientsTask = ApiService.GetAsync<ApiResult<List<PatientDto>>>("doctor/patient/list");
-                var prescriptionsTask = ApiService.GetAsync<ApiResult<List<PrescriptionDto>>>("prescription/list");
-                var drugsTask = ApiService.GetAsync<ApiResult<List<DrugDto>>>("drug/list");
-
-                await Task.WhenAll(patientsTask, prescriptionsTask, drugsTask);
-
-                var patients = await patientsTask;
-                var prescriptions = await prescriptionsTask;
-                var drugs = await drugsTask;
-
-                lblPatientCount.Text = patients?.Data?.Count.ToString() ?? "0";
-                lblPrescriptionCount.Text = prescriptions?.Data?.Count.ToString() ?? "0";
-                lblDrugCount.Text = drugs?.Data?.Count.ToString() ?? "0";
+                lblTopPatientCount.Text = $"👥 Toplam: {allPatients.Count}";
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Dashboard güncelleme hatası: " + ex.Message);
             }
         }
-
 
         private void BtnAddPatient_Click(object sender, EventArgs e)
         {
@@ -511,7 +527,7 @@ namespace MediTakipApp.Forms
                 selectedPatientCard = null;
             }
 
-            PatientForm form = new PatientForm();
+            PatientForm form = new PatientForm(allPatients);
             form.DoctorId = LoggedUser.Id;
             if (form.ShowDialog() == DialogResult.OK)
             {
@@ -521,6 +537,13 @@ namespace MediTakipApp.Forms
             }
         }
 
+        private void CmbFilterDoctor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            currentPage = 1;
+            ApiLoadPatients();
+        }
+
+
         private void BtnUpdatePatient_Click(object sender, EventArgs e)
         {
             if (selectedPatientCard == null)
@@ -529,7 +552,7 @@ namespace MediTakipApp.Forms
                 return;
             }
 
-            PatientForm form = new PatientForm();
+            PatientForm form = new PatientForm(allPatients);
             form.IsUpdateMode = true;
             form.PatientId = SelectedPatient.Id;
             form.FirstName = SelectedPatient.FirstName;
@@ -569,28 +592,27 @@ namespace MediTakipApp.Forms
 
             try
             {
-                string endpoint = $"doctor/patient/delete/{SelectedPatient.Id}";
-
-                var response = await ApiService.DeleteAsync<ApiResult<string>>(endpoint);
-
-                if (response != null && response.Success)
+                var api = new ApiClient();
+                var response = await api.DeletePatient(SelectedPatient.Id.ToString());
+                if (response.Success)
                 {
-                    MessageBox.Show("Hasta ve ilişkili reçeteler başarıyla silindi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    allPatients = allPatients.Where(p => p.Id != SelectedPatient.Id).ToList();
+                    MessageBox.Show("Hasta ve tüm ilişkili reçeteler başarıyla silindi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     LoadPatients();
                     UpdateDashboardCounts();
                     selectedPatientCard = null;
                 }
                 else
                 {
-                    MessageBox.Show("Silme işlemi başarısız: " + response?.Message ?? "Bilinmeyen hata", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Silme sırasında hata oluştu: ", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("HTTP silme hatası: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Silme sırasında hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         private void ShowToast(string message)
         {
@@ -648,6 +670,11 @@ namespace MediTakipApp.Forms
         {
             SelectedPatient.Id = 0;
             selectedPatientCard = null;
+        }
+
+        private void flpPatients_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

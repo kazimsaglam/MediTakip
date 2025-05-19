@@ -1,13 +1,17 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using MediTakipApp.Utils;
+using MetiDataTsApi;
+using MetiDataTsApi.Models;
 using Microsoft.Data.SqlClient;
+using System;
+using System.Collections.Generic; // Add this if not already present
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace MediTakipApp.Forms
 {
     public partial class PatientForm : Form
     {
-        private string connStr = @"Server=ROGSTRIX;Database=MediTakipDB;Trusted_Connection=True;TrustServerCertificate=True;";
+
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] public bool IsUpdateMode { get; set; } = false;
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] public int PatientId { get; set; }
@@ -22,9 +26,12 @@ namespace MediTakipApp.Forms
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] public string District { get; set; }
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] public string Phone { get; set; }
 
-        public PatientForm()
+
+        private List<Patient> _allPatients;
+        public PatientForm(List<Patient> allPatients)
         {
             InitializeComponent();
+            _allPatients = allPatients;
         }
 
         private void PatientForm_Load(object sender, EventArgs e)
@@ -48,42 +55,100 @@ namespace MediTakipApp.Forms
             }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
             if (!ValidateForm()) return;
-
-            using (SqlConnection conn = new SqlConnection(connStr))
+            if (IsUpdateMode)
             {
-                conn.Open();
-                SqlCommand cmd;
-
-                if (IsUpdateMode)
+                var api = new ApiClient();
+                var response = await api.UpdatePatient(
+                    PatientId.ToString(),
+                    txtFirstName.Text.Trim(),
+                    txtLastName.Text.Trim(),
+                    txtTcNo.Text.Trim(),
+                    cmbInsurance.SelectedItem?.ToString(),
+                    dtpBirthDate.Value.ToString(),
+                    cmbGender.SelectedItem?.ToString(),
+                    txtCity.Text.Trim(),
+                    txtDistrict.Text.Trim(),
+                    txtPhone.Text.Trim()
+                    );
+                if (response.Success)
                 {
-                    cmd = new SqlCommand("UPDATE Patients SET FirstName=@fn, LastName=@ln, TcNo=@tc, Insurance=@ins, BirthDate=@bd, Gender=@g, City=@city, District=@district, Phone=@phone WHERE Id=@id", conn);
-                    cmd.Parameters.AddWithValue("@id", PatientId);
+                    var updatedPatient = new Patient
+                    {
+                        Id = PatientId,
+                        FirstName = txtFirstName.Text.Trim(),
+                        LastName = txtLastName.Text.Trim(),
+                        TcNo = txtTcNo.Text.Trim(),
+                        Insurance = cmbInsurance.SelectedItem?.ToString(),
+                        BirthDate = dtpBirthDate.Value,
+                        Gender = cmbGender.SelectedItem?.ToString(),
+                        City = txtCity.Text.Trim(),
+                        District = txtDistrict.Text.Trim(),
+                        Phone = txtPhone.Text.Trim(),
+                        DoctorId = DoctorId,
+                        LastPrescriptionDate = _allPatients.FirstOrDefault(p => p.Id == PatientId)?.LastPrescriptionDate
+                    };
+
+                    var index = _allPatients.FindIndex(p => p.Id == PatientId);
+                    if (index >= 0)
+                    {
+                        _allPatients[index] = updatedPatient;
+                    }
+                    MessageBox.Show(IsUpdateMode ? "Hasta güncellendi!" : "Hasta eklendi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    cmd = new SqlCommand("INSERT INTO Patients (FirstName, LastName, TcNo, Insurance, BirthDate, Gender, City, District, Phone, DoctorId) VALUES (@fn, @ln, @tc, @ins, @bd, @g, @city, @district, @phone, @docId)", conn);
-                    cmd.Parameters.AddWithValue("@docId", DoctorId);
+                    MessageBox.Show("Güncelleme sırasında hata oluştu: ", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
-                cmd.Parameters.AddWithValue("@fn", txtFirstName.Text.Trim());
-                cmd.Parameters.AddWithValue("@ln", txtLastName.Text.Trim());
-                cmd.Parameters.AddWithValue("@tc", txtTcNo.Text.Trim());
-                cmd.Parameters.AddWithValue("@ins", cmbInsurance.SelectedItem?.ToString());
-                cmd.Parameters.AddWithValue("@bd", dtpBirthDate.Value);
-                cmd.Parameters.AddWithValue("@g", cmbGender.SelectedItem?.ToString());
-                cmd.Parameters.AddWithValue("@city", txtCity.Text.Trim());
-                cmd.Parameters.AddWithValue("@district", txtDistrict.Text.Trim());
-                cmd.Parameters.AddWithValue("@phone", txtPhone.Text.Trim());
-
-                cmd.ExecuteNonQuery();
-
-                MessageBox.Show(IsUpdateMode ? "Hasta güncellendi!" : "Hasta eklendi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.DialogResult = DialogResult.OK;
-                this.Close();
             }
+            else
+            {
+
+                var api = new ApiClient();
+                var response = await api.AddPatient(
+                    txtFirstName.Text.Trim(),
+                    txtLastName.Text.Trim(),
+                    txtTcNo.Text.Trim(),
+                    cmbInsurance.SelectedItem?.ToString(),
+                    dtpBirthDate.Value.ToString(),
+                    cmbGender.SelectedItem?.ToString(),
+                    txtCity.Text.Trim(),
+                    txtDistrict.Text.Trim(),
+                    txtPhone.Text.Trim(),
+                    DoctorId.ToString()
+                    );
+
+                if (response.Success)
+                {
+                    var newPatient = new Patient
+                    {
+                        Id = response.Data.Id,
+                        FirstName = response.Data.FirstName,
+                        LastName = response.Data.LastName,
+                        TcNo = response.Data.TcNo,
+                        Insurance = response.Data.Insurance,
+                        BirthDate = response.Data.BirthDate,
+                        Gender = response.Data.Gender,
+                        City = response.Data.City,
+                        District = response.Data.District,
+                        Phone = response.Data.Phone,
+                        DoctorId = response.Data.DoctorId,
+                        LastPrescriptionDate = response.Data.LastPrescriptionDate ?? null
+                    };
+
+                    _allPatients.Add(newPatient);
+                    MessageBox.Show(IsUpdateMode ? "Hasta güncellendi!" : "Hasta eklendi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Hasta ekleme sırasında hata oluştu: ", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
         private bool ValidateForm()
@@ -122,18 +187,14 @@ namespace MediTakipApp.Forms
 
             if (!IsUpdateMode)
             {
-                using (SqlConnection conn = new SqlConnection(connStr))
-                {
-                    conn.Open();
-                    SqlCommand checkCmd = new SqlCommand("SELECT COUNT(*) FROM Patients WHERE TcNo = @tc", conn);
-                    checkCmd.Parameters.AddWithValue("@tc", txtTcNo.Text.Trim());
+                string enteredTc = txtTcNo.Text.Trim();
 
-                    int count = (int)checkCmd.ExecuteScalar();
-                    if (count > 0)
-                    {
-                        MessageBox.Show("Bu TC numarası ile kayıtlı hasta zaten var.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return false;
-                    }
+                bool exists = _allPatients.Any(p => p.TcNo == enteredTc);
+
+                if (exists)
+                {
+                    MessageBox.Show("Bu TC numarası ile kayıtlı hasta zaten var.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
                 }
             }
 
@@ -145,4 +206,5 @@ namespace MediTakipApp.Forms
             this.Close();
         }
     }
+
 }
