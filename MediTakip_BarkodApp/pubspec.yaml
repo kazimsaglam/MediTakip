@@ -1,0 +1,26 @@
+name: barkod_ilac
+description: Barkod ile ilaç tarama uygulaması
+version: 1.0.0
+
+environment:
+  sdk: '>=3.7.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  mobile_scanner: ^3.5.0
+  http: ^0.13.6
+
+dev_dependencies:
+  flutter_lints: ^3.0.1
+  flutter_launcher_icons: ^0.13.1
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/app_icon.png"
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/app_icon.png
