@@ -5,6 +5,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{552E0FD6-1286-406D-923D-8D5DF3C9B37A}|MediTakipApp.csproj|c:\\users\\kazim\\onedrive\\belgeler\\meditakipapp\\forms\\pharmacypanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{552E0FD6-1286-406D-923D-8D5DF3C9B37A}|MediTakipApp.csproj|solutionrelative:forms\\pharmacypanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{552E0FD6-1286-406D-923D-8D5DF3C9B37A}|MediTakipApp.csproj|C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\forms\\pharmacypanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{552E0FD6-1286-406D-923D-8D5DF3C9B37A}|MediTakipApp.csproj|solutionrelative:forms\\pharmacypanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -28,10 +32,21 @@
               "RelativeDocumentMoniker": "Forms\\PharmacyPanel.cs",
               "ToolTip": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\Forms\\PharmacyPanel.cs",
               "RelativeToolTip": "Forms\\PharmacyPanel.cs",
-              "ViewState": "AgIAAIcCAAAAAAAAAAAuwJkCAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-19T18:24:32.503Z",
+              "WhenOpened": "2025-05-19T22:46:49.439Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PharmacyPanel.cs [Tasar\u0131m]",
+              "DocumentMoniker": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\Forms\\PharmacyPanel.cs",
+              "RelativeDocumentMoniker": "Forms\\PharmacyPanel.cs",
+              "ToolTip": "C:\\Users\\Kazim\\OneDrive\\Belgeler\\MediTakipApp\\Forms\\PharmacyPanel.cs [Tasar\u0131m]",
+              "RelativeToolTip": "Forms\\PharmacyPanel.cs [Tasar\u0131m]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T20:01:12.009Z"
             }
           ]
         },
